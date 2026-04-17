@@ -1,0 +1,48 @@
+{
+  "name": "ScheCon — 日程調整ツール",
+  "short_name": "スケコン",
+  "description": "カレンダー連携・Web会議設定・複数人調整が無料の日程調整ツール",
+  "start_url": "/schecon-demo/chat",
+  "scope": "/schecon-demo/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#ff9800",
+  "lang": "ja",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "social"],
+  "icons": [
+    {
+      "src": "https://schecon.com/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://schecon.com/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://schecon.com/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "チャット",
+      "short_name": "チャット",
+      "url": "/schecon-demo/chat",
+      "description": "チャット一覧を開く"
+    },
+    {
+      "name": "新しい予定調整",
+      "short_name": "予定調整",
+      "url": "/schecon-demo/one-on-one-create",
+      "description": "1対1の予定調整を作成"
+    }
+  ]
+}
