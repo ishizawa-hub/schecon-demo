@@ -351,56 +351,30 @@
         font-size: 80% !important;
       }
 
-      /* Hero CTA cards */
-      .m-adjustment__list .item__text {
-        padding: 2.7rem 4.5rem 2.9rem 1.5rem !important;
-        font-size: 1.6rem !important;
-      }
-      .m-adjustment__list .item__text:before {
-        right: 0.8rem !important;
-        width: 3rem !important;
-        height: 3rem !important;
-      }
-      .m-adjustment__list .item__text:after {
-        right: 1.9rem !important;
-        width: 0.8rem !important;
-        height: 0.8rem !important;
-      }
-      .top-adjustment .m-adjustment__list .item {
-        border-radius: var(--radius) !important;
-        overflow: hidden !important;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s !important;
-        box-shadow: var(--shadow-card) !important;
-      }
-      .top-adjustment .m-adjustment__list .item:hover {
-        transform: translateY(-8px) !important;
-        box-shadow: var(--shadow-hover) !important;
-      }
-      .top-adjustment .m-adjustment__list .item__text {
-        font-size: 2.0rem !important;
-        padding-right: 4.5rem !important;
-        padding-left: 0.8rem !important;
-      }
-      .top-adjustment .m-adjustment__list .item__text:before {
-        right: 0.8rem !important;
-        width: 3rem !important;
-        height: 3rem !important;
-      }
-      .top-adjustment .m-adjustment__list .item__text:after {
-        right: 1.9rem !important;
-        width: 0.8rem !important;
-        height: 0.8rem !important;
-      }
+      /* ===== Hero CTA カード: schecon.com 本番と同じデザインを尊重 =====
+         main.css が .item-one / .item-multi / .item-group のスタイルを持つので
+         そちらを優先。デモ独自の .item-chat だけ同じパターンで色指定を追加。 */
       .m-adjustment__list .item-chat .item__text {
-        background: var(--primary) !important;
+        background: #f1ba2b;
       }
       .m-adjustment__list .item-chat .item__text:after {
-        border-top: 3px solid var(--primary) !important;
-        border-right: 3px solid var(--primary) !important;
+        border-top: 3px solid #f1ba2b;
+        border-right: 3px solid #f1ba2b;
+      }
+      .m-adjustment__list .item-chat .item__btn {
+        color: #f1ba2b;
+        border-color: #f1ba2b;
+      }
+      html.notouch .m-adjustment__list .item-chat .item__btn:hover {
+        background: #f1ba2b;
       }
       .m-adjustment__list .item-chat .item__link {
         display: block;
         text-decoration: none;
+      }
+      .m-adjustment__list .item-chat .item__img {
+        border-radius: 1.6rem 1.6rem 0 0;
+        overflow: hidden;
       }
       .m-adjustment__list .item-chat .item__img img {
         width: 100%;
@@ -578,23 +552,12 @@
         font-weight: 900 !important;
       }
 
-      /* ===== USEFUL CAROUSEL ===== */
-      .m-useful .item {
-        border-radius: var(--radius) !important;
-        overflow: hidden !important;
-        box-shadow: var(--shadow-card) !important;
-        transition: transform 0.4s, box-shadow 0.4s !important;
-      }
-      .m-useful .item:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: var(--shadow-hover) !important;
-      }
-      .m-useful .item__box {
-        background: #fff !important;
-      }
-      .m-useful .item__ttl {
-        color: var(--dark) !important;
-        font-weight: 700 !important;
+      /* ===== USEFUL CAROUSEL: schecon.com 本番のデザインをそのまま使う =====
+         main.css の定義 (item width 58rem, 右下に重なる item__box 32.1rem,
+         item__ttl #ed9630, オレンジ円形 swiper-button-prev/next など) を尊重。
+         独自の box-shadow / ホバー移動 / 文字色変更オーバーライドは削除。 */
+      .m-useful .section__ttl {
+        text-align: center !important;
       }
 
       /* ===== COMPARISON SECTION (画像仕様に合わせる) =====
