@@ -402,6 +402,87 @@
         display: block;
       }
 
+      /* ===== PDF 修正 (2026-04-19) =====
+         1) ヒーロー上部余白を半分に
+         2) 「使い方を動画で見る」ボタンの下敷き (白pill) を除去
+         3) ヒーローリード (m-adjustment__lead .orange) の行数調整 & 適度な font-size
+         4) mod-allinone__title / card-title の黒文字を #81766e に
+         5) 「スケコンでは何ができますか？」を #81766e + 一部 orange スタイルに
+         6) 「こんな時の日程調整...」「スケコンはどのサービス...」を #ed9630 に
+      */
+      /* 1) ヒーロー上部余白 (2.4rem → 1.2rem) */
+      .top-adjustment__inner,
+      .top-adjustment__wrapper {
+        padding-top: 0 !important;
+      }
+      .m-adjustment.top-adjustment {
+        padding-top: 1.2rem !important;
+      }
+      /* 2) 動画リンクの「下敷き」 (丸pill背景) を除去 */
+      .top-adjustment .m-adjustment__list .item__btn.video-btn {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0.8rem 1.2rem !important;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn::before,
+      .top-adjustment .m-adjustment__list .item__btn.video-btn::after {
+        display: none !important;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn span {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: 0 !important;
+        color: #5f6368 !important;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span {
+        color: var(--primary) !important;
+      }
+      /* 3) ヒーローリード: PC で強制 2 行 & フォントを控えめに */
+      .m-adjustment__lead .orange.opc-4 {
+        font-size: 2rem !important;
+        line-height: 1.55 !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.02em;
+      }
+      .m-adjustment__lead .section__lead.opc-5 {
+        font-size: 1.35rem !important;
+        line-height: 1.75 !important;
+      }
+      @media (min-width: 768px) {
+        /* PC: 「面倒な...！/ビジネスの全てが...！」を 2 行に収める */
+        .m-adjustment__lead .orange.opc-4 { font-size: 2.2rem !important; }
+      }
+      /* 4) 「なぜスケコンはオールインワンなのか？」黒部分 & 機能タイトル: #81766e */
+      .mod-allinone__title {
+        color: #81766e !important;
+      }
+      .mod-allinone__title span {
+        color: #ed9630 !important;
+      }
+      .mod-allinone__card-title {
+        color: #81766e !important;
+      }
+      /* 5) 「スケコンでは何ができますか？」を揃えるためのユーティリティ:
+            orange 全体 → #81766e、内側の .orange-keyword → #ed9630 */
+      .section__ttl.section__ttl--allinone {
+        color: #81766e !important;
+      }
+      .section__ttl.section__ttl--allinone .orange-keyword {
+        color: #ed9630 !important;
+      }
+      /* 6) セクション見出し (特定のもの) を #ed9630 に統一 */
+      .section__ttl--hero-orange {
+        color: #ed9630 !important;
+      }
+      .mod-integration__title.section__ttl {
+        color: #ed9630 !important;
+      }
       /* News section in hero */
       .m-news {
         background: #f8f9fa !important;
@@ -678,9 +759,23 @@
       }
       .mod-footer-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr) auto;
         gap: 3rem;
         margin-bottom: 4rem;
+      }
+      .mod-footer-col--certs .footer__isms {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .mod-footer-col--certs .footer__isms img {
+        height: 5rem;
+        width: auto;
+        max-width: 7rem;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 6px;
+        padding: 4px;
       }
       .mod-footer-heading {
         color: #fff;
@@ -706,13 +801,13 @@
       .mod-footer-links a:hover {
         opacity: 0.7;
       }
-      /* フッター下部 (bsi/Pマーク + SNS): 白背景に切り替え、アイコンは濃色に */
+      /* フッター下部 (SNS): 白背景に切り替え、SNS を中央配置 (認証アイコンは上部 grid に移動) */
       .mod-footer-bottom {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         border-top: none;
-        padding: 3rem 2.4rem !important;
+        padding: 2rem 2.4rem !important;
         background: #fff !important;
         margin: 0 -3rem -3rem !important; /* content-inner の padding を相殺してフル幅 */
       }
@@ -769,6 +864,12 @@
         .mod-footer-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
+        }
+        .mod-footer-col--certs {
+          grid-column: 1 / -1;
+        }
+        .mod-footer-col--certs .footer__isms {
+          justify-content: flex-start;
         }
         .mod-footer-bottom {
           flex-direction: column;
@@ -2179,14 +2280,12 @@
             </div>
             <p class="m-adjustment__lead">
               <span class="orange opc-4">
-                面倒な日程調整はAIにお任せ！<br class="pctb-hidden" />
-                カレンダー・メール・チャットも全て一つに！<br />
+                面倒な日程調整はAIにお任せ！カレンダー・メール・チャットも全て一つに！<br />
                 ビジネスの全てがスケコンで完結！
               </span>
               <span class="section__lead opc-5">
-                スケコンは日程調整・カレンダー連携・メール連携・<br class="pctb-hidden" />ビジネスチャットを一つに統合した<br class="pctb-hidden" />オールインワンプラットフォームです。<br />
-                GoogleカレンダーやOutlookカレンダーと完全連携し、<br class="pctb-hidden" />Gmail・Outlookメールの送受信もスケコン上で完結。<br />
-                もうツールを使い分ける必要はありません。
+                スケコンは日程調整・カレンダー連携・メール連携・ビジネスチャットを一つに統合したオールインワンプラットフォームです。<br />
+                GoogleカレンダーやOutlookカレンダーと完全連携し、Gmail・Outlookメールの送受信もスケコン上で完結します。
               </span>
               <span class="cap opc-6">※ログインしてもカレンダーの予定は第三者に勝手に共有や公開はされません。 </span>
             </p>
@@ -2240,7 +2339,7 @@
         <!-- ===== FEATURES ===== -->
         <section class="section section--bg m-feature js-easing">
           <div class="section__body">
-            <h2 class="section__ttl opc-1">スケコンでは何ができますか？</h2>
+            <h2 class="section__ttl section__ttl--allinone opc-1">スケコンでは<br /><span class="orange-keyword">何ができる</span>のか？</h2>
             <div class="section__lead opc-1">
               スケコンはAI日程調整・カレンダー連携・メーラー機能・ビジネスチャットを搭載し、<br class="pctb-hidden" />1つのツールで業務コミュニケーションが完結します。<br />
               一人あたり月平均5時間の業務時間を削減できます。
@@ -2352,7 +2451,7 @@
               スケコンはどのサービスと連携できますか？
             </h2>
             <p class="mod-integration__subtitle">
-              スケコンはGoogleカレンダー・Outlookカレンダー・Gmail・Outlook・Zoom・Google Meet・Teams・Slack・Chatwork・Salesforceと連携可能です。<br class="pctb-hidden" />設定はワンクリック、最短30秒で完了します。
+              スケコンはGoogleカレンダー・Outlookカレンダー・Gmail・Outlook・Zoom・Google Meet・Teams・Slack・Chatwork・Salesforce<br />と連携可能です。設定はワンクリック、最短30秒で完了します。
             </p>
             <div class="mod-integration__grid">
               <div class="mod-integration__card">
@@ -2488,7 +2587,7 @@
 
         <!-- ===== USEFUL ===== -->
         <section class="section m-useful js-easing">
-          <h2 class="section__ttl opc-1">こんな時の日程調整<span class="sp-hidden">・</span><br class="pctb-hidden" />スケジュール調整に便利<br />チャットでそのままやりとりも</h2>
+          <h2 class="section__ttl section__ttl--hero-orange opc-1">こんな時の日程調整<span class="sp-hidden">・</span><br class="pctb-hidden" />スケジュール調整に便利<br />チャットでそのままやりとりも</h2>
           <p class="section__lead opc-2">
             スケコンは日程調整に関わるあらゆるシーンで<br class="pctb-hidden" />面倒な手間を簡単に解決できます。<br />
             チャット機能で日程調整後の<br class="pctb-hidden" />コミュニケーションもスムーズに。<br />
@@ -3198,12 +3297,16 @@
                 <li><a href="https://schecon.com/google-api-limited-use-policy">Google API ポリシー</a></li>
               </ul>
             </div>
+            <!-- 認証アイコン: フッタ上部 (mod-footer-grid 内) に配置 -->
+            <div class="mod-footer-col mod-footer-col--certs">
+              <p class="mod-footer-heading">認証</p>
+              <div class="footer__isms footer__isms--inline">
+                <img src="/schecon-demo/assets/imgs/common/isms-logo.jpg" alt="ISMS認証" />
+                <img src="/schecon-demo/images/pmark.png" alt="Pマーク" class="pmark" />
+              </div>
+            </div>
           </div>
           <div class="mod-footer-bottom">
-            <div class="footer__isms">
-              <img src="/schecon-demo/assets/imgs/common/isms-logo.jpg" alt="ISMS認証" />
-              <img src="/schecon-demo/images/pmark.png" alt="Pマーク" class="pmark" />
-            </div>
             <div class="mod-footer-sns">
               <a href="https://www.facebook.com/schecon/" target="_blank" aria-label="Facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
