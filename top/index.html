@@ -338,11 +338,17 @@
         font-weight: 700;
         letter-spacing: 0.05em;
       }
+      /* PDF (2026-04-19 改訂): 採用担当者カードの下敷きを除去、文字 80% に */
       .m-crown {
-        background: #f8f9fa !important;
-        border-radius: var(--radius) !important;
-        padding: 2rem !important;
-        border: 1px solid #eee !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        padding: 1rem 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+      }
+      .m-crown > div,
+      .m-crown p {
+        font-size: 80% !important;
       }
 
       /* Hero CTA cards */
@@ -533,6 +539,12 @@
       .m-feature__list .item.security {
         border-left: 4px solid var(--primary) !important;
       }
+      /* PDF (2026-04-19 改訂): セキュリティカードのテキストをセンター配置 */
+      .m-feature__list .item.security .item__text,
+      .m-feature__list .item.security .item__text .cap {
+        text-align: center !important;
+        display: block !important;
+      }
 
       /* ===== PLAN CARDS ===== */
       .m-plan__list .item {
@@ -707,6 +719,25 @@
       }
 
       /* ===== VIDEO / ABOUT ===== */
+      /* PDF (2026-04-19 改訂): ブランドムービーは 2 カラム表示 */
+      .m-about__list.brand-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 3rem !important;
+        max-width: 96rem;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .m-about__list.brand-list .item {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      @media (max-width: 767px) {
+        .m-about__list.brand-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 1.2rem !important;
+        }
+      }
       .m-about__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
@@ -801,19 +832,14 @@
       .mod-footer-links a:hover {
         opacity: 0.7;
       }
-      /* フッター下部 (SNS): 白背景に切り替え、SNS を中央配置 (認証アイコンは上部 grid に移動) */
+      /* PDF (2026-04-19 改訂): フッタ下部の白バーは廃止、SNS は認証カラム内へ */
       .mod-footer-bottom {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-top: none;
-        padding: 2rem 2.4rem !important;
-        background: #fff !important;
-        margin: 0 -3rem -3rem !important; /* content-inner の padding を相殺してフル幅 */
+        display: none !important;
       }
       .mod-footer-sns {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
+        flex-wrap: wrap;
       }
       .mod-footer-sns a {
         opacity: 0.9;
@@ -821,26 +847,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 3.6rem;
-        height: 3.6rem;
-        background: rgba(0,0,0,0.06);
+        width: 3.2rem;
+        height: 3.2rem;
+        background: rgba(255,255,255,0.1);
         border-radius: 50%;
       }
       .mod-footer-sns a:hover {
         opacity: 1;
-        background: rgba(0,0,0,0.12);
-      }
-      .mod-footer-sns img {
-        width: 2rem;
-        height: 2rem;
-        /* 白背景に合わせて濃色に (brightness 0 で黒化) */
-        filter: brightness(0);
-        opacity: 0.75;
+        background: rgba(255,255,255,0.2);
       }
       .mod-footer-sns svg {
-        width: 2rem;
-        height: 2rem;
-        fill: #333;
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: #fff;
+      }
+      .mod-footer-heading--sns {
+        margin-top: 2rem;
       }
       .footer__copyright {
         color: #fff !important;
@@ -1123,7 +1145,7 @@
       .mod-seo__title {
         font-size: 3.2rem;
         font-weight: 900;
-        color: var(--dark);
+        color: #ed9630 !important;
         text-align: center;
         margin-bottom: 1.5rem;
         line-height: 1.4;
@@ -2339,7 +2361,7 @@
         <!-- ===== FEATURES ===== -->
         <section class="section section--bg m-feature js-easing">
           <div class="section__body">
-            <h2 class="section__ttl section__ttl--allinone opc-1">スケコンでは<br /><span class="orange-keyword">何ができる</span>のか？</h2>
+            <h2 class="section__ttl section__ttl--allinone opc-1">スケコンでは<span class="orange-keyword">何ができる</span>のか？</h2>
             <div class="section__lead opc-1">
               スケコンはAI日程調整・カレンダー連携・メーラー機能・ビジネスチャットを搭載し、<br class="pctb-hidden" />1つのツールで業務コミュニケーションが完結します。<br />
               一人あたり月平均5時間の業務時間を削減できます。
@@ -2748,7 +2770,7 @@
               スケコンの料金プランはいくらですか？
             </h2>
             <p class="section__lead opc-2">
-              フリープラン（無料・月8回）・スタンダード（月額660円）・ビジネス（月額990円）の3プラン。<br class="pctb-hidden" />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
+              フリープラン（無料・月8回）・スタンダード（月額660円）・ビジネス（月額990円）の3プラン。<br />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
             </p>
             <ul class="m-plan__list webview-hide ease-3">
               <li class="item free">
@@ -3297,29 +3319,28 @@
                 <li><a href="https://schecon.com/google-api-limited-use-policy">Google API ポリシー</a></li>
               </ul>
             </div>
-            <!-- 認証アイコン: フッタ上部 (mod-footer-grid 内) に配置 -->
+            <!-- 認証アイコン + SNS: フッタダークエリア内 (mod-footer-grid) に配置 -->
             <div class="mod-footer-col mod-footer-col--certs">
               <p class="mod-footer-heading">認証</p>
               <div class="footer__isms footer__isms--inline">
                 <img src="/schecon-demo/assets/imgs/common/isms-logo.jpg" alt="ISMS認証" />
                 <img src="/schecon-demo/images/pmark.png" alt="Pマーク" class="pmark" />
               </div>
-            </div>
-          </div>
-          <div class="mod-footer-bottom">
-            <div class="mod-footer-sns">
-              <a href="https://www.facebook.com/schecon/" target="_blank" aria-label="Facebook">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
-              <a href="https://twitter.com/schecon2019?s=21" target="_blank" aria-label="X">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://www.youtube.com/channel/UC3GhlKmkOyT9zb_AIkJCHDw" target="_blank" aria-label="YouTube">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </a>
-              <a href="https://lin.ee/QBbHboY" target="_blank" aria-label="LINE">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.365 9.864c.018 0 .049-.006.082-.006.204 0 .37.166.37.37v.712a.372.372 0 0 1-.37.37h-1.476v.47h1.476a.37.37 0 0 1 .37.369v.713a.37.37 0 0 1-.37.37h-2.554a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h2.554a.37.37 0 0 1 .37.37v.713a.37.37 0 0 1-.37.37h-1.476v.47h1.476zM24 10.539C24 4.717 18.627.001 12 .001S0 4.717 0 10.539c0 5.226 4.632 9.598 10.89 10.426.424.092 1 .281 1.147.645.132.331.087.847.042 1.178l-.185 1.107c-.057.33-.263 1.291 1.131.703 1.394-.588 7.53-4.434 10.273-7.593C24.916 15.183 24 12.985 24 10.539zm-17.07 2.7a.37.37 0 0 1-.37.37H4.006a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v3.006h1.476a.37.37 0 0 1 .37.37v.712zm2.237 0a.37.37 0 0 1-.37.37h-.712a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v3.74zm5.422 0a.37.37 0 0 1-.37.37h-.712a.321.321 0 0 1-.073-.007.372.372 0 0 1-.296-.363V10.87l-2.086 2.608a.372.372 0 0 1-.29.144h-.712a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v1.87l2.092-2.609a.37.37 0 0 1 .284-.131h.712a.37.37 0 0 1 .37.37v3.74z"/></svg>
-              </a>
+              <p class="mod-footer-heading mod-footer-heading--sns">フォロー</p>
+              <div class="mod-footer-sns">
+                <a href="https://www.facebook.com/schecon/" target="_blank" aria-label="Facebook">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://twitter.com/schecon2019?s=21" target="_blank" aria-label="X">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UC3GhlKmkOyT9zb_AIkJCHDw" target="_blank" aria-label="YouTube">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://lin.ee/QBbHboY" target="_blank" aria-label="LINE">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.365 9.864c.018 0 .049-.006.082-.006.204 0 .37.166.37.37v.712a.372.372 0 0 1-.37.37h-1.476v.47h1.476a.37.37 0 0 1 .37.369v.713a.37.37 0 0 1-.37.37h-2.554a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h2.554a.37.37 0 0 1 .37.37v.713a.37.37 0 0 1-.37.37h-1.476v.47h1.476zM24 10.539C24 4.717 18.627.001 12 .001S0 4.717 0 10.539c0 5.226 4.632 9.598 10.89 10.426.424.092 1 .281 1.147.645.132.331.087.847.042 1.178l-.185 1.107c-.057.33-.263 1.291 1.131.703 1.394-.588 7.53-4.434 10.273-7.593C24.916 15.183 24 12.985 24 10.539zm-17.07 2.7a.37.37 0 0 1-.37.37H4.006a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v3.006h1.476a.37.37 0 0 1 .37.37v.712zm2.237 0a.37.37 0 0 1-.37.37h-.712a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v3.74zm5.422 0a.37.37 0 0 1-.37.37h-.712a.321.321 0 0 1-.073-.007.372.372 0 0 1-.296-.363V10.87l-2.086 2.608a.372.372 0 0 1-.29.144h-.712a.37.37 0 0 1-.37-.37V9.498a.37.37 0 0 1 .37-.37h.712a.37.37 0 0 1 .37.37v1.87l2.092-2.609a.37.37 0 0 1 .284-.131h.712a.37.37 0 0 1 .37.37v3.74z"/></svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
