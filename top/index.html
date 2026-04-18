@@ -1062,6 +1062,168 @@
         /* ----- m-feature__list 等のグリッドの隙間調整 (本家準拠の主旨) ----- */
         /* main.css 1023px 以下のルールがそのまま適用されるはず。
            ここでは何もせず本家規則を尊重 */
+
+        /* =====================================================================
+         * ユーザー指摘ピンポイント調整 (デザイン崩しは最小に抑える)
+         * - CTA テキストサイズ縮小
+         * - ヒーローのリード文を 2 行で収める
+         * - カードエリアの上下マージン削減
+         * - 他社比較カードの幅 100%
+         * ===================================================================== */
+        /* CTA ボタンのテキスト/パディング縮小 */
+        .m-btn a, .download-btn a, .m-adjustment .m-btn a, .m-plan .item__btn {
+          font-size: 1.4rem !important;
+          padding: 1.2rem 2.4rem !important;
+          line-height: 1.4 !important;
+        }
+        .m-btn, .download-btn, .m-adjustment .m-btn {
+          margin-top: 1.6rem !important;
+          margin-bottom: 1.6rem !important;
+        }
+
+        /* ヒーローのリード文 (.top-adjustment__copy) を改行少なく */
+        .m-adjustment.top-adjustment {
+          padding-top: 2.4rem !important;
+          padding-bottom: 2.4rem !important;
+        }
+        .m-adjustment__ttl {
+          font-size: 2.4rem !important;
+          line-height: 1.45 !important;
+          margin-bottom: 1.2rem !important;
+          letter-spacing: 0 !important;
+        }
+        .top-adjustment__copy {
+          font-size: 1.3rem !important;
+          line-height: 1.7 !important;
+          margin-bottom: 1.6rem !important;
+        }
+        .top-adjustment__copy .orange {
+          font-size: 1.3rem !important;
+          padding: 0 0.4rem !important;
+        }
+        .top-adjustment__copy br { display: none !important; }
+        /* ヒーロー本文の中身 br も無効化 (画面幅で自然に折り返す) */
+        .m-adjustment__ttl br.pctb-hidden,
+        .m-adjustment__ttl br.pc-hidden,
+        .top-adjustment__copy br.pctb-hidden { display: inline !important; }
+
+        /* セクション全体の上下 padding を一段縮める (本家 6rem → 3rem) */
+        .section,
+        .m-feature, .m-plan, .m-comparison, .m-voices,
+        .m-about, .m-useful, .faq,
+        .mod-allinone, .mod-integration, .mod-seo {
+          padding-top: 3.6rem !important;
+          padding-bottom: 3.6rem !important;
+        }
+        .section__ttl {
+          font-size: 2rem !important;
+          line-height: 1.5 !important;
+          margin-bottom: 1.6rem !important;
+        }
+        .section__lead {
+          font-size: 1.3rem !important;
+          line-height: 1.7 !important;
+          margin-bottom: 2.4rem !important;
+        }
+
+        /* カードリストの上下 margin / gap 圧縮 */
+        .m-feature__list, .m-plan__list, .m-comparison__list,
+        .m-voices__list, .m-about__list, .m-useful__list,
+        .mod-allinone__grid, .mod-integration__grid, .mod-seo__grid {
+          gap: 1.4rem !important;
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+        }
+        .m-feature__list .item,
+        .m-plan__list .item,
+        .m-voices__list .item,
+        .m-about__list .item,
+        .m-useful__list .item,
+        .mod-allinone__card,
+        .mod-integration__card,
+        .mod-seo__card {
+          padding: 1.6rem !important;
+        }
+
+        /* 他社比較カードを画面幅にフィット (元の幅指定 48rem を完全解除) */
+        .m-comparison__list {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 1.6rem !important;
+          padding: 0 1.6rem !important;
+        }
+        .m-comparison__list .item.schecon,
+        .m-comparison__list .item.others {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+        }
+        .m-comparison__list .item__ttl {
+          font-size: 1.5rem !important;
+          padding: 1.2rem !important;
+        }
+        .m-comparison__list .item__list {
+          font-size: 1.2rem !important;
+          padding: 1rem 1.4rem !important;
+        }
+        .m-comparison__list .item__list li {
+          padding: 0.4rem 0 !important;
+        }
+
+        /* ヒーローカードの 4 サービス: 画像と文字の高さを抑える */
+        .top-adjustment .m-adjustment__list .item__img img {
+          width: 100% !important;
+          height: auto !important;
+          max-height: 18rem !important;
+          object-fit: cover !important;
+        }
+        .top-adjustment .m-adjustment__list .item__text {
+          font-size: 1.5rem !important;
+          padding: 1.2rem 4rem 1.2rem 1.2rem !important;
+        }
+
+        /* 連携タグ: モバイルではアイコン/テキストを少し小さく */
+        .mod-integration__tag {
+          font-size: 1.1rem !important;
+          padding: 0.4rem 1rem !important;
+        }
+        .mod-integration__tag img {
+          width: 1.4rem !important;
+          height: 1.4rem !important;
+        }
+
+        /* allinone カード: padding と margin 縮小 */
+        .mod-allinone__card,
+        .mod-seo__card {
+          padding: 1.6rem !important;
+        }
+        .mod-allinone__icon, .mod-seo__card-icon {
+          font-size: 3rem !important;
+          margin-bottom: 0.8rem !important;
+        }
+        .mod-allinone__card-title, .mod-seo__card-title {
+          font-size: 1.5rem !important;
+          margin-bottom: 0.6rem !important;
+        }
+        .mod-allinone__card-desc, .mod-seo__card-desc {
+          font-size: 1.2rem !important;
+          line-height: 1.65 !important;
+        }
+
+        /* プラン (料金) カード: padding 縮小 */
+        .m-plan__list .item__name {
+          font-size: 1.6rem !important;
+        }
+        .m-plan__list .item__month .price {
+          font-size: 2.4rem !important;
+        }
+
+        /* FAQ アコーディオン: padding 縮小 */
+        .faq .accordion .option {
+          padding: 1.2rem 1.4rem !important;
+          margin-bottom: 0.8rem !important;
+        }
       }
     </style>
     <meta
@@ -1586,8 +1748,8 @@
                     Googleカレンダー・Outlookカレンダーの予定を自動で読み取り、空き時間をリアルタイムに算出。確定した予定はカレンダーに自動登録されるため、ダブルブッキングの心配がありません。複数カレンダーの一元管理も可能です。
                   </p>
                   <ul class="mod-integration__tag-list">
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/googlecalendar" alt="Google Calendar">Google Calendar</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/microsoftoutlook" alt="Outlook Calendar">Outlook Calendar</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/google-calendar.svg" alt="Google Calendar" width="16" height="16">Google Calendar</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/outlook.svg" alt="Outlook Calendar" width="16" height="16">Outlook Calendar</li>
                     <li class="mod-integration__tag">自動登録</li>
                     <li class="mod-integration__tag">空き時間算出</li>
                   </ul>
@@ -1603,8 +1765,8 @@
                     Gmail・Outlookメールに完全連携したメーラー機能を搭載。メールの受信・送信・返信がスケコン上で完結します。日程調整の依頼メールもワンクリックで送信。もうメールアプリを別途開く必要はありません。
                   </p>
                   <ul class="mod-integration__tag-list">
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/gmail" alt="Gmail">Gmail</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/microsoftoutlook" alt="Outlook Mail">Outlook Mail</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/gmail.svg" alt="Gmail" width="16" height="16">Gmail</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/outlook.svg" alt="Outlook Mail" width="16" height="16">Outlook Mail</li>
                     <li class="mod-integration__tag">送受信</li>
                     <li class="mod-integration__tag">自動通知</li>
                   </ul>
@@ -1620,11 +1782,11 @@
                     Zoom・Google Meet・Microsoft Teamsと連携し、日程確定と同時にWeb会議URLを自動発行。Slack・Chatworkへの通知連携、Salesforce・Blastmailとの連携にも対応しています。
                   </p>
                   <ul class="mod-integration__tag-list">
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/zoom" alt="Zoom">Zoom</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/googlemeet" alt="Google Meet">Google Meet</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/microsoftteams" alt="Teams">Teams</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/slack" alt="Slack">Slack</li>
-                    <li class="mod-integration__tag"><img src="https://cdn.simpleicons.org/chatwork" alt="Chatwork">Chatwork</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/zoom.svg" alt="Zoom" width="16" height="16">Zoom</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/google-meet.svg" alt="Google Meet" width="16" height="16">Google Meet</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/teams.svg" alt="Teams" width="16" height="16">Teams</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/slack.svg" alt="Slack" width="16" height="16">Slack</li>
+                    <li class="mod-integration__tag"><img src="/schecon-demo/images/icons/chatwork.svg" alt="Chatwork" width="16" height="16">Chatwork</li>
                   </ul>
                 </div>
               </div>
