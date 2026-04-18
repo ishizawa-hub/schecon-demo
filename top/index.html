@@ -302,6 +302,19 @@
         position: relative;
         overflow: hidden;
       }
+      /* ヒーロータイトル: PC では自然な折返し / スマホでは 6 行で表示
+         ユーザー指定: 冒頭 (hero) 文字色は #ed9630 */
+      .m-adjustment__ttl .orange,
+      .m-adjustment__ttl .orange.hero-ttl-sp,
+      .m-adjustment__ttl .hero-ttl-line {
+        color: #ed9630 !important;
+      }
+      .hero-ttl-line {
+        display: inline;
+      }
+      .hero-ttl-line + .hero-ttl-line::before {
+        content: ' ';
+      }
       .m-adjustment.top-adjustment::before,
       .m-adjustment.top-adjustment::after {
         display: none;
@@ -1189,10 +1202,18 @@
           padding-bottom: 2.4rem !important;
         }
         .m-adjustment__ttl {
-          font-size: 2.4rem !important;
-          line-height: 1.45 !important;
+          font-size: 1.7rem !important;
+          line-height: 1.5 !important;
           margin-bottom: 1.2rem !important;
           letter-spacing: 0 !important;
+          text-align: center !important;
+        }
+        /* ヒーロータイトルはスマホで 6 行に */
+        .m-adjustment__ttl .hero-ttl-line {
+          display: block !important;
+        }
+        .m-adjustment__ttl .hero-ttl-line + .hero-ttl-line::before {
+          content: '' !important;
         }
         .top-adjustment__copy {
           font-size: 1.3rem !important;
@@ -1204,10 +1225,10 @@
           padding: 0 0.4rem !important;
         }
         .top-adjustment__copy br { display: none !important; }
-        /* ヒーロー本文の中身 br も無効化 (画面幅で自然に折り返す) */
+        /* ヒーロー本文の中身 br も無効化 */
         .m-adjustment__ttl br.pctb-hidden,
         .m-adjustment__ttl br.pc-hidden,
-        .top-adjustment__copy br.pctb-hidden { display: inline !important; }
+        .top-adjustment__copy br.pctb-hidden { display: none !important; }
 
         /* セクション全体の上下 padding を一段縮める (本家 6rem → 3rem) */
         .section,
@@ -1363,6 +1384,75 @@
         .faq .accordion .option {
           padding: 1.2rem 1.4rem !important;
           margin-bottom: 0.8rem !important;
+        }
+
+        /* =====================================================================
+         * 動画埋め込み (m-about__list / m-useful) を スマホで 2 カラムに
+         * ===================================================================== */
+        .m-about__list,
+        .m-about__list.brand-list {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 1.2rem !important;
+          padding: 0 1.2rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .m-about__list .item {
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          box-sizing: border-box !important;
+        }
+        .m-about__list .item__img {
+          width: 100% !important;
+          padding-bottom: 56.25% !important;
+          height: 0 !important;
+          position: relative !important;
+          border-radius: 8px !important;
+          overflow: hidden !important;
+        }
+        .m-about__list .item__img .wrap,
+        .m-about__list .item__img .img {
+          position: absolute !important;
+          inset: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
+        .m-about__list .item__img .img {
+          background-size: cover !important;
+          background-position: center !important;
+        }
+        .m-about__list .item__ttl {
+          font-size: 1.1rem !important;
+          line-height: 1.4 !important;
+          margin-top: 0.6rem !important;
+          padding: 0 !important;
+        }
+        .m-about__list .item__ttl br { display: none !important; }
+
+        /* m-useful (Swiper カルーセル) も 2 カラムに見せる場合は本家 swiper の制御を尊重
+           swiper-slide が flex-shrink: 0 なので、grid に変更すると壊れる。
+           そのためここでは何もせず本家挙動のまま */
+
+        /* =====================================================================
+         * 巻末 CTA: TOP CTA と同じフォントサイズに揃える
+         * ===================================================================== */
+        main > .m-adjustment:last-of-type .m-adjustment__copy,
+        main > .m-adjustment:last-of-type .m-adjustment__ttl {
+          font-size: 1.7rem !important;
+          line-height: 1.5 !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__copy {
+          font-size: 1.3rem !important;
+          margin-bottom: 0.8rem !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__text {
+          font-size: 1.5rem !important;
+          padding: 1.2rem 4rem 1.2rem 1.2rem !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__img img {
+          max-height: 18rem !important;
         }
       }
     </style>
@@ -1545,12 +1635,14 @@
               <div class="top-adjustment__wrapper">
                 <div class="top-adjustment__inner">
                   <h1 class="m-adjustment__ttl opc-1">
-                    <span class="orange">
-                      ビジネスの全てが<br class="pctb-hidden" />これ一つで完結する<br />
-                      日程調整・カレンダー<span class="sp-hidden">・</span><br class="pctb-hidden" />メール・チャット<br />
-                      AIが30秒で<br class="pctb-hidden" />日程調整を自動化<br />
-                      カレンダー連携・メール連携<span class="sp-hidden">・</span><br class="pctb-hidden" />Web会議設定も全て無料<br />
-                      オールインワンの<br class="pctb-hidden" />ビジネスプラットフォーム
+                    <span class="orange hero-ttl-sp">
+                      <!-- スマホ用: 6 行で表示 -->
+                      <span class="hero-ttl-line">ビジネスの全てがこれ一つで完結する</span>
+                      <span class="hero-ttl-line">日程調整・カレンダー・メール・チャット</span>
+                      <span class="hero-ttl-line">AIが30秒で日程調整を自動化</span>
+                      <span class="hero-ttl-line">カレンダー連携・メール連携・</span>
+                      <span class="hero-ttl-line">Web会議設定も全て無料</span>
+                      <span class="hero-ttl-line">オールインワンのビジネスプラットフォーム</span>
                     </span>
                   </h1>
                   <p class="top-adjustment__copy">
