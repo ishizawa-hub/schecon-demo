@@ -253,11 +253,12 @@
         --gradient-hero: #fff;
         --gradient-accent: var(--primary);
         --gradient-blue: var(--accent);
-        --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
-        --shadow-card: 0 8px 32px rgba(0,0,0,0.08);
-        --shadow-hover: 0 16px 48px rgba(0,0,0,0.15);
-        --radius: 16px;
-        --radius-lg: 24px;
+        /* schecon.com \u306b\u5408\u308f\u305b\u3066\u30b7\u30e3\u30c9\u30a6\u3068\u89d2\u4e38\u3092\u63a7\u3048\u3081\u306b */
+        --shadow-lg: 0 6px 20px rgba(0,0,0,0.08);
+        --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+        --shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
+        --radius: 12px;
+        --radius-lg: 16px;
       }
 
       /* Override animation opacity */
@@ -1662,6 +1663,145 @@
         .footer__isms { order: 1; }
         .mod-footer-sns { order: 2; }
       }
+
+      /* =====================================================================
+       * schecon.com デザインルール適用パッチ
+       * schecon.com は「シンプル・クリーン・信頼感」が基調。
+       * 過剰な backdrop-filter / 強い box-shadow / 大きい scale hover を止め、
+       * 控えめな fade-in / 上に軽くリフトするだけのホバー / 落ち着いたシャドウに
+       * 統一する。テキスト・構成・レイアウト本体は一切変えない。
+       * ===================================================================== */
+
+      /* ---- ヘッダー: 透過+blur をやめシンプルな白地 + 薄線に ---- */
+      .header {
+        background: #ffffff !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid #eee !important;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.02) !important;
+      }
+
+      /* ---- カード共通: シャドウ弱めに、border-radius 12px 程度に統一 ---- */
+      .m-feature__list .item,
+      .m-plan__list .item,
+      .m-voices .item,
+      .m-about__list .item,
+      .m-useful .item,
+      .mod-allinone__card,
+      .mod-integration__card,
+      .mod-seo__card,
+      .top-adjustment .m-adjustment__list .item {
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+        border: 1px solid #f0f0f0 !important;
+      }
+
+      /* ---- ホバー: 軽い lift のみ。scale/派手なシャドウを無効化 ---- */
+      .m-feature__list .item:hover,
+      .m-plan__list .item:hover,
+      .m-voices .item:hover,
+      .m-about__list .item:hover,
+      .m-useful .item:hover,
+      .mod-allinone__card:hover,
+      .mod-integration__card:hover,
+      .mod-seo__card:hover,
+      .top-adjustment .m-adjustment__list .item:hover,
+      main > .m-adjustment:last-of-type .item:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.10) !important;
+        transition: transform .2s ease, box-shadow .2s ease !important;
+      }
+
+      /* ---- CTA ボタン: 派手な shadow を抑える ---- */
+      .m-btn a,
+      .download-btn a,
+      .m-adjustment .m-btn a {
+        box-shadow: 0 2px 8px rgba(232,101,26,0.22) !important;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+      }
+      .m-btn a:hover,
+      .download-btn a:hover,
+      .m-adjustment .m-btn a:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 14px rgba(232,101,26,0.28) !important;
+      }
+
+      /* ---- プランカード business のボーダーを schecon.com ライクに ---- */
+      .m-plan__list .item.business {
+        border: 2px solid var(--primary) !important;
+      }
+
+      /* ---- allinone セクションの badge (SEAMLESS) \u306f\u524a\u9664\u6e08\u3060\u304c\u3001
+             \u6b21\u306e mod-allinone__badge \u3082\u8aa4\u8a8d\u3055\u308c\u305d\u3046\u306a\u306e\u3067\u300c\u7d30\u3044\u5c0f\u898b\u51fa\u3057\u300d\u306b\u8abf\u6574 ---- */
+      .mod-allinone__badge {
+        background: transparent !important;
+        color: var(--primary) !important;
+        padding: 0 !important;
+        font-size: 1.2rem !important;
+        letter-spacing: 0.15em !important;
+        margin-bottom: 0.8rem !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        text-transform: uppercase !important;
+      }
+
+      /* ---- セクション見出し: schecon.com 同様にシンプル・太字・控えめマージン ---- */
+      .section__ttl,
+      .mod-allinone__title,
+      .mod-integration__title,
+      .mod-seo__title {
+        letter-spacing: 0.02em !important;
+        line-height: 1.5 !important;
+      }
+      .section__ttl::before,
+      .section__ttl::after {
+        /* 本家 main.css の decorative ::before/::after を完全無効化して
+           シンプルなテキスト見出しに */
+        display: none !important;
+      }
+
+      /* ---- section--bg: schecon.com の \u30b0\u30ec\u30fc\u3088\u308a\u307b\u3093\u306e\u308a\u98fe\u308a\u306e\u7a0b\u5ea6\u306b ---- */
+      .section--bg {
+        background: #fafafa !important;
+      }
+
+      /* ---- \u6bd4\u8f03\u30bb\u30af\u30b7\u30e7\u30f3: \u30b9\u30af\u30ea\u30d7\u30c8\u5c0f\u306e\u884c\u984d (48rem) \u3092\u89e3\u9664\u3057
+             \u6210\u7d20\u306b\u306a\u308a\u3059\u304e\u306a\u3044\u3088\u3046 \u4e2d\u592e\u5bc4\u305b\u306b (\u30b9\u30de\u30db\u306f\u65e2\u5b58\u30d1\u30c3\u30c1\u3067 100%) ---- */
+      @media (min-width: 768px) {
+        .m-comparison__list .item.schecon {
+          width: auto !important;
+          max-width: 48rem !important;
+          margin: 0 auto !important;
+        }
+        .m-comparison__list .inner {
+          display: flex !important;
+          justify-content: center !important;
+        }
+      }
+
+      /* ---- \u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3\u306e cubic-bezier \u3092\u524a\u6e1b\u3001\u3057\u3093\u307e\u308a ease-out \u306b ---- */
+      .m-feature__list .item,
+      .m-plan__list .item,
+      .m-voices .item,
+      .m-about__list .item,
+      .m-useful .item,
+      .mod-allinone__card,
+      .mod-integration__card,
+      .mod-seo__card,
+      .top-adjustment .m-adjustment__list .item {
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
+      }
+
+      /* ---- fade-in \u306f\u30b7\u30f3\u30d7\u30eb\u306b (\u672c\u5bb6 .js-easing \u306f\u30aa\u30fc\u30d0\u30fc\u30a7\u30f3\u30b8\u30e5\u80a9\u306a\u306e\u3067\u7dd1\u304d\u6298\u308a) ---- */
+      .js-easing .section__body,
+      .js-easing .section__ttl,
+      .js-easing .section__lead {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      /* ---- \u30b0\u30ed\u30fc\u30d0\u30eb\u306b\u6ed1\u3089\u304b\u306a scroll-behavior ---- */
+      html { scroll-behavior: smooth; }
     </style>
     <meta
       name="description"
