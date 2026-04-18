@@ -520,12 +520,13 @@
         display: inline-block;
         width: 4rem;
         height: 4rem;
-        background: #fff;
+        background-color: #fff;
         border-radius: 8px;
-        /* スケコンのロゴ (SC) の代わりに checkmark アイコン */
-        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='0' y='0' width='40' height='40' rx='6' fill='%23ed9630'/%3E%3Cpath d='M11 20l6 6 12-12' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+        /* スケコン公式マーク (favicon) */
+        background-image: url("/schecon-demo/assets/imgs/common/schecon-favicon.png");
         background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
         flex-shrink: 0;
       }
       .m-comparison__list .item.schecon .item__ttl span {
@@ -702,41 +703,46 @@
       .mod-footer-links a:hover {
         opacity: 0.7;
       }
+      /* フッター下部 (bsi/Pマーク + SNS): 白背景に切り替え、アイコンは濃色に */
       .mod-footer-bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-top: none;
-        padding-top: 2.5rem;
+        padding: 3rem 2.4rem !important;
+        background: #fff !important;
+        margin: 0 -3rem -3rem !important; /* content-inner の padding を相殺してフル幅 */
       }
       .mod-footer-sns {
         display: flex;
         gap: 1.5rem;
       }
       .mod-footer-sns a {
-        opacity: 0.85;
-        transition: opacity 0.3s;
+        opacity: 0.9;
+        transition: opacity 0.3s, background 0.3s;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 3.6rem;
         height: 3.6rem;
-        background: rgba(255,255,255,0.15);
+        background: rgba(0,0,0,0.06);
         border-radius: 50%;
       }
       .mod-footer-sns a:hover {
         opacity: 1;
-        background: rgba(255,255,255,0.25);
+        background: rgba(0,0,0,0.12);
       }
       .mod-footer-sns img {
         width: 2rem;
         height: 2rem;
-        filter: brightness(0) invert(1);
+        /* 白背景に合わせて濃色に (brightness 0 で黒化) */
+        filter: brightness(0);
+        opacity: 0.75;
       }
       .mod-footer-sns svg {
         width: 2rem;
         height: 2rem;
-        fill: #fff;
+        fill: #333;
       }
       .footer__copyright {
         color: #fff !important;
@@ -1436,24 +1442,225 @@
            そのためここでは何もせず本家挙動のまま */
 
         /* =====================================================================
-         * 巻末 CTA: TOP CTA と同じフォントサイズに揃える
+         * 巻末 CTA: TOP CTA と同じレイアウトに揃える
          * ===================================================================== */
-        main > .m-adjustment:last-of-type .m-adjustment__copy,
-        main > .m-adjustment:last-of-type .m-adjustment__ttl {
-          font-size: 1.7rem !important;
-          line-height: 1.5 !important;
+        main > .m-adjustment:last-of-type {
+          padding: 3.2rem 0 !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__copy {
-          font-size: 1.3rem !important;
+          font-size: 1.4rem !important;
+          line-height: 1.5 !important;
           margin-bottom: 0.8rem !important;
+          white-space: nowrap !important;    /* 16) 1 行になるよう */
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__ttl {
+          font-size: 1.8rem !important;
+          line-height: 1.5 !important;
+          margin-bottom: 1.6rem !important;
+        }
+        /* 17) 巻末 4 サービスカードを TOP ヒーローと同じスタイルに */
+        main > .m-adjustment:last-of-type .m-adjustment__list {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 1rem !important;
+          padding: 0 1.2rem !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__list .item {
+          width: 100% !important;
+          margin: 0 !important;
+          border-radius: 10px !important;
+          overflow: hidden !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__list .item__text {
-          font-size: 1.5rem !important;
-          padding: 1.2rem 4rem 1.2rem 1.2rem !important;
+          font-size: 1.4rem !important;
+          padding: 1rem 3rem 1rem 1rem !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__list .item__img img {
-          max-height: 18rem !important;
+          max-height: 12rem !important;
+          width: 100% !important;
+          object-fit: cover !important;
         }
+
+        /* =====================================================================
+         * 2) \u30b5\u30fc\u30d3\u30b9\u30ab\u30fc\u30c9\u306e\u30e1\u30cb\u30e5\u30fc\u6587\u5b57\u3068\u30a2\u30a4\u30b3\u30f3\u306e\u88ab\u308a\u89e3\u6d88
+         * item__text \u306e\u53f3\u306b\u30a2\u30a4\u30b3\u30f3 (::before/::after) \u304c\u3042\u308b\u306e\u3067 padding-right \u78ba\u4fdd\u3057\u3001
+         * \u6587\u5b57\u30b5\u30a4\u30ba\u3082\u5c0f\u3055\u304f
+         * ===================================================================== */
+        .m-adjustment__list .item__text {
+          font-size: 1.3rem !important;
+          padding: 1rem 3.6rem 1rem 1rem !important;
+          line-height: 1.4 !important;
+        }
+        .m-adjustment__list .item__text:before {
+          right: 0.6rem !important;
+          width: 2.4rem !important;
+          height: 2.4rem !important;
+        }
+        .m-adjustment__list .item__text:after {
+          right: 1.4rem !important;
+          width: 0.6rem !important;
+          height: 0.6rem !important;
+        }
+
+        /* =====================================================================
+         * 3) \u300c\u63a1\u7528\u62c5\u5f53\u8005\u306b\u4e00\u756a\u652f\u6301\u3055\u308c\u3066\u3044\u308b\u300d\u3092 1 \u884c\u8868\u793a
+         * (\u51a0\u9054\u6210 No.1 \u753b\u50cf\u3068\u306e\u8aac\u660e\u30c6\u30ad\u30b9\u30c8)
+         * ===================================================================== */
+        .m-crown {
+          padding: 1.4rem 1rem !important;
+          font-size: 1.1rem !important;
+        }
+        .m-crown p,
+        .m-crown__txt,
+        .m-crown .description,
+        .m-crown__description {
+          font-size: 1.1rem !important;
+          line-height: 1.4 !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+        }
+
+        /* =====================================================================
+         * 5) 6) \u9023\u643a\u30bb\u30af\u30b7\u30e7\u30f3\u306e\u898b\u51fa\u3057\u30b9\u30bf\u30a4\u30eb\u7d71\u4e00\u3001\u672c\u6587\u306e\u6298\u308a\u8fd4\u3057\u5e45\u8abf\u6574
+         * ===================================================================== */
+        .mod-integration__title {
+          font-size: 2rem !important;
+          line-height: 1.5 !important;
+          color: #202124 !important;
+          font-weight: 900 !important;
+          margin-bottom: 1.2rem !important;
+          padding: 0 1.2rem !important;
+        }
+        .mod-integration__subtitle {
+          font-size: 1.3rem !important;
+          line-height: 1.7 !important;
+          padding: 0 1.6rem !important;
+          margin-bottom: 2.4rem !important;
+          word-break: keep-all !important;
+          overflow-wrap: break-word !important;
+        }
+        .mod-integration__subtitle br { display: none !important; }
+
+        /* =====================================================================
+         * 7) \u9023\u643a\u30ab\u30fc\u30c9 (mod-integration__card): \u30a2\u30a4\u30b3\u30f3/\u6587\u5b57\u7e2e\u5c0f\u3001\u9ad8\u3055\u524a\u6e1b
+         * ===================================================================== */
+        .mod-integration__card {
+          padding: 1.4rem 1.6rem !important;
+        }
+        .mod-integration__card-header {
+          padding: 1rem 1.2rem !important;
+          gap: 0.8rem !important;
+        }
+        .mod-integration__card-icon {
+          font-size: 2rem !important;
+          width: 2rem !important;
+          height: 2rem !important;
+        }
+        .mod-integration__card-name {
+          font-size: 1.4rem !important;
+        }
+        .mod-integration__card-body {
+          padding: 1rem 0 0 !important;
+        }
+        .mod-integration__card-desc {
+          font-size: 1.2rem !important;
+          line-height: 1.7 !important;
+          margin-bottom: 1rem !important;
+        }
+
+        /* =====================================================================
+         * 9) SEO \u30ab\u30fc\u30c9\u3092 \u30a2\u30a4\u30b3\u30f3(\u5de6) + \u30bf\u30a4\u30c8\u30eb(\u53f3) \u306e\u6a2a\u4e26\u3073\u30ec\u30a4\u30a2\u30a6\u30c8\u306b
+         * ===================================================================== */
+        .mod-seo__card {
+          display: grid !important;
+          grid-template-columns: auto 1fr !important;
+          grid-template-rows: auto auto !important;
+          column-gap: 1.2rem !important;
+          row-gap: 0.4rem !important;
+          align-items: center !important;
+          padding: 1.2rem 1.4rem !important;
+        }
+        .mod-seo__card-icon {
+          grid-row: 1 / span 2 !important;
+          font-size: 2.4rem !important;
+          margin-bottom: 0 !important;
+        }
+        .mod-seo__card-title {
+          grid-column: 2 !important;
+          grid-row: 1 !important;
+          font-size: 1.4rem !important;
+          margin: 0 !important;
+        }
+        .mod-seo__card-desc {
+          grid-column: 1 / -1 !important;
+          grid-row: 2 !important;
+          font-size: 1.2rem !important;
+          line-height: 1.6 !important;
+          margin: 0 !important;
+        }
+        /* \u9ad8\u3055\u7bc0\u7d04\u306e\u305f\u3081 grid \u3092 2 \u884c\u3060\u3051\u306b */
+        .mod-seo__grid {
+          gap: 1rem !important;
+        }
+
+        /* =====================================================================
+         * 10) \u300c\u30b9\u30b1\u30b3\u30f3\u306e\u6599\u91d1\u30d7\u30e9\u30f3\u306f\u3044\u304f\u3089\u3067\u3059\u304b\uff1f\u300d 1 \u884c\u8868\u793a
+         * ===================================================================== */
+        .m-plan .section__ttl,
+        .m-plan .section__ttl .opc-1 {
+          font-size: 1.8rem !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          padding: 0 1rem !important;
+        }
+
+        /* =====================================================================
+         * 12) 13) \u6bd4\u8f03\u30bb\u30af\u30b7\u30e7\u30f3: \u898b\u51fa\u3057 1 \u884c + \u30ea\u30fc\u30c9\u6298\u308a\u8fd4\u3057\u6574\u7406
+         * ===================================================================== */
+        .m-comparison .section__ttl {
+          font-size: 1.8rem !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          padding: 0 1rem !important;
+        }
+        .m-comparison .section__lead {
+          font-size: 1.3rem !important;
+          line-height: 1.7 !important;
+          padding: 0 1.6rem !important;
+          word-break: keep-all !important;
+          overflow-wrap: break-word !important;
+        }
+        .m-comparison .section__lead br { display: none !important; }
+
+        /* =====================================================================
+         * 15) \u300c\u5229\u7528\u8005\u306e\u58f0\u300d \u5fc5\u305a 1 \u884c
+         * ===================================================================== */
+        .m-voices .section__ttl {
+          font-size: 2rem !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+        }
+
+        /* =====================================================================
+         * \u30d5\u30c3\u30bf\u30fc\u4e0b\u90e8 (\u767d\u80cc\u666f\u5316) \u306f\u5916\u5074 CSS \u3067\u65e2\u306b\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u308b
+         * \u30b9\u30de\u30db\u3067\u306e\u30ec\u30a4\u30a2\u30a6\u30c8\u8abf\u6574:
+         * ===================================================================== */
+        .mod-footer-bottom {
+          flex-direction: row !important;
+          flex-wrap: wrap !important;
+          gap: 1.6rem !important;
+          padding: 2rem 1.6rem !important;
+          margin: 0 -1.6rem -2.4rem !important;
+          justify-content: center !important;
+        }
+        .footer__isms { order: 1; }
+        .mod-footer-sns { order: 2; }
       }
     </style>
     <meta
@@ -1640,7 +1847,7 @@
                       <span class="hero-ttl-line">ビジネスの全てがこれ一つで完結する</span>
                       <span class="hero-ttl-line">日程調整・カレンダー・メール・チャット</span>
                       <span class="hero-ttl-line">AIが30秒で日程調整を自動化</span>
-                      <span class="hero-ttl-line">カレンダー連携・メール連携・</span>
+                      <span class="hero-ttl-line">カレンダー連携・メール連携</span>
                       <span class="hero-ttl-line">Web会議設定も全て無料</span>
                       <span class="hero-ttl-line">オールインワンのビジネスプラットフォーム</span>
                     </span>
@@ -1962,8 +2169,7 @@
         <!-- ===== INTEGRATION SECTION (NEW) ===== -->
         <section class="mod-integration">
           <div class="mod-integration__inner" style="text-align:center;">
-            <span class="mod-integration__badge">SEAMLESS INTEGRATION</span>
-            <h2 class="mod-integration__title">
+            <h2 class="mod-integration__title section__ttl">
               スケコンはどのサービスと連携できますか？
             </h2>
             <p class="mod-integration__subtitle">
@@ -2219,7 +2425,7 @@
               スケコンが他の日程調整ツールより選ばれる理由は？
             </h2>
             <p class="mod-seo__subtitle">
-              スケコンはTimeRex・Spir・調整さん・Calendlyなどの日程調整専用ツールとは異なり、<br class="pctb-hidden" />カレンダー・メール・チャットまで一つに統合したオールインワンツールです。<br />
+              スケコンは日程調整に加え、カレンダー連携・メーラー・チャットまで搭載したオールインワンツールです。<br />
               月額660円から利用でき、複数ツールの契約が不要になります。
             </p>
             <div class="mod-seo__grid">
@@ -2264,7 +2470,7 @@
               スケコンの料金プランはいくらですか？
             </h2>
             <p class="section__lead opc-2">
-              フリープラン（無料・月8回）・スタンダード（月額660円）・プレミアム（月額1,320円）の3プラン。<br class="pctb-hidden" />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
+              フリープラン（無料・月8回）・スタンダード（月額660円）・ビジネス（月額990円）の3プラン。<br class="pctb-hidden" />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
             </p>
             <ul class="m-plan__list webview-hide ease-3">
               <li class="item free">
