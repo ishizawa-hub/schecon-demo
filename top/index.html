@@ -226,8 +226,8 @@
     <meta name="description" content="スケコン（ScheCon）はAI日程調整・Googleカレンダー/Outlookカレンダー連携・Gmail/Outlookメール連携・ビジネスチャットを一つに統合したオールインワンツールです。導入企業1,200社以上、フリープランは無料、有料プランは月額660円から。ISMS認証・Pマーク取得済み。TimeRex・Spir・調整さん・Calendlyとの違いは、メール・チャット・カレンダーまで一つで完結する点です。" />
     <meta name="keywords" content="日程調整ツール,スケジュール調整,カレンダー連携,Googleカレンダー,Outlookカレンダー,メール連携,Gmail連携,ビジネスチャット,オールインワン,業務効率化,DX推進,リモートワーク,Web会議,オンライン会議,Zoom連携,Teams連携,Google Meet,Slack連携,Chatwork連携,無料,AI,自動化,グループウェア,スケコン,TimeRex,Spir,調整さん,Calendly,日程調整ツール 比較,日程調整ツール 無料,日程調整ツール おすすめ" />
     <link rel="canonical" href="https://schecon.com/" />
-    <link rel="icon" type="image/png" href="/schecon-demo/assets/icons/icon-512x512.png" />
-    <link rel="apple-touch-icon" href="/schecon-demo/assets/icons/icon-512x512.png" />
+    <link rel="icon" type="image/png" href="https://schecon.com/assets/icons/icon-512x512.png" />
+    <link rel="apple-touch-icon" href="https://schecon.com/assets/icons/icon-512x512.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -990,307 +990,78 @@
       }
 
       /* =====================================================================
-       * モバイル ( ≤ 767px ) 全体レイアウト崩れ修正パッチ
-       * - 横スクロール防止: html/body overflow-x hidden + 全要素 max-width 100%
-       * - 全グリッド/フレックスを縦並びに統一
-       * - フォント / padding を画面幅に合わせて縮小
-       * - ヘッダーのデスクトップナビをハンバーガー化
+       * モバイル ( ≤ 767px ) 軽量パッチ
+       *   方針: schecon.com 本家の main.css のレスポンシブ規則を尊重し、
+       *         既存レイアウトを壊さない最小限の "崩れ防止安全網" のみ追加。
+       *   - 横スクロール完全禁止
+       *   - 画像のはみ出し防止
+       *   - 長文 URL / タイトルの折り返し
+       *   - decorative ::before/::after の幅オーバーフロー対策
        * ===================================================================== */
       @media (max-width: 767px) {
-
-        /* ----- ベース ----- */
+        /* ----- 横スクロール完全防止 ----- */
         html, body {
           overflow-x: hidden !important;
           max-width: 100vw !important;
-          font-size: 56% !important; /* schecon-top.css の 1rem 基準を縮小 */
         }
-        body * {
+        /* main.css の root font-size 設定 (62.5% 等) は触らず、相対サイズに任せる */
+
+        /* ----- 画像/動画/iframe ははみ出さない ----- */
+        img, picture source, video, iframe {
           max-width: 100% !important;
-          box-sizing: border-box !important;
+          height: auto;
         }
-        img, picture, video, iframe {
-          max-width: 100% !important;
-          height: auto !important;
-        }
-        section, .section, main, footer, header { max-width: 100vw !important; }
-        .l-cont, .l-inner, .l-wrap {
-          padding-left: 1.4rem !important;
-          padding-right: 1.4rem !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-        }
-
-        /* ----- ヘッダー: デスクトップナビ非表示、ハンバーガー風メニュー ----- */
-        .header__nav,
-        .header__nav__list,
-        .header__nav__wrap,
-        .header__navlinks,
-        .header__sns,
-        .header__menu-pc {
-          display: none !important;
-        }
-        .header {
-          padding: 0.8rem 1.6rem !important;
-          height: auto !important;
-          min-height: 5.6rem !important;
-        }
-        .header__inner {
-          flex-wrap: wrap !important;
-          gap: 1rem !important;
-          padding: 0 !important;
-        }
-        .header__logo {
-          flex: 0 0 auto !important;
-        }
-        .header__logo img {
-          height: 3rem !important;
-          width: auto !important;
-        }
-        .header__login {
-          margin-left: auto !important;
-          padding: 0.8rem 1.4rem !important;
-          font-size: 1.2rem !important;
-          height: auto !important;
-        }
-        .header__login img { height: 2rem !important; width: auto !important; }
-
-        /* ----- グリッド類: 全部 1 列 ----- */
-        .m-feature__list,
-        .m-plan__list,
-        .m-comparison__list,
-        .m-voices__list,
-        .m-about__list,
-        .m-useful__list,
-        .m-adjustment__list,
-        .mod-allinone__grid,
-        .mod-integration__grid,
-        .mod-seo__grid,
-        .mod-footer-grid {
-          display: grid !important;
-          grid-template-columns: 1fr !important;
-          gap: 1.6rem !important;
-          padding: 0 1.4rem !important;
-          width: 100% !important;
-        }
-        /* 一部 2 列が見栄え良いグリッドは 2 列維持 */
-        .mod-footer-grid {
-          grid-template-columns: repeat(2, 1fr) !important;
-        }
-
-        /* ----- セクション padding 縮小 ----- */
-        section,
-        .mod-allinone,
-        .mod-integration,
-        .mod-seo,
-        .m-adjustment,
-        .m-feature,
-        .m-plan,
-        .m-comparison,
-        .m-voices,
-        .m-about,
-        .m-useful,
-        .faq {
-          padding: 4.8rem 0 !important;
-        }
-        .mod-allinone__inner,
-        .mod-integration__inner,
-        .mod-seo__inner {
-          padding: 0 1.6rem !important;
-        }
-
-        /* ----- 見出しフォント縮小 ----- */
-        .section__ttl,
-        .mod-allinone__title,
-        .mod-integration__title,
-        .mod-seo__title,
-        .m-adjustment__ttl {
-          font-size: 2.2rem !important;
-          line-height: 1.5 !important;
-          padding: 0 1.4rem !important;
-          word-break: break-word !important;
-        }
-        .section__lead,
-        .mod-allinone__subtitle,
-        .mod-integration__subtitle,
-        .mod-seo__subtitle {
-          font-size: 1.4rem !important;
-          line-height: 1.7 !important;
-          padding: 0 1.6rem !important;
-          margin-bottom: 3rem !important;
-        }
-        .top-adjustment__copy {
-          font-size: 1.4rem !important;
-          padding: 0 1.4rem !important;
-        }
-        .top-adjustment__copy .orange {
-          font-size: 1.4rem !important;
-        }
-
-        /* ----- カード共通 ----- */
-        .m-feature__list .item,
-        .m-plan__list .item,
-        .m-comparison__list .item,
-        .m-voices .item,
-        .m-about__list .item,
-        .m-useful .item,
-        .mod-allinone__card,
-        .mod-integration__card,
-        .mod-seo__card {
-          width: 100% !important;
-          max-width: 100% !important;
-          margin: 0 !important;
-          padding: 2rem !important;
-        }
-
-        /* ----- カード内画像のサイズ調整 ----- */
-        .m-adjustment__list .item__img img,
-        .m-feature__list .item__img img,
-        .m-about__list .item__img img,
-        .m-useful .item__img img {
-          width: 100% !important;
-          height: auto !important;
-          object-fit: cover !important;
-        }
-
-        /* ----- hero CTA / ボタン ----- */
-        .m-btn a,
-        .download-btn a,
-        .m-adjustment .m-btn a {
-          width: 100% !important;
-          padding: 1.4rem 2rem !important;
-          font-size: 1.5rem !important;
-          box-sizing: border-box !important;
-        }
-
-        /* ----- 比較セクション: 2 列を 1 列・幅 100% に ----- */
-        .m-comparison__list { padding: 0 1.4rem !important; }
-        .m-comparison__list .item.schecon,
-        .m-comparison__list .item.others {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-
-        /* ----- 価格カードのサイズ調整 ----- */
-        .m-plan__list .item {
-          padding: 2.4rem 2rem !important;
-        }
-        .m-plan__list .item__name {
-          font-size: 1.8rem !important;
-        }
-        .m-plan__list .item__month .price {
-          font-size: 2.6rem !important;
-        }
-
-        /* ----- FAQ ----- */
-        .faq .accordion {
-          padding: 0 1.4rem !important;
-        }
-        .faq .accordion .option {
-          padding: 1.4rem 1.6rem !important;
-        }
-
-        /* ----- フッター ----- */
-        .mod-footer {
-          padding: 4rem 1.6rem 2.4rem !important;
-        }
-        .mod-footer-grid {
-          gap: 2rem !important;
-        }
-        .mod-footer-bottom {
-          flex-direction: column !important;
-          gap: 1.6rem !important;
-          text-align: center !important;
-        }
-        .mod-footer-links {
-          flex-wrap: wrap !important;
-          justify-content: center !important;
-          gap: 0.8rem 1.6rem !important;
-        }
-
-        /* ----- ヒーローエリア ----- */
-        .m-adjustment.top-adjustment {
-          padding: 4rem 0 3rem !important;
-        }
-        .top-adjustment .m-adjustment__list .item__text {
-          font-size: 1.5rem !important;
-          padding: 1.4rem 4rem 1.4rem 1rem !important;
-        }
-        .m-adjustment__ttl {
-          font-size: 2.4rem !important;
-          line-height: 1.4 !important;
-        }
-        .m-adjustment__ttl .orange {
-          display: inline !important;
-        }
-
-        /* ----- m-news ----- */
-        .m-news {
-          padding: 1.6rem !important;
-          margin: 0 1.4rem 2.4rem !important;
-        }
-        .m-news__ttl {
-          font-size: 1.6rem !important;
-        }
-        .m-news__list {
-          font-size: 1.3rem !important;
-        }
-
-        /* ----- 動画埋め込み: 16:9 比率を強制 ----- */
-        .youtube-wrap, .m-about__list .item__img,
-        .m-useful .item__img {
-          position: relative !important;
-          width: 100% !important;
-          padding-bottom: 56.25% !important;
-          height: 0 !important;
-          overflow: hidden !important;
-        }
+        /* 動画埋め込み (.youtube-wrap 系) は 16:9 比率強制 */
         .youtube-wrap iframe,
         .m-about__list .item__img iframe,
         .m-useful .item__img iframe {
-          position: absolute !important;
-          top: 0 !important; left: 0 !important;
-          width: 100% !important; height: 100% !important;
+          max-width: 100% !important;
         }
 
-        /* ----- 見出しの装飾 (decorative) を縮小 ----- */
-        .section__ttl::before, .section__ttl::after { display: none !important; }
+        /* ----- 長文の折り返し ----- */
+        body, .section, .m-adjustment, .m-feature, .m-plan, .m-voices,
+        .m-about, .m-useful, .m-comparison, .faq, .mod-allinone,
+        .mod-integration, .mod-seo, .mod-footer {
+          overflow-x: hidden !important;
+        }
+        h1, h2, h3, h4, p, li, a {
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
 
-        /* ----- decorative absolutely-positioned 要素 (枠外) を非表示 ----- */
+        /* ----- decorative ::before/::after による横はみ出し防止 ----- */
         .m-adjustment.top-adjustment::before,
         .m-adjustment.top-adjustment::after,
         .mod-allinone::before,
+        .mod-allinone::after,
         .mod-integration::before,
         .mod-seo::before {
-          display: none !important;
+          max-width: 100vw !important;
+          overflow: hidden !important;
         }
 
-        /* ----- 横並び flex を全部縦並びに (デフォルト方針) ----- */
-        .m-feature .item__row,
-        .m-plan .item__row,
-        .item__row {
-          flex-direction: column !important;
-          align-items: stretch !important;
-          gap: 1.2rem !important;
+        /* ----- table オーバーフロー防止 ----- */
+        table {
+          display: block !important;
+          overflow-x: auto !important;
+          max-width: 100% !important;
+          -webkit-overflow-scrolling: touch;
         }
 
-        /* ----- table を block 化してはみ出し防止 ----- */
-        table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
-
-        /* ----- アイコンサイズ ----- */
-        .mod-allinone__icon,
-        .mod-seo__card-icon {
-          font-size: 3.6rem !important;
-          margin-bottom: 1rem !important;
+        /* ----- 比較カード: max-width: 48rem 設定が PC 用なので解除 ----- */
+        .m-comparison__list .item.schecon {
+          max-width: 100% !important;
+          width: 100% !important;
         }
 
-        /* ----- 余分な margin 防止 ----- */
-        .l-cont,
-        section > .l-inner,
-        .m-feature__list,
-        .m-plan__list {
-          margin-left: 0 !important;
-          margin-right: 0 !important;
+        /* ----- フッターのリンクは横並び折り返し ----- */
+        .mod-footer-bottom {
+          flex-wrap: wrap !important;
         }
+
+        /* ----- m-feature__list 等のグリッドの隙間調整 (本家準拠の主旨) ----- */
+        /* main.css 1023px 以下のルールがそのまま適用されるはず。
+           ここでは何もせず本家規則を尊重 */
       }
     </style>
     <meta
