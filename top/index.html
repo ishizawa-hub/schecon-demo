@@ -303,18 +303,20 @@
         position: relative;
         overflow: hidden;
       }
-      /* ヒーロータイトル: PC では自然な折返し / スマホでは 6 行で表示
-         ユーザー指定: 冒頭 (hero) 文字色は #ed9630 */
+      /* ヒーロータイトル: PC / スマホ共通で 6 行表示
+         (ユーザー指定: 冒頭 (hero) 文字色は #ed9630) */
       .m-adjustment__ttl .orange,
       .m-adjustment__ttl .orange.hero-ttl-sp,
       .m-adjustment__ttl .hero-ttl-line {
         color: #ed9630 !important;
       }
+      /* 各行を独立した行として描画。PC は font-size 2.8rem 程度、
+         スマホは後段の @media で 1.7rem にスケール */
       .hero-ttl-line {
-        display: inline;
-      }
-      .hero-ttl-line + .hero-ttl-line::before {
-        content: ' ';
+        display: block;
+        line-height: 1.55;
+        word-break: keep-all;
+        overflow-wrap: break-word;
       }
       .m-adjustment.top-adjustment::before,
       .m-adjustment.top-adjustment::after {
@@ -1208,19 +1210,27 @@
           padding-top: 2.4rem !important;
           padding-bottom: 2.4rem !important;
         }
+        /* 最長行「日程調整・カレンダー・メール・チャットを統合」(21字) が
+           360px 級画面で折返さないよう font-size を 1.55rem に絞る */
         .m-adjustment__ttl {
-          font-size: 1.7rem !important;
-          line-height: 1.5 !important;
+          font-size: 1.55rem !important;
+          line-height: 1.55 !important;
           margin-bottom: 1.2rem !important;
           letter-spacing: 0 !important;
           text-align: center !important;
+          padding: 0 0.8rem !important;
         }
-        /* ヒーロータイトルはスマホで 6 行に */
+        /* ヒーロータイトルはスマホで 6 行に (各行ブロック表示) */
         .m-adjustment__ttl .hero-ttl-line {
           display: block !important;
+          word-break: keep-all !important;
+          overflow-wrap: break-word !important;
         }
-        .m-adjustment__ttl .hero-ttl-line + .hero-ttl-line::before {
-          content: '' !important;
+        /* \u6700\u5c0f\u5e45 (<360px) \u306b\u5411\u3051\u3066\u3055\u3089\u306b\u7e2e\u5c0f */
+        @media (max-width: 359px) {
+          .m-adjustment__ttl {
+            font-size: 1.35rem !important;
+          }
         }
         .top-adjustment__copy {
           font-size: 1.3rem !important;
@@ -1339,16 +1349,45 @@
           display: none !important;
         }
 
-        /* ヒーローカードの 4 サービス: 画像と文字の高さを抑える */
+        /* ヒーロー 4 サービスカードをスマホで 2 カラム表示
+           (チャットで予定調整 / 1対1 / 複数人 / 社内 の 4 枚を 2x2 グリッドに) */
+        .top-adjustment .m-adjustment__list {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 1rem !important;
+          padding: 0 1.2rem !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .top-adjustment .m-adjustment__list .item {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          border-radius: 10px !important;
+          overflow: hidden !important;
+          box-sizing: border-box !important;
+        }
         .top-adjustment .m-adjustment__list .item__img img {
           width: 100% !important;
           height: auto !important;
-          max-height: 18rem !important;
+          max-height: 12rem !important;
           object-fit: cover !important;
         }
         .top-adjustment .m-adjustment__list .item__text {
-          font-size: 1.5rem !important;
-          padding: 1.2rem 4rem 1.2rem 1.2rem !important;
+          font-size: 1.3rem !important;
+          padding: 0.8rem 2.6rem 0.8rem 0.8rem !important;
+          line-height: 1.4 !important;
+        }
+        /* 2 カラム時は矢印アイコンを小さく */
+        .top-adjustment .m-adjustment__list .item__text:before {
+          right: 0.4rem !important;
+          width: 2rem !important;
+          height: 2rem !important;
+        }
+        .top-adjustment .m-adjustment__list .item__text:after {
+          right: 1rem !important;
+          width: 0.5rem !important;
+          height: 0.5rem !important;
         }
 
         /* 連携タグ: モバイルではアイコン/テキストを少し小さく */
@@ -1983,12 +2022,12 @@
                 <div class="top-adjustment__inner">
                   <h1 class="m-adjustment__ttl opc-1">
                     <span class="orange hero-ttl-sp">
-                      <!-- スマホ用: 6 行で表示 -->
-                      <span class="hero-ttl-line">ビジネスの全てがこれ一つで完結する</span>
-                      <span class="hero-ttl-line">日程調整・カレンダー・メール・チャット</span>
-                      <span class="hero-ttl-line">AIが30秒で日程調整を自動化</span>
-                      <span class="hero-ttl-line">カレンダー連携・メール連携</span>
-                      <span class="hero-ttl-line">Web会議設定も全て無料</span>
+                      <!-- PC / \u30b9\u30de\u30db\u5171\u901a 6 \u884c\u3002\u5404\u884c\u306f hero-ttl-line \u3054\u3068\u306b\u72ec\u7acb\u3057\u3066\u6539\u884c\u3059\u308b -->
+                      <span class="hero-ttl-line">ビジネスのすべてをこれ一つで完結</span>
+                      <span class="hero-ttl-line">日程調整・カレンダー・メール・チャットを統合</span>
+                      <span class="hero-ttl-line">AIがわずか30秒で日程調整を自動化</span>
+                      <span class="hero-ttl-line">カレンダー連携・メール連携もスムーズに対応</span>
+                      <span class="hero-ttl-line">Web会議の設定まで、すべて無料で完結</span>
                       <span class="hero-ttl-line">オールインワンのビジネスプラットフォーム</span>
                     </span>
                   </h1>
