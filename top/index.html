@@ -1488,12 +1488,13 @@
           padding: 3.2rem 0 !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__copy {
-          font-size: 1.4rem !important;
+          font-size: clamp(0.9rem, 2.8vw, 1.4rem) !important;
           line-height: 1.5 !important;
           margin-bottom: 0.8rem !important;
           white-space: nowrap !important;    /* 16) 1 行になるよう */
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
+          overflow: visible !important;
+          text-align: center !important;
+          padding: 0 0.4rem !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__ttl {
           font-size: 1.8rem !important;
@@ -1546,21 +1547,20 @@
 
         /* =====================================================================
          * 3) \u300c\u63a1\u7528\u62c5\u5f53\u8005\u306b\u4e00\u756a\u652f\u6301\u3055\u308c\u3066\u3044\u308b\u300d\u3092 1 \u884c\u8868\u793a
-         * (\u51a0\u9054\u6210 No.1 \u753b\u50cf\u3068\u306e\u8aac\u660e\u30c6\u30ad\u30b9\u30c8)
+         * \u753b\u9762\u5e45\u306b\u5408\u308f\u305b\u3066\u7e2e\u5c0f\u3059\u308b vw \u30d9\u30fc\u30b9\u3067\u5207\u308c\u306a\u3044\u3088\u3046\u306b
          * ===================================================================== */
         .m-crown {
-          padding: 1.4rem 1rem !important;
-          font-size: 1.1rem !important;
+          padding: 1rem 0.6rem !important;
         }
         .m-crown p,
         .m-crown__txt,
         .m-crown .description,
         .m-crown__description {
-          font-size: 1.1rem !important;
+          font-size: clamp(0.82rem, 2.5vw, 1.1rem) !important;
           line-height: 1.4 !important;
           white-space: nowrap !important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
+          overflow: visible !important;
+          text-align: center !important;
         }
 
         /* =====================================================================
@@ -1651,22 +1651,22 @@
          * ===================================================================== */
         .m-plan .section__ttl,
         .m-plan .section__ttl .opc-1 {
-          font-size: 1.8rem !important;
+          font-size: clamp(1.4rem, 4.4vw, 2rem) !important;
           white-space: nowrap !important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
-          padding: 0 1rem !important;
+          overflow: visible !important;
+          padding: 0 0.6rem !important;
+          text-align: center !important;
         }
 
         /* =====================================================================
          * 12) 13) \u6bd4\u8f03\u30bb\u30af\u30b7\u30e7\u30f3: \u898b\u51fa\u3057 1 \u884c + \u30ea\u30fc\u30c9\u6298\u308a\u8fd4\u3057\u6574\u7406
          * ===================================================================== */
         .m-comparison .section__ttl {
-          font-size: 1.8rem !important;
+          font-size: clamp(1.3rem, 4.2vw, 1.9rem) !important;
           white-space: nowrap !important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
-          padding: 0 1rem !important;
+          overflow: visible !important;
+          padding: 0 0.6rem !important;
+          text-align: center !important;
         }
         .m-comparison .section__lead {
           font-size: 1.3rem !important;
@@ -1681,10 +1681,10 @@
          * 15) \u300c\u5229\u7528\u8005\u306e\u58f0\u300d \u5fc5\u305a 1 \u884c
          * ===================================================================== */
         .m-voices .section__ttl {
-          font-size: 2rem !important;
+          font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
           white-space: nowrap !important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
+          overflow: visible !important;
+          text-align: center !important;
         }
 
         /* =====================================================================
