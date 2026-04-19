@@ -369,12 +369,12 @@
       .top-adjustment .m-adjustment__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s !important;
-        box-shadow: var(--shadow-card) !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        box-shadow: none !important;
       }
       .top-adjustment .m-adjustment__list .item:hover {
-        transform: translateY(-8px) !important;
-        box-shadow: var(--shadow-hover) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: none !important;
       }
       .top-adjustment .m-adjustment__list .item__text {
         font-size: 2.0rem !important;
@@ -629,25 +629,41 @@
         text-align: center !important;
       }
       /* ===== m-useful カルーセル: schecon.com 本番デザインを尊重しつつ
-              テキスト量が違っても .item__box の高さを揃える ===== */
-      /* 本番 main.css の item__box は margin-top:-11rem で画像に重なる。
+              テキスト量が違っても全カードの終端 (下端) を揃える ===== */
+      /* 本番 main.css の item__box は margin-top:-11rem で画像に重なる白ボックス。
          テキスト行数が違うと box の高さが変わり、カード全体の終点がズレる問題。
-         対策: .item__box に min-height を設定して全カード同じ高さに統一。 */
+         対策:
+         - .item は flex column で子要素を縦積み
+         - .item__box に十分な min-height を指定し、最長テキスト (4行) が入る
+           高さに固定。短いテキストのカードは下側が白い余白で埋まる。
+         - title/text は上詰めで、余った高さは白スペースとして残す。
+         - .swiper-wrapper は align-items: stretch で item を同じ高さに揃える。 */
+      .m-useful__list .swiper-wrapper,
+      .m-useful__list .inner {
+        align-items: stretch !important;
+      }
       .m-useful__list .item {
         display: flex !important;
         flex-direction: column !important;
+        height: auto !important;
       }
       .m-useful__list .item__box {
-        min-height: 16rem !important;
+        min-height: 22rem !important; /* 4 行テキスト + padding 6.4rem に対応 */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* 上詰め、下は白余白 */
+      }
+      .m-useful__list .item__text {
+        flex: 0 0 auto !important; /* テキストは縮ませない */
       }
       @media (max-width: 1023px) {
         .m-useful__list .item__box {
-          min-height: 14rem !important;
+          min-height: 19rem !important;
         }
       }
       @media (max-width: 767px) {
         .m-useful__list .item__box {
-          min-height: 12rem !important;
+          min-height: 16rem !important;
         }
       }
 
