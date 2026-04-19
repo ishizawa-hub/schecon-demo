@@ -374,29 +374,59 @@
       .m-adjustment__ttl--bottom .orange {
         color: #ed9630 !important;
       }
-      /* PDF (2026-04-19 改訂): すべての CTA カード/動画ボタンから box-shadow / filter drop-shadow を完全除去 */
-      .m-adjustment__list .item,
-      .m-adjustment__list .item:hover,
-      .m-adjustment__list .item__link,
-      .m-adjustment__list .item__link:hover,
-      .m-adjustment__list .item__text,
-      .m-adjustment__list .item__img,
-      .m-adjustment__list .item__btn,
-      .m-adjustment__list .item__btn:hover,
-      .m-adjustment__list .item__btn span,
-      .m-adjustment__list .item__btn span::before {
+      /* PDF (2026-04-19 改訂): TOP CTA 配下のすべての要素から
+         box-shadow / filter drop-shadow / 背景を完全除去 (「使い方を動画で見る」の下の背景も) */
+      .top-adjustment,
+      .top-adjustment .m-adjustment__body,
+      .top-adjustment .top-adjustment__body,
+      .top-adjustment .top-adjustment__wrapper,
+      .top-adjustment .top-adjustment__inner,
+      .top-adjustment .m-adjustment__list,
+      .top-adjustment .m-adjustment__list .item,
+      .top-adjustment .m-adjustment__list .item:hover,
+      .top-adjustment .m-adjustment__list .item__link,
+      .top-adjustment .m-adjustment__list .item__link:hover,
+      .top-adjustment .m-adjustment__list .item__text,
+      .top-adjustment .m-adjustment__list .item__img,
+      .top-adjustment .m-adjustment__list .item__img img,
+      .top-adjustment .m-adjustment__list .item__btn,
+      .top-adjustment .m-adjustment__list .item__btn:hover,
+      .top-adjustment .m-adjustment__list .item__btn span,
+      .top-adjustment .m-adjustment__list .item__btn span::before {
         box-shadow: none !important;
         filter: none !important;
         text-shadow: none !important;
+        -webkit-filter: none !important;
+      }
+      /* 「使い方を動画で見る」ボタンの下に描画されていた背景要素を透明化 */
+      .top-adjustment .m-adjustment__list .item::before,
+      .top-adjustment .m-adjustment__list .item::after,
+      .top-adjustment .m-adjustment__list::before,
+      .top-adjustment .m-adjustment__list::after,
+      .top-adjustment .m-adjustment__body::before,
+      .top-adjustment .m-adjustment__body::after {
+        background: transparent !important;
+        box-shadow: none !important;
+        filter: none !important;
+        display: none !important;
+      }
+      /* 全く同じルールをボトム CTA にも (非 top-adjustment) */
+      main > .m-adjustment:not(.top-adjustment) .m-adjustment__list .item,
+      main > .m-adjustment:not(.top-adjustment) .m-adjustment__list .item__link,
+      main > .m-adjustment:not(.top-adjustment) .m-adjustment__list .item__text,
+      main > .m-adjustment:not(.top-adjustment) .m-adjustment__list .item__img,
+      main > .m-adjustment:not(.top-adjustment) .m-adjustment__list .item__btn {
+        box-shadow: none !important;
+        filter: none !important;
       }
       .top-adjustment .m-adjustment__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
         box-shadow: none !important;
+        transition: none !important;
       }
       .top-adjustment .m-adjustment__list .item:hover {
-        transform: translateY(-4px) !important;
+        transform: none !important;
         box-shadow: none !important;
       }
       .top-adjustment .m-adjustment__list .item__text {
