@@ -366,6 +366,29 @@
         width: 0.8rem !important;
         height: 0.8rem !important;
       }
+      /* PDF (2026-04-19 改訂): 下部 CTA 「ビジネスの全てをスケコンで完結」を 1 行 + スケコンで完結は #ed9630 */
+      .m-adjustment__ttl--bottom {
+        display: block !important;
+        white-space: nowrap;
+      }
+      .m-adjustment__ttl--bottom .orange {
+        color: #ed9630 !important;
+      }
+      /* PDF (2026-04-19 改訂): すべての CTA カード/動画ボタンから box-shadow / filter drop-shadow を完全除去 */
+      .m-adjustment__list .item,
+      .m-adjustment__list .item:hover,
+      .m-adjustment__list .item__link,
+      .m-adjustment__list .item__link:hover,
+      .m-adjustment__list .item__text,
+      .m-adjustment__list .item__img,
+      .m-adjustment__list .item__btn,
+      .m-adjustment__list .item__btn:hover,
+      .m-adjustment__list .item__btn span,
+      .m-adjustment__list .item__btn span::before {
+        box-shadow: none !important;
+        filter: none !important;
+        text-shadow: none !important;
+      }
       .top-adjustment .m-adjustment__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
@@ -3288,7 +3311,7 @@
         <section class="m-adjustment js-easing">
           <div class="m-adjustment__body">
             <p class="m-adjustment__copy opc-1">＼日程調整もカレンダーもメールもチャットもこれ一つ！／</p>
-            <h2 class="m-adjustment__ttl opc-2">ビジネスの全てを<br /><span class="orange">スケコンで完結</span></h2>
+            <h2 class="m-adjustment__ttl m-adjustment__ttl--bottom opc-2">ビジネスの全てを<span class="orange">スケコンで完結</span></h2>
             <ul class="m-adjustment__list ease-3">
               <li class="item item-chat">
                 <a href="/chat" class="item__link">
