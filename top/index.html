@@ -628,6 +628,113 @@
       .m-useful .section__ttl {
         text-align: center !important;
       }
+      /* ===== m-useful カルーセル: カード高さを統一 + 下にネイティブ横スクロールバー ===== */
+      .m-useful__list.swiper-container {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 2rem !important; /* スクロールバー用の下余白 */
+        /* カスタムスクロールバー */
+        scrollbar-color: #ed9630 #f3e7d8;
+        scrollbar-width: thin;
+      }
+      .m-useful__list.swiper-container::-webkit-scrollbar {
+        height: 8px;
+        background: #f3e7d8;
+        border-radius: 4px;
+      }
+      .m-useful__list.swiper-container::-webkit-scrollbar-thumb {
+        background: #ed9630;
+        border-radius: 4px;
+      }
+      .m-useful__list.swiper-container::-webkit-scrollbar-thumb:hover {
+        background: #d98520;
+      }
+      /* inner を横並び flex に。本家 swiper-wrapper のグリッド挙動を無効化 */
+      .m-useful__list .inner.swiper-wrapper {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: stretch !important; /* 全カードを同じ高さに揃える */
+        gap: 2rem !important;
+        transform: none !important; /* swiper の translate3d を無効化 */
+        width: auto !important;
+        padding: 0 2rem !important;
+      }
+      /* 各カード: flex 列で画像 + テキスト領域を積み、全カード同一高さ */
+      .m-useful__list .item.swiper-slide {
+        flex: 0 0 auto !important;
+        width: 32rem !important; /* 固定幅で横スクロール可能に */
+        scroll-snap-align: start;
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        background: #fff;
+        border-radius: 1.6rem;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      }
+      .m-useful__list .item__img {
+        flex: 0 0 auto !important;
+        border-radius: 1.6rem 1.6rem 0 0 !important;
+        overflow: hidden;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .m-useful__list .item__img img,
+      .m-useful__list .item__img source {
+        width: 100% !important;
+        height: 20rem !important;
+        object-fit: cover !important;
+        display: block;
+      }
+      /* item__box: flex: 1 で残りの高さを埋めて全カード揃う */
+      .m-useful__list .item__box {
+        position: static !important;
+        width: 100% !important;
+        flex: 1 1 auto !important;
+        background: #fff !important;
+        border-radius: 0 0 1.6rem 1.6rem !important;
+        padding: 2rem 2.4rem !important;
+        margin: 0 !important;
+        display: flex;
+        flex-direction: column;
+      }
+      .m-useful__list .item__ttl {
+        color: #ed9630 !important;
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        line-height: 1.4 !important;
+        margin: 0 0 0.8rem !important;
+      }
+      .m-useful__list .item__text {
+        font-size: 1.4rem !important;
+        line-height: 1.7 !important;
+        flex: 1 !important;
+        margin: 0 !important;
+      }
+      /* swiper の独自ナビ/ページネーションは非表示 (ネイティブスクロールバーに置換) */
+      .m-useful__nav,
+      .m-useful__nav-left,
+      .m-useful__nav-right,
+      .m-useful .swiper-button-prev,
+      .m-useful .swiper-button-next,
+      .m-useful .swiper-pagination {
+        display: none !important;
+      }
+      /* モバイル: カード幅を少し小さめに */
+      @media (max-width: 767px) {
+        .m-useful__list .item.swiper-slide {
+          width: 26rem !important;
+        }
+        .m-useful__list .item__img img {
+          height: 16rem !important;
+        }
+        .m-useful__list .inner.swiper-wrapper {
+          gap: 1.2rem !important;
+          padding: 0 1.2rem !important;
+        }
+      }
 
       /* ===== COMPARISON SECTION (画像仕様に合わせる) =====
          - オレンジヘッダー + 白ボディのカード
@@ -1433,11 +1540,14 @@
         .m-plan__list .item,
         .m-voices__list .item,
         .m-about__list .item,
-        .m-useful__list .item,
         .mod-allinone__card,
         .mod-integration__card,
         .mod-seo__card {
           padding: 1.6rem !important;
+        }
+        /* m-useful の item はカード自体がフレックス列。padding は item__box 側が持つ */
+        .m-useful__list .item {
+          padding: 0 !important;
         }
 
         /* 他社比較カードを画面幅にフィット (元の幅指定 48rem を完全解除) */
