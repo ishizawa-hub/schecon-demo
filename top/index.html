@@ -476,32 +476,28 @@
         height: auto;
         display: block;
       }
-      /* ===== 「使い方を動画で見る」ボタン (PDF 指示: 背景・ドロップシャドウを除去) =====
-         pill border/background を撤廃し、テキスト + 動画アイコンのみの軽い表現に。 */
+      /* ===== 「使い方を動画で見る」ボタン (outline pill デザイン) =====
+         白背景 + 2px カード色 border + カード色 text + 右に動画カメラアイコン。
+         本家 main.css 由来の .item__btn 形状を活かし、独自の平坦化を撤回。 */
       .top-adjustment .m-adjustment__list .item__btn.video-btn,
       .m-adjustment__list .item__btn.video-btn {
         display: block !important;
         width: auto !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        border-color: transparent !important;
-        border-radius: 0 !important;
+        background: #fff !important;
+        background-color: #fff !important;
+        border: 2px solid !important;
+        box-sizing: border-box !important;
+        border-radius: 2.5rem !important;
         box-shadow: none !important;
         filter: none !important;
         text-decoration: none !important;
-        padding: 0.8rem 1.2rem !important;
-        margin: 1rem 0 0 !important;
-        transition: opacity 0.15s !important;
+        padding: 1.2rem 0 1rem !important;
+        margin: 1.5rem 1.2rem 0 !important;
+        transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+        transition-property: color, background !important;
       }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn:hover,
-      .m-adjustment__list .item__btn.video-btn:hover {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        opacity: 0.75 !important;
-      }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn span {
+      .top-adjustment .m-adjustment__list .item__btn.video-btn span,
+      .m-adjustment__list .item__btn.video-btn span {
         position: relative !important;
         display: table !important;
         font-size: 1.6rem !important;
@@ -514,7 +510,8 @@
         color: inherit !important;
         text-decoration: none !important;
       }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn span:before {
+      .top-adjustment .m-adjustment__list .item__btn.video-btn span:before,
+      .m-adjustment__list .item__btn.video-btn span:before {
         transition: background 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s !important;
         position: absolute !important;
         display: block !important;
@@ -529,14 +526,27 @@
         background-size: contain !important;
         margin: auto !important;
       }
+      /* ホバー: 塗りつぶし (カード色) + 白文字 + 白アイコン */
       html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover,
       html.notouch .m-adjustment__list .item__btn.video-btn:hover {
-        background: transparent !important;
-        color: inherit !important;
+        color: #fff !important;
       }
       html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span:before,
       html.notouch .m-adjustment__list .item__btn.video-btn:hover span:before {
-        background-image: none !important;
+        background-image: url(/schecon-demo/assets/imgs/common/video-hover.png) !important;
+      }
+      /* カード別の塗りつぶし色 (item-chat はオレンジ, item-one 緑, item-multi オレンジ, item-group ティール) */
+      html.notouch .m-adjustment__list .item-chat .item__btn.video-btn:hover {
+        background: var(--primary) !important;
+      }
+      html.notouch .m-adjustment__list .item-one .item__btn.video-btn:hover {
+        background: #a1c92f !important;
+      }
+      html.notouch .m-adjustment__list .item-multi .item__btn.video-btn:hover {
+        background: #ed9630 !important;
+      }
+      html.notouch .m-adjustment__list .item-group .item__btn.video-btn:hover {
+        background: #02d697 !important;
       }
 
       /* ===== PDF 修正 (2026-04-19) =====
