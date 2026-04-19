@@ -476,22 +476,30 @@
         height: auto;
         display: block;
       }
-      /* ===== 「使い方を動画で見る」ボタン (本番 schecon.com デザインを完全踏襲) =====
-         outline pill, 2px 色付き border, 色付き text, 右に video アイコン (PNG)。
-         main.css 由来の .item__btn をそのまま活かすため、デモ独自の上書きを除去。 */
-      .top-adjustment .m-adjustment__list .item__btn.video-btn {
-        transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s !important;
-        transition-property: color, background !important;
+      /* ===== 「使い方を動画で見る」ボタン (PDF 指示: 背景・ドロップシャドウを除去) =====
+         pill border/background を撤廃し、テキスト + 動画アイコンのみの軽い表現に。 */
+      .top-adjustment .m-adjustment__list .item__btn.video-btn,
+      .m-adjustment__list .item__btn.video-btn {
         display: block !important;
         width: auto !important;
         background: transparent !important;
-        border: 2px solid !important;
-        box-sizing: border-box !important;
-        border-radius: 2.5rem !important;
-        text-decoration: none !important;
-        padding: 1.2rem 0 1rem !important;
-        margin: 1.5rem 1.2rem 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        border-color: transparent !important;
+        border-radius: 0 !important;
         box-shadow: none !important;
+        filter: none !important;
+        text-decoration: none !important;
+        padding: 0.8rem 1.2rem !important;
+        margin: 1rem 0 0 !important;
+        transition: opacity 0.15s !important;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn:hover,
+      .m-adjustment__list .item__btn.video-btn:hover {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        opacity: 0.75 !important;
       }
       .top-adjustment .m-adjustment__list .item__btn.video-btn span {
         position: relative !important;
@@ -521,11 +529,14 @@
         background-size: contain !important;
         margin: auto !important;
       }
-      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover {
-        color: #fff !important;
+      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover,
+      html.notouch .m-adjustment__list .item__btn.video-btn:hover {
+        background: transparent !important;
+        color: inherit !important;
       }
-      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span:before {
-        background-image: url(/schecon-demo/assets/imgs/common/video-hover.png) !important;
+      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span:before,
+      html.notouch .m-adjustment__list .item__btn.video-btn:hover span:before {
+        background-image: none !important;
       }
 
       /* ===== PDF 修正 (2026-04-19) =====
