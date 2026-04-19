@@ -351,22 +351,64 @@
         font-size: 80% !important;
       }
 
-      /* ===== Hero CTA カード: schecon.com 本番と同じデザインを尊重 =====
-         main.css が .item-one / .item-multi / .item-group のスタイルを持つので
-         そちらを優先。デモ独自の .item-chat だけ同じパターンで色指定を追加。 */
+      /* ===== Hero CTA カード (前バージョンに復元) ===== */
+      .m-adjustment__list .item__text {
+        padding: 2.7rem 4.5rem 2.9rem 1.5rem !important;
+        font-size: 1.6rem !important;
+      }
+      .m-adjustment__list .item__text:before {
+        right: 0.8rem !important;
+        width: 3rem !important;
+        height: 3rem !important;
+      }
+      .m-adjustment__list .item__text:after {
+        right: 1.9rem !important;
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+      }
+      .top-adjustment .m-adjustment__list .item {
+        border-radius: var(--radius) !important;
+        overflow: hidden !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s !important;
+        box-shadow: var(--shadow-card) !important;
+      }
+      .top-adjustment .m-adjustment__list .item:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: var(--shadow-hover) !important;
+      }
+      .top-adjustment .m-adjustment__list .item__text {
+        font-size: 2.0rem !important;
+        padding-right: 4.5rem !important;
+        padding-left: 0.8rem !important;
+      }
+      .top-adjustment .m-adjustment__list .item__text:before {
+        right: 0.8rem !important;
+        width: 3rem !important;
+        height: 3rem !important;
+      }
+      .top-adjustment .m-adjustment__list .item__text:after {
+        right: 1.9rem !important;
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+      }
+      /* .item-chat (デモ独自) はオレンジ配色 */
       .m-adjustment__list .item-chat .item__text {
-        background: #f1ba2b;
+        background: var(--primary) !important;
       }
       .m-adjustment__list .item-chat .item__text:after {
-        border-top: 3px solid #f1ba2b;
-        border-right: 3px solid #f1ba2b;
+        border-top: 3px solid var(--primary) !important;
+        border-right: 3px solid var(--primary) !important;
       }
       .m-adjustment__list .item-chat .item__btn {
-        color: #f1ba2b;
-        border-color: #f1ba2b;
+        color: var(--primary) !important;
+        border-color: var(--primary) !important;
       }
       html.notouch .m-adjustment__list .item-chat .item__btn:hover {
-        background: #f1ba2b;
+        background: var(--primary) !important;
+        color: #fff !important;
+      }
+      .m-adjustment__list .item-chat .item__btn span:before {
+        background-image: url(/schecon-demo/assets/imgs/common/video-orange.png) !important;
       }
       .m-adjustment__list .item-chat .item__link {
         display: block;
@@ -380,6 +422,57 @@
         width: 100%;
         height: auto;
         display: block;
+      }
+      /* ===== 「使い方を動画で見る」ボタン (本番 schecon.com デザインを完全踏襲) =====
+         outline pill, 2px 色付き border, 色付き text, 右に video アイコン (PNG)。
+         main.css 由来の .item__btn をそのまま活かすため、デモ独自の上書きを除去。 */
+      .top-adjustment .m-adjustment__list .item__btn.video-btn {
+        transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s !important;
+        transition-property: color, background !important;
+        display: block !important;
+        width: auto !important;
+        background: transparent !important;
+        border: 2px solid !important;
+        box-sizing: border-box !important;
+        border-radius: 2.5rem !important;
+        text-decoration: none !important;
+        padding: 1.2rem 0 1rem !important;
+        margin: 1.5rem 1.2rem 0 !important;
+        box-shadow: none !important;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn span {
+        position: relative !important;
+        display: table !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+        line-height: 1.5 !important;
+        letter-spacing: 0.06em !important;
+        padding-right: 3.2rem !important;
+        margin: 0 auto !important;
+        background: transparent !important;
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+      .top-adjustment .m-adjustment__list .item__btn.video-btn span:before {
+        transition: background 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s !important;
+        position: absolute !important;
+        display: block !important;
+        content: '' !important;
+        top: -0.1rem !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        width: 2.6rem !important;
+        height: 1.7rem !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-size: contain !important;
+        margin: auto !important;
+      }
+      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover {
+        color: #fff !important;
+      }
+      html.notouch .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span:before {
+        background-image: url(/schecon-demo/assets/imgs/common/video-hover.png) !important;
       }
 
       /* ===== PDF 修正 (2026-04-19) =====
@@ -398,31 +491,7 @@
       .m-adjustment.top-adjustment {
         padding-top: 1.2rem !important;
       }
-      /* 2) 動画リンクの「下敷き」 (丸pill背景) を除去 */
-      .top-adjustment .m-adjustment__list .item__btn.video-btn {
-        background: transparent !important;
-        background-color: transparent !important;
-        border: 0 !important;
-        box-shadow: none !important;
-        padding: 0.8rem 1.2rem !important;
-      }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn::before,
-      .top-adjustment .m-adjustment__list .item__btn.video-btn::after {
-        display: none !important;
-      }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn span {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: 0 !important;
-        color: #5f6368 !important;
-        font-size: 1.25rem !important;
-        font-weight: 600 !important;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      .top-adjustment .m-adjustment__list .item__btn.video-btn:hover span {
-        color: var(--primary) !important;
-      }
+      /* 2) 動画リンク: 本番 schecon.com デザイン (outline pill + video icon) は上で定義済み */
       /* 3) ヒーローリード: PC で強制 2 行 & フォントを控えめに */
       .m-adjustment__lead .orange.opc-4 {
         font-size: 2rem !important;

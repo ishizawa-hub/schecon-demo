@@ -12,7 +12,7 @@
  *  - API/chat 関連: キャッシュしない (リアルタイム性優先)
  */
 
-const CACHE_VERSION = 'schecon-v1';
+const CACHE_VERSION = 'schecon-v3';
 const APP_SHELL = [
   '/schecon-demo/',
   '/schecon-demo/index.html',
