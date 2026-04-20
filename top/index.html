@@ -1290,6 +1290,14 @@
       }
       @media (max-width: 767px) {
         .mod-seo__grid { grid-template-columns: 1fr; }
+        /* ユーザー指示 (2026-04-21): 見出しの文字サイズを他のセクション
+           (.section__ttl の 2rem) に合わせる */
+        .mod-seo__title {
+          font-size: 2rem !important;
+          font-weight: 900 !important;
+          line-height: 1.5 !important;
+          margin-bottom: 1.6rem !important;
+        }
       }
 
       /* ===== NEW: HERO BADGE ===== */
@@ -1414,10 +1422,19 @@
           margin-bottom: 1.6rem !important;
         }
 
-        /* ヒーローのリード文 (.top-adjustment__copy) を改行少なく */
+        /* ヒーローのリード文 (.top-adjustment__copy) を改行少なく
+           ユーザー指示 (2026-04-21): ヘッダー直下のマージンを半分に */
         .m-adjustment.top-adjustment {
-          padding-top: 2.4rem !important;
+          padding-top: 1.2rem !important;
           padding-bottom: 2.4rem !important;
+        }
+        /* ユーザー指示 (2026-04-21): No.1 ロゴ下〜「面倒な日程調整…」の
+           セクション間マージンも半分に (1rem → 0.5rem / 2.4rem → 1.2rem) */
+        .m-crown {
+          padding: 0.5rem 0 !important;
+        }
+        .m-adjustment__lead {
+          margin-top: 1.2rem !important;
         }
         /* 最長行「日程調整・カレンダー・メール・チャットを統合」(21字) が
            360px 級画面で折返さないよう font-size を 1.55rem に絞る */
@@ -1825,11 +1842,19 @@
           text-align: center !important;
         }
         .m-comparison .section__lead {
+          /* ユーザー指示 (2026-04-21): 右端で文字が切れていた問題を解消
+             display:table を block に + max-width 100% + 適切な折り返し */
+          display: block !important;
+          max-width: 100% !important;
+          width: auto !important;
+          box-sizing: border-box !important;
           font-size: 1.3rem !important;
           line-height: 1.7 !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
           padding: 0 1.6rem !important;
-          word-break: keep-all !important;
-          overflow-wrap: break-word !important;
+          word-break: break-word !important;
+          overflow-wrap: anywhere !important;
         }
         .m-comparison .section__lead br { display: none !important; }
 
@@ -2319,12 +2344,12 @@
             </div>
             <p class="m-adjustment__lead">
               <span class="orange opc-4">
-                面倒な日程調整はAIにお任せ！カレンダー・メール・チャットも全て一つに！<br />
+                面倒な日程調整はAIにお任せ！<br class="pc-hidden" />カレンダー・メール・チャットも全て一つに！<br />
                 ビジネスの全てがスケコンで完結！
               </span>
               <span class="section__lead opc-5">
                 スケコンは日程調整・カレンダー連携・メール連携・ビジネスチャットを一つに統合したオールインワンプラットフォームです。<br />
-                GoogleカレンダーやOutlookカレンダーと完全連携し、Gmail・Outlookメールの送受信もスケコン上で完結します。
+                GoogleカレンダーやOutlookカレンダーと完全連携し、<br class="pc-hidden" />Gmail・Outlookメールの送受信もスケコン上で完結します。
               </span>
               <span class="cap opc-6">※ログインしてもカレンダーの予定は第三者に勝手に共有や公開はされません。 </span>
             </p>
@@ -2613,7 +2638,7 @@
           <div class="section__body">
             <h2 class="section__ttl opc-1">
               URLを送るだけで<br class="pctb-hidden" />日程調整を自動で完結<br />
-              チャットでそのまま<br class="pctb-hidden" />コミュニケーション！<br />
+              チャットでそのままコミュニケーション！<br />
               使いやすさも登録なしでカンタン！
             </h2>
             <picture class="ease-2">
@@ -2742,8 +2767,8 @@
               スケコンが他の日程調整ツールより選ばれる理由は？
             </h2>
             <p class="mod-seo__subtitle">
-              スケコンは日程調整に加え、カレンダー連携・メーラー・チャットまで搭載したオールインワンツールです。<br />
-              月額660円から利用でき、複数ツールの契約が不要になります。
+              スケコンは日程調整に加え、<br class="pc-hidden" />カレンダー連携・メーラー・チャットまで搭載した<br class="pc-hidden" />オールインワンツールです。<br />
+              月額660円から利用でき、<br class="pc-hidden" />複数ツールの契約が不要になります。
             </p>
             <div class="mod-seo__grid">
               <div class="mod-seo__card">
@@ -2787,7 +2812,7 @@
               スケコンの料金プランはいくらですか？
             </h2>
             <p class="section__lead opc-2">
-              フリープラン（無料・月8回）・スタンダード（月額660円）・ビジネス（月額990円）の3プラン。<br />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
+              フリープラン（無料・月8回）・スタンダード（月額660円）<br />ビジネス（月額990円）の3プラン。<br />日程調整・カレンダー連携・メール・チャットの全機能を備え、業界最安値で提供しています。
             </p>
             <ul class="m-plan__list webview-hide ease-3">
               <li class="item free">
