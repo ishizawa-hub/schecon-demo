@@ -641,6 +641,47 @@
         background: #f8f9fa !important;
       }
 
+      /* ===== セクション余白圧縮 (ユーザー指示 2026-04-21) =====
+         本家 main.css の .section { padding: 11.9rem 0 12rem } は
+         デモサイトでは大きすぎるので PC/SP とも圧縮。
+         独自の .mod-allinone / .mod-integration / .mod-seo (10rem 0) も同様。 */
+      .section {
+        padding: 6rem 0 6rem !important;
+      }
+      .mod-allinone,
+      .mod-integration,
+      .mod-seo {
+        padding: 6rem 0 !important;
+      }
+      @media (max-width: 767px) {
+        .section {
+          padding: 3.2rem 0 !important;
+        }
+        .mod-allinone,
+        .mod-integration,
+        .mod-seo {
+          padding: 3.2rem 0 !important;
+        }
+      }
+
+      /* ===== 使い方ムービー: スマホで 2 カラム (ユーザー指示 2026-04-21) =====
+         ブランドムービーだけでなく使い方ムービーもスマホでは 2 列 */
+      @media (max-width: 767px) {
+        .m-about__list:not(.brand-list) {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 1rem !important;
+          padding: 0 1.2rem !important;
+          margin: 0 auto !important;
+          box-sizing: border-box !important;
+        }
+        .m-about__list:not(.brand-list) .item {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+        }
+      }
+
       /* ===== FEATURE CARDS ===== */
       .m-feature__list .item {
         border-radius: var(--radius) !important;
