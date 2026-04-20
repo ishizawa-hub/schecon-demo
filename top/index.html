@@ -1592,60 +1592,11 @@
           font-size: 2.4rem !important;
         }
 
-        /* FAQ アコーディオン: padding 縮小 */
-        .faq .accordion .option {
-          padding: 1.2rem 1.4rem !important;
-          margin-bottom: 0.8rem !important;
-        }
-
-        /* =====================================================================
-         * 動画埋め込み (m-about__list / m-useful) を スマホで 2 カラムに
-         * ===================================================================== */
-        .m-about__list,
-        .m-about__list.brand-list {
-          display: grid !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1.2rem !important;
-          padding: 0 1.2rem !important;
-          width: 100% !important;
-          box-sizing: border-box !important;
-        }
-        .m-about__list .item {
-          width: 100% !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          box-sizing: border-box !important;
-        }
-        .m-about__list .item__img {
-          width: 100% !important;
-          padding-bottom: 56.25% !important;
-          height: 0 !important;
-          position: relative !important;
-          border-radius: 8px !important;
-          overflow: hidden !important;
-        }
-        .m-about__list .item__img .wrap,
-        .m-about__list .item__img .img {
-          position: absolute !important;
-          inset: 0 !important;
-          width: 100% !important;
-          height: 100% !important;
-        }
-        .m-about__list .item__img .img {
-          background-size: cover !important;
-          background-position: center !important;
-        }
-        .m-about__list .item__ttl {
-          font-size: 1.1rem !important;
-          line-height: 1.4 !important;
-          margin-top: 0.6rem !important;
-          padding: 0 !important;
-        }
-        .m-about__list .item__ttl br { display: none !important; }
-
-        /* m-useful (Swiper カルーセル) も 2 カラムに見せる場合は本家 swiper の制御を尊重
-           swiper-slide が flex-shrink: 0 なので、grid に変更すると壊れる。
-           そのためここでは何もせず本家挙動のまま */
+        /* FAQ / m-about のスマホ上書きは /top-modern に揃えるため撤去
+           (ユーザー指示 2026-04-20): m-about の 2 カラムグリッド、
+           item__img の aspect-ratio 強制、item__ttl の縮小、
+           FAQ アコーディオンの padding 縮小などは全て除去し、
+           main.css 本家のレスポンシブ挙動に任せる */
 
         /* =====================================================================
          * 巻末 CTA: TOP CTA と同じレイアウトに揃える
