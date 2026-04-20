@@ -1516,11 +1516,14 @@
         }
 
         /* ヒーロー 4 サービスカードをスマホで 2 カラム表示
-           (チャットで予定調整 / 1対1 / 複数人 / 社内 の 4 枚を 2x2 グリッドに) */
+           (チャットで予定調整 / 1対1 / 複数人 / 社内 の 4 枚を 2x2 グリッドに)
+           PDF (2026-04-21) 指摘反映:
+           - 元画像が切れないよう max-height / object-fit: cover を解除
+           - 「使い方を動画で見る」ボタン/ドロップダウンはスマホで非表示にして詰める */
         .top-adjustment .m-adjustment__list {
           display: grid !important;
           grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1rem !important;
+          gap: 0.6rem !important;
           padding: 0 1.2rem !important;
           width: 100% !important;
           box-sizing: border-box !important;
@@ -1533,11 +1536,19 @@
           overflow: hidden !important;
           box-sizing: border-box !important;
         }
+        /* 画像: 元アスペクト比を維持し切り抜かない */
+        .top-adjustment .m-adjustment__list .item__img,
+        .top-adjustment .m-adjustment__list .item__img picture {
+          display: block !important;
+          width: 100% !important;
+          height: auto !important;
+        }
         .top-adjustment .m-adjustment__list .item__img img {
           width: 100% !important;
           height: auto !important;
-          max-height: 12rem !important;
-          object-fit: cover !important;
+          max-height: none !important;
+          object-fit: contain !important;
+          display: block !important;
         }
         .top-adjustment .m-adjustment__list .item__text {
           font-size: 1.3rem !important;
@@ -1554,6 +1565,12 @@
           right: 1rem !important;
           width: 0.5rem !important;
           height: 0.5rem !important;
+        }
+        /* 「使い方を動画で見る」ボタン & ドロップダウンをスマホで非表示 */
+        .top-adjustment .m-adjustment__list .item__btn.video-btn,
+        .top-adjustment .m-adjustment__list .item__btn,
+        .top-adjustment .m-adjustment__dropdown {
+          display: none !important;
         }
 
         /* 連携タグ: モバイルではアイコン/テキストを少し小さく */
@@ -1618,11 +1635,12 @@
           line-height: 1.5 !important;
           margin-bottom: 1.6rem !important;
         }
-        /* 17) 巻末 4 サービスカードを TOP ヒーローと同じスタイルに */
+        /* 17) 巻末 4 サービスカードを TOP ヒーローと同じスタイルに
+           (PDF 2026-04-21 指摘) 画像を切らない & 動画ボタンは削除 */
         main > .m-adjustment:last-of-type .m-adjustment__list {
           display: grid !important;
           grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1rem !important;
+          gap: 0.6rem !important;
           padding: 0 1.2rem !important;
         }
         main > .m-adjustment:last-of-type .m-adjustment__list .item {
@@ -1635,10 +1653,25 @@
           font-size: 1.4rem !important;
           padding: 1rem 3rem 1rem 1rem !important;
         }
-        main > .m-adjustment:last-of-type .m-adjustment__list .item__img img {
-          max-height: 12rem !important;
+        /* 画像: 元アスペクト比を維持し切り抜かない */
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__img,
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__img picture {
+          display: block !important;
           width: 100% !important;
-          object-fit: cover !important;
+          height: auto !important;
+        }
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__img img {
+          max-height: none !important;
+          width: 100% !important;
+          height: auto !important;
+          object-fit: contain !important;
+          display: block !important;
+        }
+        /* 「使い方を動画で見る」ボタン & ドロップダウンをスマホで非表示 */
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__btn.video-btn,
+        main > .m-adjustment:last-of-type .m-adjustment__list .item__btn,
+        main > .m-adjustment:last-of-type .m-adjustment__dropdown {
+          display: none !important;
         }
 
         /* =====================================================================
