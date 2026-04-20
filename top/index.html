@@ -761,26 +761,12 @@
         box-shadow: 0 8px 32px rgba(0,0,0,0.08) !important;
       }
 
-      /* ===== VIDEO / ABOUT ===== */
-      /* PDF (2026-04-19 改訂): ブランドムービーは 2 カラム表示 */
-      .m-about__list.brand-list {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 3rem !important;
-        max-width: 96rem;
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-      .m-about__list.brand-list .item {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-      @media (max-width: 767px) {
-        .m-about__list.brand-list {
-          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-          gap: 1.2rem !important;
-        }
-      }
+      /* ===== VIDEO / ABOUT =====
+         schecon.com (本家) の main.css のレイアウトに完全準拠するため
+         ブランドムービー / 使い方ムービーの独自 grid 上書きは撤去。
+         (ユーザー指示 2026-04-21: 「現状の schecon.com と同じ状況に」)
+         本家: PC ブランド 2-col (flex / gap 2rem), 使い方 3-col (flex / gap 2rem)
+               タブレット以下は 2-col */
       .m-about__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
@@ -2963,9 +2949,7 @@
         <!-- ===== ABOUT / VIDEOS ===== -->
         <section class="section m-about js-easing">
           <div class="section__body">
-            <h2 class="section__ttl opc-1">オールインワンツールの<br class="pc-hidden" />スケコンについて動画で知る</h2>
-
-            <!-- メイン動画埋め込み (パーソナルミーティングID/パスコード解説) は削除済み -->
+            <h2 class="section__ttl opc-1">日程調整ツールの<br class="pc-hidden" />スケコンについて動画で知る</h2>
 
             <p class="m-about__ttl opc-2">ブランドムービー</p>
             <ul class="m-about__list brand-list ease-3">
@@ -3040,6 +3024,16 @@
                     </div>
                   </div>
                   <p class="item__ttl">社内予定調整の使い方</p>
+                </a>
+              </li>
+              <li class="item">
+                <a href="nrb15xi9DWc" class="item__link video-btn" data-ttl="空き時間確認">
+                  <div class="item__img">
+                    <div class="wrap">
+                      <div class="img lazyload" data-bg="/schecon-demo/images/yt/nrb15xi9DWc.jpg"></div>
+                    </div>
+                  </div>
+                  <p class="item__ttl">空き時間確認の使い方</p>
                 </a>
               </li>
             </ul>
