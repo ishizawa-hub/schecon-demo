@@ -783,18 +783,11 @@
       }
 
       /* ===== COMPARISON SECTION =====
-         /top-modern と完全同一のミニマル指定に統一 (ユーザー指示: 2026-04-20)
-         shadow/radius の値も /top-modern の値をハードコードして揃える */
-      .m-comparison__list .item.schecon .item__ttl {
-        background: var(--gradient-accent) !important;
-        border-radius: 16px 16px 0 0 !important;
-      }
-      .m-comparison__list .item.schecon {
-        border-radius: 16px !important;
-        overflow: hidden !important;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
-        width: 48rem !important;
-      }
+         本家 schecon.com の main.css (PC: 40rem + 42rem 並列, SP: 200vw フリック切替)
+         を完全に尊重するため独自上書きは撤去 (ユーザー指示 2026-04-21)。
+         スケコンマークは main.css の
+         .m-comparison__list .item.schecon .item__ttl span:before が
+         /assets/imgs/common/icon-white.png を表示するのでそれに任せる。 */
 
       /* ===== VOICES ===== */
       .m-voices .item {
@@ -1384,11 +1377,8 @@
           -webkit-overflow-scrolling: touch;
         }
 
-        /* ----- 比較カード: max-width: 48rem 設定が PC 用なので解除 ----- */
-        .m-comparison__list .item.schecon {
-          max-width: 100% !important;
-          width: 100% !important;
-        }
+        /* ----- 比較カード: schecon.com と同じ 200vw フリック挙動を維持するため
+               スマホでも width を触らない (main.css の 100vw - 8rem を尊重) ----- */
 
         /* ----- フッターのリンクは横並び折り返し ----- */
         .mod-footer-bottom {
@@ -1497,69 +1487,11 @@
           padding: 1.6rem !important;
         }
 
-        /* 他社比較カードを画面幅にフィット (元の幅指定 48rem を完全解除) */
-        .m-comparison__list {
-          flex-direction: column !important;
-          align-items: stretch !important;
-          gap: 1.6rem !important;
-          padding: 0 1.2rem !important;
-        }
-        .m-comparison__list .inner,
-        .m-comparison__list .container {
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 1.6rem !important;
-          width: 100% !important;
-        }
-        .m-comparison__list .item.schecon,
-        .m-comparison__list .item.general,
-        .m-comparison__list .item.others {
-          width: 100% !important;
-          max-width: 100% !important;
-          margin: 0 !important;
-          box-sizing: border-box !important;
-          transform: none !important;     /* \u672c\u5bb6\u306e translate / scale \u3092\u3059\u3079\u3066\u89e3\u9664 */
-        }
-        .m-comparison__list .item__inner {
-          transform: none !important;
-        }
-        /* \u30aa\u30ec\u30f3\u30b8\u30d8\u30c3\u30c0\u30fc */
-        .m-comparison__list .item.schecon .item__ttl {
-          padding: 1.4rem 1.6rem !important;
-          gap: 1rem !important;
-        }
-        .m-comparison__list .item.schecon .item__ttl::before {
-          width: 3.2rem !important;
-          height: 3.2rem !important;
-        }
-        .m-comparison__list .item.schecon .item__ttl span {
-          font-size: 1.5rem !important;
-        }
-        .m-comparison__list .item.general .item__ttl {
-          padding: 1.2rem 1.4rem !important;
-          font-size: 1.4rem !important;
-        }
-        /* \u30ea\u30b9\u30c8 */
-        .m-comparison__list .item.schecon .item__list,
-        .m-comparison__list .item.general .item__list {
-          padding: 0.8rem 1.4rem !important;
-          border-width: 3px !important;
-        }
-        .m-comparison__list .item.schecon .item__list li,
-        .m-comparison__list .item.general .item__list li {
-          font-size: 1.3rem !important;
-          padding: 0.5rem 0 0.5rem 2.8rem !important;
-        }
-        .m-comparison__list .item.schecon .item__list li::before,
-        .m-comparison__list .item.general .item__list li::before {
-          width: 1.6rem !important;
-          height: 1.6rem !important;
-          left: 0.6rem !important;
-        }
-        /* \u672c\u5bb6\u306e m-comparison__bg (\u88c5\u98fe\u6a2a\u30ed\u30b4) \u3092\u30b9\u30de\u30db\u3067\u5c0f\u3055\u304f/\u975e\u8868\u793a */
-        .m-comparison__bg {
-          display: none !important;
-        }
+        /* 比較カードのスマホ独自レイアウト (縦積み + transform 無効化) は撤去。
+           schecon.com と同様に main.css の 200vw フリック挙動に委譲する。
+           スマホでの主要上書きは以下のみ: カードリストの gap/margin と
+           section padding (上部ブロックで指定済み)。
+           .m-comparison__list の padding は本家 main.css で -2rem margin なので触らない */
 
         /* ヒーロー 4 サービスカードをスマホで 2 カラム表示
            (チャットで予定調整 / 1対1 / 複数人 / 社内 の 4 枚を 2x2 グリッドに)
