@@ -762,11 +762,30 @@
       }
 
       /* ===== VIDEO / ABOUT =====
-         schecon.com (本家) の main.css のレイアウトに完全準拠するため
-         ブランドムービー / 使い方ムービーの独自 grid 上書きは撤去。
-         (ユーザー指示 2026-04-21: 「現状の schecon.com と同じ状況に」)
-         本家: PC ブランド 2-col (flex / gap 2rem), 使い方 3-col (flex / gap 2rem)
-               タブレット以下は 2-col */
+         ユーザー指示 2026-04-21:
+         「PC もスマホもブランドムービーは 2 カラム表示にしてください」
+         → brand-list は PC/SP とも常に 2 カラム固定 (grid で明示) */
+      .m-about__list.brand-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 2rem !important;
+        max-width: 96rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 !important;
+      }
+      .m-about__list.brand-list .item {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      @media (max-width: 767px) {
+        .m-about__list.brand-list {
+          gap: 1rem !important;
+          padding: 0 1.2rem !important;
+          box-sizing: border-box !important;
+        }
+      }
       .m-about__list .item {
         border-radius: var(--radius) !important;
         overflow: hidden !important;
