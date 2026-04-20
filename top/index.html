@@ -462,20 +462,11 @@
         color: #fff !important;
       }
 
-      /* 巻末 CTA (main > .m-adjustment:last-of-type) の 4 枚カードも
-         同じ #e65401 に統一 (ユーザー指示 2026-04-21) */
-      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text {
-        background: #e65401 !important;
-        color: #fff !important;
-      }
-      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text:before {
-        /* 右側の円背景 (矢印の丸) も同色に */
-        background: #fff !important;
-      }
-      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text:after {
-        border-top-color: #e65401 !important;
-        border-right-color: #e65401 !important;
-      }
+      /* 巻末 CTA は冒頭 CTA と同じ配色にする (ユーザー指示 2026-04-21)。
+         → カード別色 (.item-chat #e65401 / .item-one / .item-multi / .item-group)
+         の指定を巻末にもそのまま適用するため、:last-of-type 専用の
+         item__text 上書きは撤去。上位の .m-adjustment__list セレクタで
+         ヒーローと同じルールが適用される。 */
       .m-adjustment__list .item-chat .item__btn span:before {
         background-image: url(/schecon-demo/assets/imgs/common/video-orange.png) !important;
       }
