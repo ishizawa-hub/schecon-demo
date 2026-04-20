@@ -444,21 +444,37 @@
         width: 0.8rem !important;
         height: 0.8rem !important;
       }
-      /* .item-chat (デモ独自) はオレンジ配色 */
+      /* .item-chat (デモ独自) はディープオレンジ配色
+         ユーザー指示 (2026-04-21): #e65401 に変更 */
       .m-adjustment__list .item-chat .item__text {
-        background: var(--primary) !important;
+        background: #e65401 !important;
       }
       .m-adjustment__list .item-chat .item__text:after {
-        border-top: 3px solid var(--primary) !important;
-        border-right: 3px solid var(--primary) !important;
+        border-top: 3px solid #e65401 !important;
+        border-right: 3px solid #e65401 !important;
       }
       .m-adjustment__list .item-chat .item__btn {
-        color: var(--primary) !important;
-        border-color: var(--primary) !important;
+        color: #e65401 !important;
+        border-color: #e65401 !important;
       }
       html.notouch .m-adjustment__list .item-chat .item__btn:hover {
-        background: var(--primary) !important;
+        background: #e65401 !important;
         color: #fff !important;
+      }
+
+      /* 巻末 CTA (main > .m-adjustment:last-of-type) の 4 枚カードも
+         同じ #e65401 に統一 (ユーザー指示 2026-04-21) */
+      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text {
+        background: #e65401 !important;
+        color: #fff !important;
+      }
+      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text:before {
+        /* 右側の円背景 (矢印の丸) も同色に */
+        background: #fff !important;
+      }
+      main > .m-adjustment:last-of-type .m-adjustment__list .item .item__text:after {
+        border-top-color: #e65401 !important;
+        border-right-color: #e65401 !important;
       }
       .m-adjustment__list .item-chat .item__btn span:before {
         background-image: url(/schecon-demo/assets/imgs/common/video-orange.png) !important;
