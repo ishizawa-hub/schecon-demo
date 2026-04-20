@@ -3345,6 +3345,97 @@
       </footer>
     </div>
     <!-- /#wrapper -->
+
+    <!-- ========== 予定調整ピッカー モーダル (schecon.com /history 準拠) ========== -->
+    <div id="js-schedule-picker-overlay" class="schedule-picker-overlay" hidden role="dialog" aria-modal="true" aria-label="予定調整を選ぶ">
+      <div class="schedule-picker" role="document">
+        <button id="js-schedule-picker-close" class="schedule-picker__close" type="button" aria-label="閉じる">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="schedule-picker__list">
+          <a class="schedule-picker__item schedule-picker__item--one" href="/schecon-demo/one-on-one-create" aria-label="1対1予定調整">
+            <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_1.webp" alt="1対1予定調整" />
+          </a>
+          <a class="schedule-picker__item schedule-picker__item--multi" href="/schecon-demo/multiple/create" aria-label="複数人予定調整">
+            <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_2.webp" alt="複数人予定調整" />
+          </a>
+          <a class="schedule-picker__item schedule-picker__item--group" href="/schecon-demo/group/create" aria-label="社内予定調整">
+            <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_3.webp" alt="社内予定調整" />
+          </a>
+          <a class="schedule-picker__item schedule-picker__item--free" href="/schecon-demo/confirm" aria-label="空き時間確認">
+            <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_4.webp" alt="空き時間確認" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <style>
+      /* 予定調整モーダル (AppComponent 内と同じ仕様) */
+      .schedule-picker-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.32);
+        display: flex; align-items: center; justify-content: center;
+        padding: 16px; z-index: 1200;
+        animation: schedulePickerBackdropIn .18s ease-out;
+      }
+      .schedule-picker-overlay[hidden] { display: none !important; }
+      @keyframes schedulePickerBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes schedulePickerIn {
+        from { opacity: 0; transform: translateY(16px) scale(.98); }
+        to   { opacity: 1; transform: translateY(0)    scale(1); }
+      }
+      .schedule-picker {
+        position: relative; background: #f8f6ee; border-radius: 4px;
+        width: 720px; max-width: 100%; padding: 20px 24px; box-sizing: border-box;
+        box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),
+                    0 24px 38px 3px rgba(0,0,0,.14),
+                    0 9px 46px 8px rgba(0,0,0,.12);
+        animation: schedulePickerIn .22s cubic-bezier(.22,1,.36,1);
+      }
+      .schedule-picker__close {
+        position: absolute; top: 8px; right: 8px;
+        width: 32px; height: 32px; border-radius: 50%;
+        background: transparent; border: none; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: rgba(129,118,110,.8); transition: background .15s; z-index: 2;
+      }
+      .schedule-picker__close:hover { background: rgba(0,0,0,.06); }
+      .schedule-picker__close svg { display: block; }
+      .schedule-picker__list {
+        display: flex; flex-direction: row; gap: 8px;
+      }
+      .schedule-picker__item {
+        flex: 1 1 0; min-width: 0;
+        aspect-ratio: 159/183; display: block;
+        overflow: hidden; border-radius: 4px;
+        text-decoration: none; position: relative;
+        transition: transform .18s, box-shadow .18s;
+      }
+      .schedule-picker__item:hover {
+        transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,.18);
+      }
+      .schedule-picker__item-img {
+        display: block; width: 100%; height: 100%;
+        object-fit: cover; object-position: center;
+      }
+      @media (max-width: 1023px) {
+        .schedule-picker { width: 480px; padding: 20px; }
+        .schedule-picker__list { flex-wrap: wrap; gap: 8px; }
+        .schedule-picker__item {
+          flex: 1 1 calc(50% - 4px);
+          max-width: calc(50% - 4px);
+        }
+      }
+      @media (max-width: 767px) {
+        .schedule-picker { width: 100%; padding: 16px 12px; }
+        .schedule-picker__list { flex-wrap: wrap; gap: 6px; }
+        .schedule-picker__item {
+          flex: 1 1 calc(50% - 3px);
+          max-width: calc(50% - 3px);
+        }
+        .schedule-picker__close { top: 4px; right: 4px; width: 28px; height: 28px; }
+      }
+      body.schedule-picker-open { overflow: hidden; }
+    </style>
+
     <!-- js -->
     <script src="/schecon-demo/assets/js/top-main.js"></script>
     <script src="/schecon-demo/assets/js/top-index.js"></script>
@@ -3365,6 +3456,55 @@
         navLinks.forEach(function(link) {
           link.addEventListener('click', function() {
             document.documentElement.classList.remove('nav-open');
+          });
+        });
+
+        // ===== 予定調整モーダル: 開閉制御 + 予定調整リンクのハイジャック =====
+        var overlay = document.getElementById('js-schedule-picker-overlay');
+        var closeBtn = document.getElementById('js-schedule-picker-close');
+
+        function openPicker() {
+          if (!overlay) return;
+          overlay.hidden = false;
+          document.body.classList.add('schedule-picker-open');
+        }
+        function closePicker() {
+          if (!overlay) return;
+          overlay.hidden = true;
+          document.body.classList.remove('schedule-picker-open');
+        }
+        if (closeBtn) closeBtn.addEventListener('click', closePicker);
+        if (overlay) overlay.addEventListener('click', function(e) {
+          if (e.target === overlay) closePicker();
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && overlay && !overlay.hidden) closePicker();
+        });
+
+        // 予定調整関連リンクをハイジャックしてモーダルを開く:
+        //   - ヘッダーメニューの 1対1/複数人/社内/チャットで予定調整 4 項目
+        //   - 旧スタイル global menu の h-one/h-multi/h-group/h-chat
+        //   - ヒーロー 4 枚カード (.m-adjustment__list .item .item__link)
+        //   - 巻末 4 枚カード (main > .m-adjustment:last-of-type .m-adjustment__list .item .item__link)
+        //   - テキスト「予定調整をする」のボタン (footer CTA 含む)
+        var pickerTargets = [
+          'a[href="/one-on-one-create"]',
+          'a[href="/create"]',
+          'a[href="/group"]',
+          'a[href="/chat"]',
+          '.m-adjustment__list .item .item__link',
+          '.m-adjustment__list .item .item__container .item__link',
+          '.h-one', '.h-multi', '.h-group', '.h-chat'
+        ];
+        var links = document.querySelectorAll(pickerTargets.join(','));
+        links.forEach(function(el) {
+          el.addEventListener('click', function(e) {
+            // 予定調整履歴や動画リンクは対象外
+            if (el.classList.contains('video-btn')) return;
+            if (el.getAttribute('href') === '/history') return;
+            e.preventDefault();
+            document.documentElement.classList.remove('nav-open');
+            openPicker();
           });
         });
       });
