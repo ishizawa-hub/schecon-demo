@@ -1594,6 +1594,27 @@
           font-size: 2.4rem !important;
         }
 
+        /* ユーザー指示 (2026-04-21):
+           - ビジネスプランの周りのオレンジ罫線をスマホでは削除
+           - フリー/スタンダード/ビジネスの 3 プランを左右センター配置 */
+        .m-plan__list {
+          max-width: 420px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          padding-left: 1.2rem !important;
+          padding-right: 1.2rem !important;
+          box-sizing: border-box !important;
+        }
+        .m-plan__list .item {
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: 360px !important;
+          width: 100% !important;
+        }
+        .m-plan__list .item.business {
+          border: none !important;
+        }
+
         /* FAQ / m-about のスマホ上書きは /top-modern に揃えるため撤去
            (ユーザー指示 2026-04-20): m-about の 2 カラムグリッド、
            item__img の aspect-ratio 強制、item__ttl の縮小、
