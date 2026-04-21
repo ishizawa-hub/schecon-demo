@@ -303,6 +303,28 @@
         position: relative;
         overflow: hidden;
       }
+
+      /* ユーザー指示 (2026-04-21 audit):
+         header の <a><img> が lazyload 前に 5351px scrollWidth を持ち
+         水平オーバーフローを誘発する問題を解消。
+         ロゴのアンカー/画像を固定サイズに収める。 */
+      .header__logo {
+        overflow: hidden;
+        max-width: 160px;
+      }
+      .header__logo a {
+        display: inline-block;
+        max-width: 100%;
+        line-height: 0;
+      }
+      .header__logo img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 767px) {
+        .header__logo { max-width: 120px; }
+      }
       /* ヒーロータイトル: PC / スマホ共通で 6 行表示
          (ユーザー指定: 冒頭 (hero) 文字色は #ed9630) */
       .m-adjustment__ttl .orange,
