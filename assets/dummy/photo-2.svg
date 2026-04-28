@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#ee5a6f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g2)"/>
+  <rect x="100" y="200" width="180" height="350" fill="#2d3748" opacity="0.85" rx="4"/>
+  <rect x="290" y="120" width="200" height="430" fill="#1a202c" opacity="0.9" rx="4"/>
+  <rect x="500" y="180" width="180" height="370" fill="#2d3748" opacity="0.85" rx="4"/>
+  <circle cx="190" cy="270" r="6" fill="#ffd700"/>
+  <circle cx="190" cy="320" r="6" fill="#ffd700"/>
+  <circle cx="240" cy="270" r="6" fill="#ffd700"/>
+  <circle cx="380" cy="190" r="6" fill="#ffd700"/>
+  <circle cx="380" cy="240" r="6" fill="#ffd700"/>
+  <circle cx="430" cy="190" r="6" fill="#ffd700"/>
+  <circle cx="590" cy="250" r="6" fill="#ffd700"/>
+  <circle cx="640" cy="250" r="6" fill="#ffd700"/>
+  <text x="400" y="80" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="bold" fill="#fff">Sample Photo 2</text>
+  <text x="400" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#fff" opacity="0.85">Cityscape</text>
+</svg>
