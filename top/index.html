@@ -325,6 +325,14 @@
       @media (max-width: 767px) {
         .header__logo { max-width: 120px; }
       }
+      /* fix (2026-04-29): TOP ページでロゴが重なる問題.
+         main.css の .header__logo a { background:url(logo.svg) } で背景画像として描画 +
+         <img> でも描画 → 二重表示 (3 レイヤー重なって見える).
+         背景画像のみを残すために <img> を完全非表示. */
+      .header__logo a img {
+        display: none !important;
+        visibility: hidden !important;
+      }
       /* ヒーロータイトル: PC / スマホ共通で 6 行表示
          (ユーザー指定: 冒頭 (hero) 文字色は #ed9630) */
       .m-adjustment__ttl .orange,

@@ -238,6 +238,12 @@
     />
     <link rel="stylesheet" media="all" href="/schecon-demo/assets/css/main.css" />
     <style>
+      /* fix (2026-04-29): TOP-modern でもロゴ重複防止 (main.css の background 描画と
+         インライン <img> の二重表示) */
+      .header__logo a img {
+        display: none !important;
+        visibility: hidden !important;
+      }
       /* ===== MODERN OVERRIDES ===== */
       :root {
         --primary: #ed9630;
