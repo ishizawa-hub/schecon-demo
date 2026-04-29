@@ -12,7 +12,7 @@
  */
 
 // BUILD_VERSION は各デプロイで更新して旧キャッシュを強制破棄する
-const BUILD_VERSION = '20260429-061131';
+const BUILD_VERSION = '20260429-061414';
 const CACHE_VERSION = `schecon-${BUILD_VERSION}`;
 const APP_SHELL = [
   '/schecon-demo/',
