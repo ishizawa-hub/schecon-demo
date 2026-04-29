@@ -12,7 +12,7 @@
  */
 
 // BUILD_VERSION は各デプロイで更新して旧キャッシュを強制破棄する
-const BUILD_VERSION = '20260428-211459';
+const BUILD_VERSION = '20260429-030157';
 const CACHE_VERSION = `schecon-${BUILD_VERSION}`;
 const APP_SHELL = [
   '/schecon-demo/',
@@ -55,7 +55,36 @@ self.addEventListener('fetch', (event) => {
   // API/チャット系はキャッシュしない (リアルタイム性優先)
   if (url.pathname.includes('/api/') || url.pathname.includes('/chat/')) return;
 
-  // 全リソース network-first: まず network を試み、失敗時のみ cache フォールバック
+  /* fix (2026-04-29): TOP ページで「一瞬前のキャッシュが表示されてから新版に切替」問題対策.
+     原因: GitHub Pages が Cache-Control: max-age=600 を返すため Browser HTTP Cache が古い HTML を保持
+          + SW が parallel に network/cache 両方走らせて稀に旧キャッシュ → 新の表示が起こる.
+     対策:
+       1. HTML/index.html (navigation request) は **常に network-only** で SW キャッシュを使わない.
+       2. fetch 時に明示的に cache: 'no-store' を付与し Browser HTTP Cache も無効化.
+       3. オフライン時のみキャッシュ index.html を fallback.
+     これで HTML は常に最新版が読み込まれ、旧キャッシュからの flash がなくなる. */
+  const isHtml = req.mode === 'navigate'
+    || req.destination === 'document'
+    || (req.headers.get('accept') || '').includes('text/html');
+
+  if (isHtml) {
+    event.respondWith(
+      // cache: 'no-store' で Browser HTTP Cache を bypass、常にサーバから最新取得
+      fetch(req, { cache: 'no-store' })
+        .then((res) => {
+          // 成功時はキャッシュ更新もしない (常に最新を要求するので不要)
+          return res;
+        })
+        .catch(() =>
+          // ネットワーク失敗 (オフライン) のみキャッシュ index.html フォールバック
+          caches.match('/schecon-demo/index.html').then((m) => m || Response.error())
+        )
+    );
+    return;
+  }
+
+  // ハッシュ付きアセット (JS/CSS chunk) は network-first だが Browser HTTP Cache OK
+  // ハッシュが変わると別 URL になるため stale 配信のリスクなし
   event.respondWith(
     fetch(req)
       .then((res) => {

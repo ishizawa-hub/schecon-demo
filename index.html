@@ -27,6 +27,53 @@
     }(window.location))
   </script>
 
+  <!-- fix (2026-04-29): TOP ページ「旧キャッシュ → 新版」flash 防止
+       sw.js の BUILD_VERSION を network から取得して、localStorage に保存した前回値と比較.
+       不一致 → 全 cache 削除 + ハードリロードで強制最新化.
+       一致 → そのまま続行 (常時オーバーヘッドはほぼゼロ). -->
+  <script>
+    (function() {
+      try {
+        var SW_URL = '/schecon-demo/sw.js?_=' + Date.now();
+        var STORAGE_KEY = 'schecon.cacheVersion';
+        fetch(SW_URL, { cache: 'no-store' })
+          .then(function(r) { return r.text(); })
+          .then(function(text) {
+            var match = text.match(/BUILD_VERSION = '([^']+)'/);
+            if (!match) return;
+            var current = match[1];
+            var prev = (function() { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } })();
+            if (prev && prev !== current) {
+              // バージョン不一致 → 全 cache 削除 + ハードリロード
+              if ('caches' in window) {
+                caches.keys().then(function(keys) {
+                  return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+                }).then(function() {
+                  try { localStorage.setItem(STORAGE_KEY, current); } catch (e) {}
+                  // SW がある場合は unregister してから reload (新 SW で再起動)
+                  if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+                    navigator.serviceWorker.getRegistrations().then(function(regs) {
+                      regs.forEach(function(reg) { reg.unregister(); });
+                      window.location.reload();
+                    });
+                  } else {
+                    window.location.reload();
+                  }
+                });
+              } else {
+                try { localStorage.setItem(STORAGE_KEY, current); } catch (e) {}
+                window.location.reload();
+              }
+            } else {
+              // 初回 or 一致 → version を保存
+              try { localStorage.setItem(STORAGE_KEY, current); } catch (e) {}
+            }
+          })
+          .catch(function() { /* ネットワークなし時は何もしない */ });
+      } catch (e) { /* 古いブラウザ等 */ }
+    })();
+  </script>
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="日程調整ツールで効率化！カレンダー連携・Web会議設定・複数人調整が無料。AIが自動で最適な日程を提案します。">
   <meta name="keywords" content="スケコン,日程調整,カレンダー,日程調整ツール,無料,Googleカレンダー,Outlook,Web会議,Zoom,スケジュール管理,ビジネス">
