@@ -1887,7 +1887,7 @@
 .page-hero {
   padding: 8rem 2rem 6rem;
   text-align: center;
-  background: linear-gradient(180deg, #fff8ef 0%, #ffffff 100%);
+  background: #fff;
 }
 .page-hero__title {
   font-size: 3.6rem; font-weight: 900; color: #ed9630;
@@ -2269,6 +2269,474 @@
     padding: 1.2rem 2.8rem;
   }
 }
+/* =====================================================================
+ * 追加1. 利用シーン別の活用例
+ * ===================================================================== */
+.about-usecase__grid {
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+}
+.about-usecase__card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 3.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
+}
+.about-usecase__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+.about-usecase__figure {
+  margin: 0 0 2rem;
+}
+.about-usecase__figure img {
+  width: 12rem;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.about-usecase__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #15303d;
+  text-align: center;
+  margin: 0 0 1.6rem;
+}
+.about-usecase__problem {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: #81766e;
+  background: #f8f9fa;
+  border-left: 3px solid #e3d9cd;
+  border-radius: 0.6rem;
+  padding: 1.4rem 1.6rem;
+  margin: 0 0 1.6rem;
+}
+.about-usecase__solution {
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: #81766e;
+  margin: 0 0 2rem;
+}
+.about-usecase__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0;
+}
+.about-usecase__tag {
+  background: #fff5ea;
+  color: #d07a1a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+}
+
+/* =====================================================================
+ * 追加2. 日程調整が完了するまでの流れ
+ * ===================================================================== */
+.about-flow__list {
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: about-flow;
+}
+.about-flow__item {
+  position: relative;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 3.2rem 2.4rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
+}
+.about-flow__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+.about-flow__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  background: #ed9630;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.6rem;
+}
+.about-flow__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #15303d;
+  margin: 0 0 1.2rem;
+}
+.about-flow__desc {
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: #81766e;
+  margin: 0;
+}
+
+/* =====================================================================
+ * 追加3. 機能に関するよくあるご質問
+ * ===================================================================== */
+.about-faq__list {
+  max-width: 96rem;
+  margin: 0 auto;
+}
+.about-faq__item {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 3.2rem 2.4rem;
+  margin: 0 0 1.6rem;
+}
+.about-faq__item:last-child {
+  margin-bottom: 0;
+}
+.about-faq__q {
+  position: relative;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #15303d;
+  margin: 0 0 1.2rem;
+  padding-left: 3.6rem;
+}
+.about-faq__q::before {
+  content: "Q";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: #ed9630;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+  text-align: center;
+}
+.about-faq__a {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.95;
+  color: #81766e;
+  margin: 0;
+  padding-left: 3.6rem;
+}
+.about-faq__a::before {
+  content: "A";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: #fff5ea;
+  color: #d07a1a;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+  text-align: center;
+}
+
+/* =====================================================================
+ * レスポンシブ
+ * ===================================================================== */
+@media (max-width: 767px) {
+  .about-usecase__grid,
+  .about-flow__list { gap: 1.6rem; }
+  .about-usecase__card,
+  .about-flow__item,
+  .about-faq__item { padding: 2rem 1.6rem; }
+
+  .about-usecase__figure { margin-bottom: 1.6rem; }
+  .about-usecase__figure img { width: 9rem; }
+  .about-usecase__title { font-size: 1.6rem; margin-bottom: 1.2rem; }
+  .about-usecase__problem,
+  .about-usecase__solution { font-size: 1.3rem; line-height: 1.8; }
+  .about-usecase__tag { font-size: 1.1rem; padding: 0.4rem 1rem; }
+
+  .about-flow__num {
+    width: 4.4rem;
+    height: 4.4rem;
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+  }
+  .about-flow__title { font-size: 1.6rem; margin-bottom: 1rem; }
+  .about-flow__desc { font-size: 1.3rem; line-height: 1.8; }
+
+  .about-faq__item { margin-bottom: 1.2rem; }
+  .about-faq__q { font-size: 1.5rem; padding-left: 3rem; }
+  .about-faq__q::before {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+  }
+  .about-faq__a { font-size: 1.3rem; line-height: 1.85; padding-left: 3rem; }
+  .about-faq__a::before {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+  }
+}
+
+/* ===== トップページとの配色・意匠の統一 ===== */
+:root {
+  --sc-orange: #ed9630;
+  --sc-orange-dark: #d07a1a;
+  --sc-text: #81766e;
+  --sc-dark: #15303d;
+  --sc-bg: #f8f9fa;
+  --sc-line: rgba(129,118,110,.14);
+}
+.page-hero { padding: 5.6rem 2rem 4rem; background: #fff; }
+.page-hero__title { color: var(--sc-orange); }
+.page-hero__lead,
+.page-section__lead { color: var(--sc-text); }
+.page-section { padding: 4.4rem 2rem; }
+.page-section--bg { background: var(--sc-bg); border-top: 1px solid var(--sc-line); }
+.page-section__title { color: var(--sc-text); margin-bottom: 1.2rem; }
+.page-section__title .orange-keyword { color: var(--sc-orange); }
+.page-section__lead { margin-bottom: 3.2rem; }
+
+/* カードはトップの mod-allinone__card / mod-seo__card と同じ見た目に揃える */
+.price-card, .price-choose__card, .price-diff__card, .price-faq__item,
+.about-features__card, .about-usecase__card, .about-faq__item,
+.about-flow__step, .price-flow__step {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  border: none;
+}
+.price-card__name, .price-choose__plan, .price-diff__ttl,
+.about-features__title, .about-usecase__ttl { color: var(--sc-dark); }
+.price-card__num, .price-choose__price strong { color: var(--sc-orange); }
+.price-faq__q, .about-faq__q { color: var(--sc-dark); }
+.price-faq__a, .about-faq__a, .price-diff__desc,
+.about-usecase__desc, .about-features__desc { color: var(--sc-text); }
+
+/* ボタンはトップと同じ丸みと色 */
+.price-btn, .about-btn, .page-cta__btn {
+  background: var(--sc-orange);
+  color: #fff; border-radius: 999px;
+  padding: 1.6rem 4rem; font-weight: 700;
+  display: inline-block; text-decoration: none;
+  transition: background .3s;
+}
+.price-btn:hover, .about-btn:hover, .page-cta__btn:hover { background: var(--sc-orange-dark); }
+
+/* タグ・ピルもトップの mod-integration__tag に合わせる */
+.price-diff__tag, .about-service__pill, .price-choose__points li::marker {
+  color: var(--sc-orange);
+}
+.price-diff__tag, .about-service__pill {
+  background: #fff5e9; border-radius: 999px; padding: .6rem 1.4rem;
+  font-size: 1.3rem; font-weight: 700; display: inline-block;
+}
+
+/* ===== 日本語の改行最適化（Android 360px / iPhone 375px を最小基準） ===== */
+body { font-feature-settings: "palt" 1; }
+h1, h2, h3, .page-hero__title, .page-section__title,
+.price-card__name, .price-choose__plan, .about-features__title {
+  /* 見出しは行末を揃えて不自然な1文字残りを防ぐ */
+  text-wrap: balance;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+p, li, dd, .page-section__lead, .price-faq__a, .about-faq__a {
+  /* 本文は文節単位で折り返す。未対応ブラウザでは通常の折り返しになる */
+  word-break: auto-phrase;
+  line-break: strict;
+  text-wrap: pretty;
+}
+/* URL やメールアドレスだけははみ出しを防ぐ */
+a[href^="http"], .price-faq__a a { overflow-wrap: anywhere; }
+
+/* PC 用の強制改行はスマホでは無効化する（行が寸断されるため） */
+@media (max-width: 767px) {
+  .price-br-pc, .about-br-pc, .pc-only-br { display: none; }
+  .page-hero { padding: 4rem 1.6rem 3.2rem; }
+  .page-hero__title { font-size: 2.6rem; }
+  .page-section { padding: 3.6rem 1.6rem; }
+  .page-section__title { font-size: 2.2rem; }
+}
+/* Android の最小基準 360px でも破綻しないようにする */
+@media (max-width: 360px) {
+  .page-hero__title { font-size: 2.3rem; }
+  .page-section__title { font-size: 2rem; }
+  .price-card, .about-features__card { padding: 2rem 1.6rem; }
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "スケコン",
+  "alternateName": "Schecon",
+  "url": "https://schecon.com/",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "日程調整ツール",
+  "operatingSystem": "Web",
+  "browserRequirements": "モダンブラウザ（PC・スマートフォン対応）",
+  "inLanguage": "ja",
+  "description": "スケコンは、カレンダー・メール・チャットを統合した日程調整サービスです。GoogleカレンダーやOutlookカレンダーと連携して空き時間を自動抽出し、1対1からN対N、3社間までの日程調整を行えます。日程確定と同時にカレンダーへの自動登録とWeb会議URLの発行が行われます。",
+  "featureList": [
+    "N対Nの予定調整",
+    "3社間の予定調整",
+    "カレンダー連携による空き時間の自動抽出",
+    "確定した予定のカレンダー自動登録",
+    "Web会議URLの自動発行",
+    "メーラー機能",
+    "ビジネスチャット",
+    "オンライン名刺交換"
+  ],
+  "softwareHelp": "https://schecon.com/faq",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "フリープラン",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "description": "0円。日程調整の主催は月8回まで。回答側の利用は無制限。",
+      "category": "free"
+    },
+    {
+      "@type": "Offer",
+      "name": "スタンダードプラン",
+      "price": "660",
+      "priceCurrency": "JPY",
+      "description": "年払いの場合 月額660円（税込）。月払いは月額792円（税込）。日程調整の主催は月20回まで。回答側の利用は無制限。",
+      "category": "subscription"
+    },
+    {
+      "@type": "Offer",
+      "name": "ビジネスプラン",
+      "price": "990",
+      "priceCurrency": "JPY",
+      "description": "年払いの場合 月額990円（税込）。月払いは月額1,188円（税込）。日程調整の主催は無制限。回答側の利用も無制限。",
+      "category": "subscription"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "ja",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "日程調整の相手側にも、アカウント登録は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "回答する側のアカウント登録は不要です。主催者が発行した日程調整URLを開き、都合のよい候補日時を選ぶだけで回答が完了します。アプリのインストールも必要ないため、社外のお客様や採用候補者の方にも負担をかけません。なお、回答側の利用回数はどのプランでも無制限です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "カレンダー連携はどのような仕組みですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GoogleカレンダーおよびOutlookカレンダーと連携できます。連携すると既存の予定が自動で読み込まれ、空いている時間帯だけを候補として提示するため、ダブルブッキングを防げます。日程が確定すると、その予定は連携中のカレンダーへ自動で登録されます。設定はワンクリックで完了し、複数のカレンダーをまとめて確認することも可能です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "何人まで日程調整できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1対1の調整から、N対Nの複数人調整、3社間をまたぐ調整まで対応しています。参加人数の上限は設けていないため、少人数の商談から大人数の社内会議まで同じ操作で調整できます。プランによって変わるのは参加人数ではなく主催できる回数で、フリープランは月8回、スタンダードは月20回、ビジネスは無制限です。回答する側の回数は、いずれのプランでも無制限です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Web会議のURLは自動で発行されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zoom・Google Meet・Microsoft Teamsを連携している場合、日程が確定した時点でWeb会議URLが自動的に発行されます。発行されたURLは確定通知とカレンダーの予定に記載されるため、URLを作成して共有し直す手間がかかりません。各サービスのアカウントを一度連携しておけば、以降の日程調整では追加の設定は不要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "スマートフォンからも利用できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "スケコンはブラウザから利用するサービスのため、スマートフォンやタブレットのブラウザでもご利用いただけます。外出先で届いた日程調整の依頼にその場で回答したり、移動中に候補日を作成して送信したりできます。回答者側はアカウント登録もアプリのインストールも不要なので、スマートフォンでURLを開くだけで回答が完了します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "セキュリティ面はどうなっていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "運営会社はISMS（情報セキュリティマネジメントシステム）認証とプライバシーマークを取得し、その基準に沿って情報を管理しています。カレンダーやメールの連携には各サービスの公式な認証連携を利用しており、スケコンがお客様のパスワードをお預かりすることはありません。Google APIから取得した情報の取り扱いは、Google API Limited Use ポリシーに準拠しています。詳細はプライバシーポリシーおよび個人情報の取り扱いのページをご確認ください。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* ===== 横はみ出しの防止（Android 360px / iPhone 375px 基準） ===== */
+html, body { max-width: 100%; overflow-x: hidden; }
+.price-table-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  max-width: 100%; border-radius: 1.2rem;
+}
+.price-table-scroll table { margin: 0; }
+/* 100vw はスクロールバー分だけ本文より広くなり、はみ出しの原因になる */
+.mod-seo::before { width: 100% !important; left: 0 !important; }
+img, table, iframe, video { max-width: 100%; }
+.page-section__inner, .price-card, .price-choose__card,
+.about-features__card, .about-usecase__card { min-width: 0; }
+/* おすすめリボンがカード外へ出ないようにする */
+.price-card { position: relative; overflow: hidden; }
+.price-card__ribbon { right: 0 !important; }
+</style>
+<style>
+/* ===== ボタン・表の幅調整（360px 基準で親幅を超えないようにする） ===== */
+.price-btn, .about-btn, .page-cta__btn, .price-card__action a {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+/* caption はスクロール枠の外側幅を基準にすると溢れるため折り返す */
+.price-table__caption { width: 100%; box-sizing: border-box; white-space: normal; }
+
+@media (max-width: 480px) {
+  /* 左右 4rem の余白は 360px 幅では入りきらないので詰め、ボタンは横幅いっぱいに */
+  .price-btn, .about-btn, .page-cta__btn, .price-card__action a {
+    display: block;
+    width: 100%;
+    padding: 1.4rem 1.6rem;
+    text-align: center;
+  }
+  .price-card__action, .price-plans__download { padding: 0 .4rem; }
+}
 </style>
 </head>
 <body>
@@ -2599,6 +3067,140 @@
 </section>
 
 <!-- ===== 5. クロージングCTA ===== -->
+
+<!-- ===== 追加1. 利用シーン別の活用例 ===== -->
+<section class="about-section about-usecase" id="about-usecase" aria-labelledby="about-usecase-title">
+  <div class="about-section__inner">
+    <h2 class="page-section__title" id="about-usecase-title">利用シーン別の<span class="orange-keyword">活用例</span></h2>
+    <p class="page-section__lead">日程調整が発生する場面はさまざまです。スケコンがそれぞれの現場で<br class="about-br-pc">どのように手間を減らせるのかをご紹介します。</p>
+
+    <div class="about-usecase__grid">
+      <article class="about-usecase__card">
+        <figure class="about-usecase__figure">
+          <img src="/schecon-demo/images/illust/merit-sales.png" alt="営業・商談での活用イメージ" width="200" height="200" loading="lazy">
+        </figure>
+        <h3 class="about-usecase__title">営業・商談</h3>
+        <p class="about-usecase__problem">「候補日を3つ送る→都合が合わない→また送る」のメール往復で、せっかくの商談機会が先延ばしになってしまう。</p>
+        <p class="about-usecase__solution">スケコンなら、カレンダーの空き時間から候補を自動で組み立て、URLを送るだけで日程が決まります。お客様側は登録もインストールも不要。確定と同時にZoomやGoogle MeetのURLが発行され、Salesforceとの連携で商談情報の管理もスムーズです。</p>
+        <ul class="about-usecase__tags">
+          <li class="about-usecase__tag">先方は登録不要</li>
+          <li class="about-usecase__tag">Web会議URL自動発行</li>
+          <li class="about-usecase__tag">Salesforce連携</li>
+        </ul>
+      </article>
+
+      <article class="about-usecase__card">
+        <figure class="about-usecase__figure">
+          <img src="/schecon-demo/images/illust/merit-recruit.png" alt="採用面接での活用イメージ" width="200" height="200" loading="lazy">
+        </figure>
+        <h3 class="about-usecase__title">採用面接</h3>
+        <p class="about-usecase__problem">面接官が複数いると、全員の空き時間を突き合わせるだけで半日かかる。候補者を待たせるうちに他社に決まってしまうこともある。</p>
+        <p class="about-usecase__solution">スケコンは面接官全員のカレンダーから共通の空き時間を自動で抽出し、候補日程として候補者に提示します。候補者が選んだ時点で全員の予定へ自動登録されるため、日程確定までの連絡が一往復で完了します。一次・二次と続く複数回の調整も同じ流れで進められます。</p>
+        <ul class="about-usecase__tags">
+          <li class="about-usecase__tag">複数面接官の空き時間を自動抽出</li>
+          <li class="about-usecase__tag">候補者の負担ゼロ</li>
+        </ul>
+      </article>
+
+      <article class="about-usecase__card">
+        <figure class="about-usecase__figure">
+          <img src="/schecon-demo/images/illust/merit-tools.png" alt="社内MTG・定例会議での活用イメージ" width="200" height="200" loading="lazy">
+        </figure>
+        <h3 class="about-usecase__title">社内MTG・定例会議</h3>
+        <p class="about-usecase__problem">部署をまたぐ会議ほど「いつ空いていますか」のチャットが飛び交い、日程を決めるだけで会議前から消耗してしまう。</p>
+        <p class="about-usecase__solution">社内予定調整では、参加メンバーを選ぶだけで全員が参加できる時間帯が自動で提示されます。確定した予定は各自のカレンダーへ登録され、SlackやChatworkへの通知連携で共有まで完結。会議室や打ち合わせの前後を含めた無理のない時間設定も行えます。</p>
+        <ul class="about-usecase__tags">
+          <li class="about-usecase__tag">社内予定調整</li>
+          <li class="about-usecase__tag">Slack / Chatwork通知</li>
+        </ul>
+      </article>
+
+      <article class="about-usecase__card">
+        <figure class="about-usecase__figure">
+          <img src="/schecon-demo/images/illust/merit-remote.png" alt="リモートワークでの活用イメージ" width="200" height="200" loading="lazy">
+        </figure>
+        <h3 class="about-usecase__title">リモートワーク</h3>
+        <p class="about-usecase__problem">在宅・出社・外出が入り混じると相手の状況が見えず、声をかけるタイミングも会議の場所も決めにくい。</p>
+        <p class="about-usecase__solution">カレンダー連携によって、離れた場所にいるメンバーの空き時間もリアルタイムに反映されます。日程が決まると同時にWeb会議URLが発行されるため、会場調整は不要です。スマートフォンのブラウザからも操作できるので、移動中でも日程調整を止めずに進められます。</p>
+        <ul class="about-usecase__tags">
+          <li class="about-usecase__tag">Zoom / Google Meet / Teams</li>
+          <li class="about-usecase__tag">スマホ対応</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 追加2. 日程調整が完了するまでの流れ ===== -->
+<section class="about-section about-section--bg about-flow" id="about-flow" aria-labelledby="about-flow-title">
+  <div class="about-section__inner">
+    <h2 class="page-section__title" id="about-flow-title">日程調整が<span class="orange-keyword">完了するまでの流れ</span></h2>
+    <p class="page-section__lead">依頼をつくってから予定が確定するまで、主催者の操作は4ステップ。<br class="about-br-pc">確定後のカレンダー登録とWeb会議URLの発行は自動で行われます。</p>
+
+    <ol class="about-flow__list">
+      <li class="about-flow__item">
+        <span class="about-flow__num" aria-hidden="true">01</span>
+        <h3 class="about-flow__title">日程調整を作成する</h3>
+        <p class="about-flow__desc">1対1・複数人・社内から調整タイプを選び、会議名と所要時間、調整したい期間を入力します。連携済みのカレンダーから空いている時間帯が自動で抽出され、候補日程が組み立てられます。手動で候補を書き出す必要はありません。</p>
+      </li>
+      <li class="about-flow__item">
+        <span class="about-flow__num" aria-hidden="true">02</span>
+        <h3 class="about-flow__title">相手に依頼を送る</h3>
+        <p class="about-flow__desc">発行された日程調整URLを、メールやチャットで送るだけです。GmailやOutlookと連携したメーラー機能を使えばスケコン上から直接送信でき、SlackやChatworkへの通知にも対応しています。自社サイトに予約フォーム・予約ボタンとして埋め込むこともできます。</p>
+      </li>
+      <li class="about-flow__item">
+        <span class="about-flow__num" aria-hidden="true">03</span>
+        <h3 class="about-flow__title">相手が候補から選ぶ</h3>
+        <p class="about-flow__desc">回答者はURLを開き、都合のよい時間帯を選ぶだけで回答が完了します。アカウント登録は不要で、回答回数の制限もありません。複数人での調整では回答状況を一覧で確認でき、まだ回答していない相手だけに連絡を絞れます。</p>
+      </li>
+      <li class="about-flow__item">
+        <span class="about-flow__num" aria-hidden="true">04</span>
+        <h3 class="about-flow__title">自動で確定・登録される</h3>
+        <p class="about-flow__desc">全員の都合が合った時点で日程が確定し、参加者それぞれのカレンダーへ予定が自動登録されます。Zoom・Google Meet・Microsoft Teamsを連携していれば、Web会議URLも同時に発行され、確定通知とカレンダーの予定に記載されます。主催者が改めて案内メールを作る必要はありません。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 追加3. 機能に関するよくあるご質問 ===== -->
+<section class="about-section about-faq" id="about-faq" aria-labelledby="about-faq-title">
+  <div class="about-section__inner">
+    <h2 class="page-section__title" id="about-faq-title">機能に関する<span class="orange-keyword">よくあるご質問</span></h2>
+    <p class="page-section__lead">導入前によくいただくご質問をまとめました。<br class="about-br-pc">記載のない内容はお問い合わせよりお気軽にご相談ください。</p>
+
+    <dl class="about-faq__list">
+      <div class="about-faq__item">
+        <dt class="about-faq__q">日程調整の相手側にも、アカウント登録は必要ですか？</dt>
+        <dd class="about-faq__a">回答する側のアカウント登録は不要です。主催者が発行した日程調整URLを開き、都合のよい候補日時を選ぶだけで回答が完了します。アプリのインストールも必要ないため、社外のお客様や採用候補者の方にも負担をかけません。なお、回答側の利用回数はどのプランでも無制限です。</dd>
+      </div>
+
+      <div class="about-faq__item">
+        <dt class="about-faq__q">カレンダー連携はどのような仕組みですか？</dt>
+        <dd class="about-faq__a">GoogleカレンダーおよびOutlookカレンダーと連携できます。連携すると既存の予定が自動で読み込まれ、空いている時間帯だけを候補として提示するため、ダブルブッキングを防げます。日程が確定すると、その予定は連携中のカレンダーへ自動で登録されます。設定はワンクリックで完了し、複数のカレンダーをまとめて確認することも可能です。</dd>
+      </div>
+
+      <div class="about-faq__item">
+        <dt class="about-faq__q">何人まで日程調整できますか？</dt>
+        <dd class="about-faq__a">1対1の調整から、N対Nの複数人調整、3社間をまたぐ調整まで対応しています。参加人数の上限は設けていないため、少人数の商談から大人数の社内会議まで同じ操作で調整できます。プランによって変わるのは参加人数ではなく主催できる回数で、フリープランは月8回、スタンダードは月20回、ビジネスは無制限です。回答する側の回数は、いずれのプランでも無制限です。</dd>
+      </div>
+
+      <div class="about-faq__item">
+        <dt class="about-faq__q">Web会議のURLは自動で発行されますか？</dt>
+        <dd class="about-faq__a">Zoom・Google Meet・Microsoft Teamsを連携している場合、日程が確定した時点でWeb会議URLが自動的に発行されます。発行されたURLは確定通知とカレンダーの予定に記載されるため、URLを作成して共有し直す手間がかかりません。各サービスのアカウントを一度連携しておけば、以降の日程調整では追加の設定は不要です。</dd>
+      </div>
+
+      <div class="about-faq__item">
+        <dt class="about-faq__q">スマートフォンからも利用できますか？</dt>
+        <dd class="about-faq__a">スケコンはブラウザから利用するサービスのため、スマートフォンやタブレットのブラウザでもご利用いただけます。外出先で届いた日程調整の依頼にその場で回答したり、移動中に候補日を作成して送信したりできます。回答者側はアカウント登録もアプリのインストールも不要なので、スマートフォンでURLを開くだけで回答が完了します。</dd>
+      </div>
+
+      <div class="about-faq__item">
+        <dt class="about-faq__q">セキュリティ面はどうなっていますか？</dt>
+        <dd class="about-faq__a">運営会社はISMS（情報セキュリティマネジメントシステム）認証とプライバシーマークを取得し、その基準に沿って情報を管理しています。カレンダーやメールの連携には各サービスの公式な認証連携を利用しており、スケコンがお客様のパスワードをお預かりすることはありません。Google APIから取得した情報の取り扱いは、Google API Limited Use ポリシーに準拠しています。詳細はプライバシーポリシーおよび個人情報の取り扱いのページをご確認ください。</dd>
+      </div>
+    </dl>
+  </div>
+</section>
 <section class="about-section about-cta" id="about-cta" aria-labelledby="about-cta-title">
   <div class="about-section__inner about-cta__inner">
     <p class="about-cta__eyebrow">＼どんなに忙しい人でも日程調整が簡単に‼／</p>

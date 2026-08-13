@@ -1887,7 +1887,7 @@
 .page-hero {
   padding: 8rem 2rem 6rem;
   text-align: center;
-  background: linear-gradient(180deg, #fff8ef 0%, #ffffff 100%);
+  background: #fff;
 }
 .page-hero__title {
   font-size: 3.6rem; font-weight: 900; color: #ed9630;
@@ -2440,6 +2440,482 @@
   .price-cta__catch { font-size: 1.5rem; }
   .price-cta__ttl { font-size: 2.2rem; }
 }
+
+.price-card__feature--more { border-top: 1px dashed #e6ddd4; margin-top: .8rem; padding-top: 1.2rem; }
+.price-card__feature--more a { color: #ed9630; font-weight: 700; text-decoration: none; font-size: 1.3rem; }
+.price-card__feature--more a:hover { text-decoration: underline; }
+/* ===========================================================
+   /price 追加セクション（選び方 / 他ツールとの違い / 料金FAQ）
+   ルート 62.5%（1rem = 10px）前提 / 既存 .page-section 意匠に準拠
+   =========================================================== */
+
+/* ---- 共通グリッド ---- */
+.price-choose__grid,
+.price-diff__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 2.4rem;
+  align-items: stretch;
+}
+
+/* ---- 1. 料金プランの選び方 ---- */
+.price-choose__card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #f0ece8;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  padding: 3.2rem 2.4rem;
+  transition: transform .4s cubic-bezier(.25, .46, .45, .94), box-shadow .4s;
+}
+.price-choose__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
+}
+.price-choose__card--recommended {
+  border: 2px solid #ed9630;
+  box-shadow: 0 8px 24px rgba(237, 150, 48, .18);
+}
+.price-choose__volume {
+  align-self: flex-start;
+  background: #fff8f1;
+  color: #ed9630;
+  border-radius: 999px;
+  padding: .6rem 1.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 1.6rem;
+}
+.price-choose__volume strong {
+  font-size: 1.9rem;
+  font-weight: 900;
+  margin: 0 .2rem;
+}
+.price-choose__plan {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #15303d;
+  line-height: 1.5;
+  margin: 0 0 .6rem;
+}
+.price-choose__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ed9630;
+  margin: 0 0 1.6rem;
+}
+.price-choose__desc {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #81766e;
+  margin: 0 0 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px dashed #eee5dc;
+}
+.price-choose__points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.price-choose__points li {
+  position: relative;
+  padding-left: 1.8rem;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #81766e;
+  margin-bottom: .8rem;
+}
+.price-choose__points li:last-child { margin-bottom: 0; }
+.price-choose__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  background: #ed9630;
+}
+.price-choose__note {
+  max-width: 88rem;
+  margin: 3.2rem auto 0;
+  background: #fff8f1;
+  border-radius: 1.2rem;
+  padding: 2.4rem 2.8rem;
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #81766e;
+}
+.price-choose__note strong {
+  color: #ed9630;
+  font-weight: 700;
+}
+
+/* ---- 2. 他の日程調整ツールとの違い ---- */
+.price-diff__card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #f0ece8;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  padding: 3.2rem 2.4rem;
+  transition: transform .4s cubic-bezier(.25, .46, .45, .94), box-shadow .4s;
+}
+.price-diff__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
+}
+.price-diff__icon {
+  font-family: 'Material Symbols Outlined';
+  font-size: 4rem;
+  line-height: 1;
+  color: #ed9630;
+  display: block;
+  margin-bottom: 1.6rem;
+  font-weight: 300;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+}
+.price-diff__ttl {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #15303d;
+  line-height: 1.6;
+  margin: 0 0 1.2rem;
+}
+.price-diff__desc {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #81766e;
+  margin: 0 0 2rem;
+}
+.price-diff__tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin: auto 0 0;
+  padding: 0;
+}
+.price-diff__tag {
+  background: #fff8f1;
+  color: #d9821c;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: .5rem 1.2rem;
+  border-radius: 999px;
+}
+
+/* ---- 3. 料金に関するよくあるご質問 ---- */
+.price-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 96rem;
+  margin: 0 auto;
+}
+.price-faq__item {
+  background: #fff;
+  border: 1px solid #f0ece8;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  padding: 3.2rem 2.4rem;
+}
+.price-faq__q {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #15303d;
+  margin: 0 0 1.4rem;
+}
+.price-faq__q::before {
+  content: 'Q';
+  flex-shrink: 0;
+  color: #ed9630;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+.price-faq__a {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #81766e;
+  margin: 0;
+  padding-top: 1.4rem;
+  border-top: 1px dashed #eee5dc;
+}
+.price-faq__a::before {
+  content: 'A';
+  flex-shrink: 0;
+  color: #ed9630;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 1023px) {
+  .price-choose,
+  .price-diff,
+  .price-faq { padding: 6rem 2rem; }
+}
+
+@media (max-width: 767px) {
+  .price-choose,
+  .price-diff,
+  .price-faq { padding: 4rem 2rem; }
+  .price-choose__grid,
+  .price-diff__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  .price-choose__card,
+  .price-diff__card,
+  .price-faq__item { padding: 2.8rem 2rem; }
+  .price-choose__note {
+    padding: 2rem 2rem;
+    font-size: 1.4rem;
+  }
+  .price-choose__desc,
+  .price-diff__desc,
+  .price-faq__a { font-size: 1.4rem; }
+  .price-faq__q { font-size: 1.6rem; }
+}
+
+/* ===== トップページとの配色・意匠の統一 ===== */
+:root {
+  --sc-orange: #ed9630;
+  --sc-orange-dark: #d07a1a;
+  --sc-text: #81766e;
+  --sc-dark: #15303d;
+  --sc-bg: #f8f9fa;
+  --sc-line: rgba(129,118,110,.14);
+}
+.page-hero { padding: 5.6rem 2rem 4rem; background: #fff; }
+.page-hero__title { color: var(--sc-orange); }
+.page-hero__lead,
+.page-section__lead { color: var(--sc-text); }
+.page-section { padding: 4.4rem 2rem; }
+.page-section--bg { background: var(--sc-bg); border-top: 1px solid var(--sc-line); }
+.page-section__title { color: var(--sc-text); margin-bottom: 1.2rem; }
+.page-section__title .orange-keyword { color: var(--sc-orange); }
+.page-section__lead { margin-bottom: 3.2rem; }
+
+/* カードはトップの mod-allinone__card / mod-seo__card と同じ見た目に揃える */
+.price-card, .price-choose__card, .price-diff__card, .price-faq__item,
+.about-features__card, .about-usecase__card, .about-faq__item,
+.about-flow__step, .price-flow__step {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  border: none;
+}
+.price-card__name, .price-choose__plan, .price-diff__ttl,
+.about-features__title, .about-usecase__ttl { color: var(--sc-dark); }
+.price-card__num, .price-choose__price strong { color: var(--sc-orange); }
+.price-faq__q, .about-faq__q { color: var(--sc-dark); }
+.price-faq__a, .about-faq__a, .price-diff__desc,
+.about-usecase__desc, .about-features__desc { color: var(--sc-text); }
+
+/* ボタンはトップと同じ丸みと色 */
+.price-btn, .about-btn, .page-cta__btn {
+  background: var(--sc-orange);
+  color: #fff; border-radius: 999px;
+  padding: 1.6rem 4rem; font-weight: 700;
+  display: inline-block; text-decoration: none;
+  transition: background .3s;
+}
+.price-btn:hover, .about-btn:hover, .page-cta__btn:hover { background: var(--sc-orange-dark); }
+
+/* タグ・ピルもトップの mod-integration__tag に合わせる */
+.price-diff__tag, .about-service__pill, .price-choose__points li::marker {
+  color: var(--sc-orange);
+}
+.price-diff__tag, .about-service__pill {
+  background: #fff5e9; border-radius: 999px; padding: .6rem 1.4rem;
+  font-size: 1.3rem; font-weight: 700; display: inline-block;
+}
+
+/* ===== 日本語の改行最適化（Android 360px / iPhone 375px を最小基準） ===== */
+body { font-feature-settings: "palt" 1; }
+h1, h2, h3, .page-hero__title, .page-section__title,
+.price-card__name, .price-choose__plan, .about-features__title {
+  /* 見出しは行末を揃えて不自然な1文字残りを防ぐ */
+  text-wrap: balance;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+p, li, dd, .page-section__lead, .price-faq__a, .about-faq__a {
+  /* 本文は文節単位で折り返す。未対応ブラウザでは通常の折り返しになる */
+  word-break: auto-phrase;
+  line-break: strict;
+  text-wrap: pretty;
+}
+/* URL やメールアドレスだけははみ出しを防ぐ */
+a[href^="http"], .price-faq__a a { overflow-wrap: anywhere; }
+
+/* PC 用の強制改行はスマホでは無効化する（行が寸断されるため） */
+@media (max-width: 767px) {
+  .price-br-pc, .about-br-pc, .pc-only-br { display: none; }
+  .page-hero { padding: 4rem 1.6rem 3.2rem; }
+  .page-hero__title { font-size: 2.6rem; }
+  .page-section { padding: 3.6rem 1.6rem; }
+  .page-section__title { font-size: 2.2rem; }
+}
+/* Android の最小基準 360px でも破綻しないようにする */
+@media (max-width: 360px) {
+  .page-hero__title { font-size: 2.3rem; }
+  .page-section__title { font-size: 2rem; }
+  .price-card, .about-features__card { padding: 2rem 1.6rem; }
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "スケコン",
+  "description": "日程調整・カレンダー連携・メーラー・チャットを1つにまとめたオールインワンの日程調整サービス。GoogleカレンダーやOutlookカレンダー、Gmail、Outlook、Zoom、Google Meet、Teams、Slack、Chatwork、Salesforce、blastmailと連携できます。",
+  "brand": {
+    "@type": "Brand",
+    "name": "スケコン"
+  },
+  "category": "日程調整ツール",
+  "url": "https://schecon.com/price",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "フリープラン",
+      "description": "月額0円。主催する日程調整は月8回まで（成立時のみカウント）、回答は無制限。クレジットカードの登録は不要です。",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://schecon.com/price"
+    },
+    {
+      "@type": "Offer",
+      "name": "スタンダードプラン",
+      "description": "年払いの場合は月660円（税込）、月払いの場合は月792円（税込）。主催する日程調整は月20回まで（成立時のみカウント）、回答は無制限。",
+      "price": "660",
+      "priceCurrency": "JPY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://schecon.com/price"
+    },
+    {
+      "@type": "Offer",
+      "name": "ビジネスプラン",
+      "description": "年払いの場合は月990円（税込）、月払いの場合は月1,188円（税込）。主催・回答ともに日程調整は無制限。",
+      "price": "990",
+      "priceCurrency": "JPY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://schecon.com/price"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "無料のフリープランでは、どこまで使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "フリープランは0円でご利用いただけ、ご自身が主催する日程調整を月8回まで（日程が成立したときのみカウント）行えます。1対1予定調整・複数人予定調整・社内予定調整のほか、GoogleカレンダーやOutlookカレンダーとの連携、Zoom・Google Meet・Teams・Slack・Chatworkなどの連携機能もお使いいただけます。上位プランとの主な違いは主催できる回数の上限と、ビジネスプラン限定のOR設定です。お申し込み時にクレジットカードのご登録は必要ありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "年払いと月払いでは、どのくらい違いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "スタンダードプランは年払いで月660円（税込）、月払いで月792円（税込）となり、差額は月132円・年間で1,584円です。ビジネスプランは年払いで月990円（税込）、月払いで月1,188円（税込）となり、差額は月198円・年間で2,376円です。継続してご利用いただく前提であれば年払いのほうが総額を抑えられ、まずは短期間で試したい場合は月払いが選びやすい形になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "支払い方法は何が使えますか。請求書には対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "お申し込みはクレジットカード情報のご入力によるお手続きが基本の流れとなり、プラン選択後の画面でご登録いただけます。あわせて請求書でのお支払いにも対応しておりますので、社内の経理フロー上カード決済が難しい場合もご利用いただけます。請求書でのお支払いをご希望の場合は、お申し込み前にお問い合わせ窓口までご連絡ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "プランの変更や解約はいつでもできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "プランの変更・解約は、ログイン後のプラン管理画面からお手続きいただけます。上位プランへ変更すると、主催できる日程調整の回数上限が広がります。年払い期間の途中で変更・解約される場合の取り扱いなど、個別のご事情については事前にお問い合わせ窓口までご確認ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "日程調整に回答する相手にも料金はかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "回答する側の日程調整はどのプランでも無制限で、費用は一切かかりません。主催者が有料プランをご利用の場合でも、候補日に回答されるお取引先や社内メンバーにご負担が発生することはありません。ご自身が回答する側になる場面が多い方であれば、フリープランのままでも回数を気にせずご利用いただけます。回数としてカウントされるのは、あくまでご自身が主催した日程調整が成立したときのみです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "チームや部署など、複数人で利用したい場合はどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "日程調整を主催される方それぞれのアカウントで、必要なプランをお選びいただく形になります。回答のみで参加されるメンバーは無制限でご利用いただけるため、フリープランのままで問題ありません。社内予定調整機能を使えば、メンバーの空き時間を確認しながら会議の日程を決められます。複数名分をまとめてご契約・ご請求されたい場合は、お問い合わせ窓口までご相談ください。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* ===== 横はみ出しの防止（Android 360px / iPhone 375px 基準） ===== */
+html, body { max-width: 100%; overflow-x: hidden; }
+.price-table-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  max-width: 100%; border-radius: 1.2rem;
+}
+.price-table-scroll table { margin: 0; }
+/* 100vw はスクロールバー分だけ本文より広くなり、はみ出しの原因になる */
+.mod-seo::before { width: 100% !important; left: 0 !important; }
+img, table, iframe, video { max-width: 100%; }
+.page-section__inner, .price-card, .price-choose__card,
+.about-features__card, .about-usecase__card { min-width: 0; }
+/* おすすめリボンがカード外へ出ないようにする */
+.price-card { position: relative; overflow: hidden; }
+.price-card__ribbon { right: 0 !important; }
+</style>
+<style>
+/* ===== ボタン・表の幅調整（360px 基準で親幅を超えないようにする） ===== */
+.price-btn, .about-btn, .page-cta__btn, .price-card__action a {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+/* caption はスクロール枠の外側幅を基準にすると溢れるため折り返す */
+.price-table__caption { width: 100%; box-sizing: border-box; white-space: normal; }
+
+@media (max-width: 480px) {
+  /* 左右 4rem の余白は 360px 幅では入りきらないので詰め、ボタンは横幅いっぱいに */
+  .price-btn, .about-btn, .page-cta__btn, .price-card__action a {
+    display: block;
+    width: 100%;
+    padding: 1.4rem 1.6rem;
+    text-align: center;
+  }
+  .price-card__action, .price-plans__download { padding: 0 .4rem; }
+}
 </style>
 </head>
 <body>
@@ -2602,37 +3078,16 @@
         </div>
 
         <ul class="price-card__features">
+          
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>1対1予定調整</li>
-          <li class="price-card__feature price-card__feature--sub"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Ｌ 開始時間のカスタマイズ</li>
           <li class="price-card__feature price-card__feature--sub price-card__feature--off"><span class="price-mark price-mark--no" aria-hidden="true">—</span>OR設定（AさんまたはBさん）</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>複数人予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>社内予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>空き時間確認</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>代理で日程調整</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答補助&自動回答更新</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答画面カスタマイズ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>外部サイト埋め込み</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の予定を除外して候補日にする</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の時間帯を候補日から除外する</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダー自動入力・招待</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダーのグループ分類</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>メール通知</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>日程調整履歴</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>オンライン名刺自動交換</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アドレス帳機能</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>連絡先CSV出力（PCのみ）</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Outlook カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google Meet 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Teams 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Zoom 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Slack 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Chatwork 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>salesforce 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>blastmail 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>デフォルト設定の変更</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>マイページ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アカウント管理</li>
+          <li class="price-card__feature price-card__feature--more"><a href="#compare">▼ 全機能を比較表で見る</a></li>
         </ul>
 
         <p class="price-card__action"><a class="price-btn" href="/select">無料で登録</a></p>
@@ -2654,37 +3109,16 @@
         </div>
 
         <ul class="price-card__features">
+          
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>1対1予定調整</li>
-          <li class="price-card__feature price-card__feature--sub"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Ｌ 開始時間のカスタマイズ</li>
           <li class="price-card__feature price-card__feature--sub price-card__feature--off"><span class="price-mark price-mark--no" aria-hidden="true">—</span>OR設定（AさんまたはBさん）</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>複数人予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>社内予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>空き時間確認</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>代理で日程調整</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答補助&自動回答更新</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答画面カスタマイズ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>外部サイト埋め込み</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の予定を除外して候補日にする</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の時間帯を候補日から除外する</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダー自動入力・招待</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダーのグループ分類</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>メール通知</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>日程調整履歴</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>オンライン名刺自動交換</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アドレス帳機能</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>連絡先CSV出力（PCのみ）</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Outlook カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google Meet 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Teams 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Zoom 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Slack 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Chatwork 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>salesforce 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>blastmail 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>デフォルト設定の変更</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>マイページ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アカウント管理</li>
+          <li class="price-card__feature price-card__feature--more"><a href="#compare">▼ 全機能を比較表で見る</a></li>
         </ul>
 
         <p class="price-card__action"><a class="price-btn" href="/plan-management">お申し込み</a></p>
@@ -2705,37 +3139,16 @@
         </div>
 
         <ul class="price-card__features">
+          
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>1対1予定調整</li>
-          <li class="price-card__feature price-card__feature--sub"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Ｌ 開始時間のカスタマイズ</li>
           <li class="price-card__feature price-card__feature--sub"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>OR設定（AさんまたはBさん）</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>複数人予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>社内予定調整</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>空き時間確認</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>代理で日程調整</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答補助&自動回答更新</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>回答画面カスタマイズ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>外部サイト埋め込み</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の予定を除外して候補日にする</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>特定の時間帯を候補日から除外する</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダー自動入力・招待</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>カレンダーのグループ分類</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>メール通知</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>日程調整履歴</li>
           <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>オンライン名刺自動交換</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アドレス帳機能</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>連絡先CSV出力（PCのみ）</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Outlook カレンダー連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Google Meet 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Teams 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Zoom 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Slack 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>Chatwork 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>salesforce 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>blastmail 連携</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>デフォルト設定の変更</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>マイページ</li>
-          <li class="price-card__feature"><span class="price-mark price-mark--yes" aria-hidden="true">○</span>アカウント管理</li>
+          <li class="price-card__feature price-card__feature--more"><a href="#compare">▼ 全機能を比較表で見る</a></li>
         </ul>
 
         <p class="price-card__action"><a class="price-btn" href="/plan-management">お申し込み</a></p>
@@ -2753,7 +3166,7 @@
     <p class="page-section__lead">日程調整回数制限とすべての機能を一覧で比較できます。<br class="price-br-pc" />スマートフォンでは表を横にスクロールしてご覧ください。</p>
 
     <div class="price-compare__scroll" tabindex="0" role="region" aria-labelledby="price-compare-title">
-      <table class="price-table">
+      <div class="price-table-scroll"><table class="price-table">
         <caption class="price-table__caption">フリープラン・スタンダードプラン・ビジネスプランの機能比較表</caption>
         <thead>
           <tr>
@@ -2963,7 +3376,7 @@
             <td><span class="price-mark price-mark--yes">○</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 </section>
@@ -3036,6 +3449,151 @@
   </div>
 </section>
 
+
+<section class="page-section price-choose" id="plan-select" aria-labelledby="price-choose-title">
+  <div class="page-section__inner">
+    <h2 class="page-section__title" id="price-choose-title">月の件数でわかる<span class="orange-keyword">料金プランの選び方</span></h2>
+    <p class="page-section__lead">スケコンのプランは「1か月に自分が主催する日程調整の件数」で選ぶとシンプルです。<br class="price-br-pc" />回数としてカウントされるのは日程が成立したときのみで、回答する側の利用はどのプランでも無制限です。</p>
+
+    <div class="price-choose__grid">
+
+      <article class="price-choose__card">
+        <p class="price-choose__volume">月<strong>8</strong>件まで</p>
+        <h3 class="price-choose__plan">フリープラン</h3>
+        <p class="price-choose__price">0円/月</p>
+        <p class="price-choose__desc">週に1〜2件ほどの打ち合わせや、幹事を任されたときの単発の調整が中心の方に。まずは操作感を確かめたい段階でも、クレジットカードの登録なしで始められます。</p>
+        <ul class="price-choose__points">
+          <li>主催できる日程調整は月8回（成立時のみカウント）</li>
+          <li>回答する側の利用は無制限</li>
+          <li>カレンダー連携・Web会議連携も利用可能</li>
+        </ul>
+      </article>
+
+      <article class="price-choose__card price-choose__card--recommended">
+        <p class="price-choose__volume">月<strong>20</strong>件まで</p>
+        <h3 class="price-choose__plan">スタンダードプラン</h3>
+        <p class="price-choose__price">月660円（税込・年払い）</p>
+        <p class="price-choose__desc">週に3〜5件、定例会議やプロジェクトのMTGを継続的に主催する方に適したプランです。月8件では足りないが、毎日調整するほどではないという業務量が目安になります。</p>
+        <ul class="price-choose__points">
+          <li>主催できる日程調整は月20回（成立時のみカウント）</li>
+          <li>月払いの場合は月792円（税込）</li>
+          <li>回答する側の利用は無制限</li>
+        </ul>
+      </article>
+
+      <article class="price-choose__card">
+        <p class="price-choose__volume">月<strong>20</strong>件を超える</p>
+        <h3 class="price-choose__plan">ビジネスプラン</h3>
+        <p class="price-choose__price">月990円（税込・年払い）</p>
+        <p class="price-choose__desc">商談・面接・面談など、ほぼ毎営業日のように日程を組む方に。件数を数えながら使う必要がなくなるため、繁忙期に上限を気にせず調整を進められます。</p>
+        <ul class="price-choose__points">
+          <li>主催できる日程調整は無制限</li>
+          <li>月払いの場合は月1,188円（税込）</li>
+          <li>OR設定（AさんまたはBさん）にも対応</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <p class="price-choose__note">年払いと月払いの差額は、スタンダードプランで月<strong>132円</strong>（年間1,584円）、ビジネスプランで月<strong>198円</strong>（年間2,376円）です。継続してご利用いただく見込みがある場合は年払いのほうが総額を抑えられます。まずは0円のフリープランで運用を試し、主催件数が上限に届くようになった時点で上位プランへ切り替える進め方もおすすめです。</p>
+  </div>
+</section>
+
+<section class="page-section page-section--bg price-diff" id="difference" aria-labelledby="price-diff-title">
+  <div class="page-section__inner">
+    <h2 class="page-section__title" id="price-diff-title">他の日程調整ツールとの<span class="orange-keyword">違い</span></h2>
+    <p class="page-section__lead">スケコンは、日程調整・カレンダー連携・メーラー・チャットを1つのサブスクリプションにまとめたオールインワン型のサービスです。<br class="price-br-pc" />機能ごとに別々のツールを契約する必要がなくなり、料金も運用も1本化できます。</p>
+
+    <div class="price-diff__grid">
+
+      <article class="price-diff__card">
+        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">event_available</span>
+        <h3 class="price-diff__ttl">日程調整とカレンダーが1つの契約に</h3>
+        <p class="price-diff__desc">GoogleカレンダーやOutlookカレンダーと連携し、空き時間の確認から確定後の予定登録・招待までを同じ画面で完結できます。カレンダー同期のためのアドオンを別途契約する必要はありません。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">Googleカレンダー</li>
+          <li class="price-diff__tag">Outlookカレンダー</li>
+        </ul>
+      </article>
+
+      <article class="price-diff__card">
+        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">mail</span>
+        <h3 class="price-diff__ttl">メーラー連携で案内メールまで完結</h3>
+        <p class="price-diff__desc">GmailやOutlookと連携できるため、候補日の提示から確定連絡までを普段お使いのメール環境の延長で進められます。日程調整ツールとメール配信の仕組みを行き来する手間がなくなります。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">Gmail</li>
+          <li class="price-diff__tag">Outlook</li>
+          <li class="price-diff__tag">blastmail</li>
+        </ul>
+      </article>
+
+      <article class="price-diff__card">
+        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">forum</span>
+        <h3 class="price-diff__ttl">チャット・Web会議もそのまま接続</h3>
+        <p class="price-diff__desc">SlackやChatworkから日程調整を開始でき、確定した予定にはZoom・Google Meet・TeamsのURLを紐づけられます。社外とはメール、社内とはチャットという使い分けをしたままでも運用が分断されません。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">Slack</li>
+          <li class="price-diff__tag">Chatwork</li>
+          <li class="price-diff__tag">Zoom</li>
+          <li class="price-diff__tag">Google Meet</li>
+          <li class="price-diff__tag">Teams</li>
+        </ul>
+      </article>
+
+      <article class="price-diff__card">
+        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">receipt_long</span>
+        <h3 class="price-diff__ttl">契約・請求・管理コストを1本化</h3>
+        <p class="price-diff__desc">機能ごとにツールを分けると、契約の管理や請求処理、権限設定の手間もその数だけ増えていきます。スケコンなら1つの月額料金にまとまるため、導入の稟議も日々の管理業務もシンプルになります。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">Salesforce</li>
+          <li class="price-diff__tag">請求書対応</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="page-section price-faq" id="price-faq" aria-labelledby="price-faq-title">
+  <div class="page-section__inner">
+    <h2 class="page-section__title" id="price-faq-title">料金に関する<span class="orange-keyword">よくあるご質問</span></h2>
+    <p class="page-section__lead">お申し込み前によくいただくご質問をまとめました。<br class="price-br-pc" />記載のない内容は、お問い合わせ窓口までお気軽にご相談ください。</p>
+
+    <div class="price-faq__list">
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">無料のフリープランでは、どこまで使えますか？</h3>
+        <p class="price-faq__a">フリープランは0円でご利用いただけ、ご自身が主催する日程調整を月8回まで（日程が成立したときのみカウント）行えます。1対1予定調整・複数人予定調整・社内予定調整のほか、GoogleカレンダーやOutlookカレンダーとの連携、Zoom・Google Meet・Teams・Slack・Chatworkなどの連携機能もお使いいただけます。上位プランとの主な違いは主催できる回数の上限と、ビジネスプラン限定のOR設定です。お申し込み時にクレジットカードのご登録は必要ありません。</p>
+      </article>
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">年払いと月払いでは、どのくらい違いますか？</h3>
+        <p class="price-faq__a">スタンダードプランは年払いで月660円（税込）、月払いで月792円（税込）となり、差額は月132円・年間で1,584円です。ビジネスプランは年払いで月990円（税込）、月払いで月1,188円（税込）となり、差額は月198円・年間で2,376円です。継続してご利用いただく前提であれば年払いのほうが総額を抑えられ、まずは短期間で試したい場合は月払いが選びやすい形になります。</p>
+      </article>
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">支払い方法は何が使えますか。請求書には対応していますか？</h3>
+        <p class="price-faq__a">お申し込みはクレジットカード情報のご入力によるお手続きが基本の流れとなり、プラン選択後の画面でご登録いただけます。あわせて請求書でのお支払いにも対応しておりますので、社内の経理フロー上カード決済が難しい場合もご利用いただけます。請求書でのお支払いをご希望の場合は、お申し込み前にお問い合わせ窓口までご連絡ください。</p>
+      </article>
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">プランの変更や解約はいつでもできますか？</h3>
+        <p class="price-faq__a">プランの変更・解約は、ログイン後のプラン管理画面からお手続きいただけます。上位プランへ変更すると、主催できる日程調整の回数上限が広がります。年払い期間の途中で変更・解約される場合の取り扱いなど、個別のご事情については事前にお問い合わせ窓口までご確認ください。</p>
+      </article>
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">日程調整に回答する相手にも料金はかかりますか？</h3>
+        <p class="price-faq__a">回答する側の日程調整はどのプランでも無制限で、費用は一切かかりません。主催者が有料プランをご利用の場合でも、候補日に回答されるお取引先や社内メンバーにご負担が発生することはありません。ご自身が回答する側になる場面が多い方であれば、フリープランのままでも回数を気にせずご利用いただけます。回数としてカウントされるのは、あくまでご自身が主催した日程調整が成立したときのみです。</p>
+      </article>
+
+      <article class="price-faq__item">
+        <h3 class="price-faq__q">チームや部署など、複数人で利用したい場合はどうなりますか？</h3>
+        <p class="price-faq__a">日程調整を主催される方それぞれのアカウントで、必要なプランをお選びいただく形になります。回答のみで参加されるメンバーは無制限でご利用いただけるため、フリープランのままで問題ありません。社内予定調整機能を使えば、メンバーの空き時間を確認しながら会議の日程を決められます。複数名分をまとめてご契約・ご請求されたい場合は、お問い合わせ窓口までご相談ください。</p>
+      </article>
+
+    </div>
+  </div>
+</section>
 <section class="price-cta js-easing" aria-labelledby="price-cta-title">
   <div class="price-inner price-cta__inner">
     <p class="price-cta__catch">＼どんなに忙しい人でも日程調整が簡単に‼／</p>

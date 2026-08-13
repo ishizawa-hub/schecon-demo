@@ -6394,3 +6394,63 @@ html.notouch .m-btn a:hover:after {
   .mod-allinone__icon { width: 7.6rem !important; height: 7.6rem !important; margin-bottom: 1.4rem !important; }
   .mod-seo__card-icon { width: 6.4rem !important; height: 6.4rem !important; margin-bottom: 1rem !important; }
 }
+
+/* ===== トップページ余白最適化 ===== */
+/* 全体に高さを取りすぎていたため、セクションの上下余白を圧縮する */
+.section,
+.mod-allinone,
+.mod-integration,
+.mod-seo {
+  padding-top: 4.4rem !important;
+  padding-bottom: 4.4rem !important;
+}
+.m-adjustment.top-adjustment {
+  padding-bottom: 4.8rem !important;
+}
+
+/* 見出し〜リード〜本文の間隔を詰める */
+.section__ttl,
+.mod-allinone__title,
+.mod-integration__title,
+.mod-seo__title {
+  margin-bottom: 1.2rem !important;
+}
+.section__lead,
+.mod-allinone__subtitle,
+.mod-integration__subtitle,
+.mod-seo__subtitle {
+  margin-bottom: 3.2rem !important;
+  line-height: 1.75 !important;
+}
+
+/* カード内の余白も詰める（枚数が多く、積み上がると効く） */
+.mod-allinone__card { padding: 2.4rem 2rem !important; }
+.mod-seo__card { padding: 2.4rem 2rem !important; }
+.mod-allinone__icon { margin-bottom: 1.2rem !important; }
+.mod-seo__card-icon { margin-bottom: 1rem !important; }
+.mod-allinone__card-desc,
+.mod-seo__card-desc { line-height: 1.8 !important; }
+
+/* ヒーロー: リード文の行間と下余白 */
+.m-adjustment__lead { margin-bottom: 2.4rem !important; }
+.m-adjustment__lead .orange.opc-4 { line-height: 1.45 !important; }
+
+/* 動画ボタン列: 1枚目だけボタンが無く列が不揃いになるため、
+   カードを上端で揃え、ボタンはカード下端に固定して段差を目立たせない */
+.m-adjustment__list { align-items: flex-start !important; }
+.m-adjustment__list .item { display: flex !important; flex-direction: column !important; }
+.m-adjustment__list .item .item__container { flex: 1 1 auto !important; }
+.m-adjustment__list .item .item__btn { margin-top: 1.2rem !important; }
+
+/* セクション区切りの視認性を保つため、背景色付きセクションの間に細い境界を置く */
+.section--bg { border-top: 1px solid rgba(129,118,110,.08); }
+
+@media (max-width: 767px) {
+  .section,
+  .mod-allinone,
+  .mod-integration,
+  .mod-seo {
+    padding-top: 3.6rem !important;
+    padding-bottom: 3.6rem !important;
+  }
+}
