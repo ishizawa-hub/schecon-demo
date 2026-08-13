@@ -3038,6 +3038,101 @@ img, table, iframe, video { max-width: 100%; }
 @media (max-width: 1023px) { .price-diff__grid { grid-template-columns: repeat(2, 1fr) !important; } }
 @media (max-width: 599px)  { .price-diff__grid { grid-template-columns: 1fr !important; } }
 </style>
+<style>
+/* ===== 比較表の見せ方を作り直す ===== */
+/* カード内の記号だけを隠す。表の印は必要なので対象から外す */
+.price-mark { display: inline-block !important; }
+.price-card__feature .price-mark { display: none !important; }
+
+/* 「機能」列はプランではないので、プラン3色とは別系統の濃紺にする */
+.price-table thead th:first-child {
+  background: #15303d !important;
+  color: #fff !important;
+}
+/* 見出し行は角丸で表全体を囲う */
+.price-table thead th:first-child { border-top-left-radius: 1rem; }
+.price-table thead th:last-child { border-top-right-radius: 1rem; }
+
+/* 印はプラン色で塗り分け、縦に色で追えるようにする */
+.price-table tbody td:nth-child(2) .price-mark--yes { color: #a1c92f !important; }
+.price-table tbody td:nth-child(3) .price-mark--yes { color: #f1ba2b !important; }
+.price-table tbody td:nth-child(4) .price-mark--yes { color: #ed9630 !important; }
+.price-mark--yes { font-size: 1.8rem !important; font-weight: 700; line-height: 1; }
+.price-mark--no { color: #c9c4bf !important; font-size: 1.6rem !important; }
+
+/* 機能名の列は左寄せ・読みやすさ優先、数値行は目立たせる */
+.price-table tbody th { text-align: left; color: #15303d; font-weight: 500; }
+.price-table__sub { color: #81766e !important; font-size: 1.3rem !important; }
+.price-table__row--highlight td { font-weight: 700; color: #15303d; }
+.price-table__row--highlight th { font-weight: 700; }
+
+/* 横スクロール時も機能名が見えるように左列を固定する */
+@media (max-width: 767px) {
+  .price-table thead th:first-child,
+  .price-table tbody th {
+    position: sticky; left: 0; z-index: 2;
+    background: #fff; box-shadow: 1px 0 0 rgba(129,118,110,.14);
+  }
+  .price-table thead th:first-child { background: #15303d; }
+  .price-table tbody tr:nth-child(even) th { background: #f8f9fa; }
+}
+
+/* ===== 導入・利用開始の流れ ===== */
+.price-flow__grid { position: relative; }
+.price-flow__step {
+  position: relative;
+  padding: 3.2rem 1.8rem 2.4rem !important;
+  border-top: 4px solid #ed9630;
+  text-align: center;
+}
+/* 番号はカード上辺にまたがる形で置く */
+.price-flow__num {
+  position: absolute; top: -1.8rem; left: 50%; transform: translateX(-50%);
+  width: 3.6rem; height: 3.6rem; line-height: 3.6rem;
+  border-radius: 50%; background: #ed9630; color: #fff;
+  font-size: 1.6rem; font-weight: 700; text-align: center;
+  box-shadow: 0 2px 8px rgba(237,150,48,.35);
+}
+.price-flow__pict {
+  display: block; width: 7.2rem; height: 7.2rem;
+  margin: .8rem auto 1.2rem; object-fit: contain;
+}
+.price-flow__ttl { font-size: 1.55rem !important; line-height: 1.6 !important; color: #15303d; }
+.price-flow__note { font-size: 1.25rem; color: #81766e; }
+
+/* ステップ間に矢印を置いて流れを示す */
+@media (min-width: 768px) {
+  .price-flow__step::after {
+    content: ""; position: absolute; top: 50%; right: -1.5rem;
+    width: 0; height: 0; transform: translateY(-50%);
+    border-left: .9rem solid rgba(237,150,48,.5);
+    border-top: .7rem solid transparent;
+    border-bottom: .7rem solid transparent;
+  }
+  .price-flow__step:last-child::after { display: none; }
+}
+</style>
+<style>
+/* ===== 料金ページのファーストビュー圧縮 ===== */
+/* ヒーローとプラン一覧で説明が重複していたため、ヒーローに集約したうえで
+   プランの機能まで初期表示に入る高さに詰める */
+.page-hero { padding: 3rem 2rem 1.6rem !important; }
+.page-hero__title { font-size: 2.8rem !important; margin-bottom: .8rem !important; }
+.page-hero__lead { font-size: 1.4rem !important; line-height: 1.7 !important; }
+.page-breadcrumb { padding: 1rem 2rem !important; }
+.price-plans { padding: 2.4rem 0 3.2rem !important; }
+
+/* カード内も詰める */
+.price-card__name { padding: 1.1rem 1.6rem !important; margin-bottom: 1.4rem !important; font-size: 1.75rem; }
+.price-card__price { margin-bottom: .4rem !important; }
+.price-card__num { font-size: 3.4rem !important; }
+.price-card__head { padding-bottom: 1.6rem !important; }
+.price-card__limit { padding: 1.2rem 1rem !important; margin-bottom: 1.4rem !important; }
+.price-card__limit-ttl { font-size: 1.3rem !important; margin-bottom: .4rem !important; }
+.price-card__feature { padding: .28rem 0 !important; font-size: 1.3rem; }
+.price-card__action { margin-top: 1.6rem !important; margin-bottom: 2rem !important; }
+.price-btn { padding: 1.2rem 2.4rem !important; font-size: 1.45rem !important; }
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3046,20 +3141,20 @@ img, table, iframe, video { max-width: 100%; }
           <span class="line-1"></span><span class="line-2"></span><span class="line-3"></span>
         </button>
         <div class="header__logo">
-          <a href="/"><img class="lazyload" data-src="/schecon-demo/assets/imgs/common/logo.svg" alt="日程調整&チャット" /></a>
+          <a href="/schecon-demo/top/"><img class="lazyload" data-src="/schecon-demo/assets/imgs/common/logo.svg" alt="日程調整&チャット" /></a>
         </div>
         <nav class="header__nav">
           <div class="header__nav__wrap">
             <ul class="header__nav__list">
-              <li><a href="/">TOP（日程調整&チャットはスケコン）</a></li>
+              <li><a href="/schecon-demo/top/">TOP（日程調整&チャットはスケコン）</a></li>
               <li><a href="/one-on-one-create">1対1予定調整</a></li>
               <li><a href="/create">複数人予定調整</a></li>
               <li><a href="/group">社内予定調整</a></li>
               <li><a href="/chat">チャットで予定調整</a></li>
               <li><a href="/chat">チャット</a></li>
               <li><a href="https://schecon.com/article/?cat=114">スケコンの使い方</a></li>
-              <li><a href="/price">３つの料金プラン</a></li>
-              <li><a href="/about">スケコンの機能紹介</a></li>
+              <li><a href="/schecon-demo/price/">３つの料金プラン</a></li>
+              <li><a href="/schecon-demo/about/">スケコンの機能紹介</a></li>
               <li><a href="https://schecon.com/article/">Schecon Magazine</a></li>
               <li><a href="/faq">よくあるご質問</a></li>
               <li><a href="/contact/inquiry">お問い合わせ</a></li>
@@ -3175,13 +3270,10 @@ img, table, iframe, video { max-width: 100%; }
 <div class="page-breadcrumb"><a href="/schecon-demo/top">TOP</a> ／ 料金プラン</div>
 <section class="page-hero">
   <h1 class="page-hero__title">スケコンの料金プラン</h1>
-  <p class="page-hero__lead">日程調整に必要な便利な機能を豊富に備え、<br>3つのプランで業界最安値でご用意しております。</p>
+  <p class="page-hero__lead">フリープランは0円、有料プランは月660円（税込・年払い）から。<br class="price-br-pc">日程調整・カレンダー連携・メーラー・チャットが、すべて含まれています。</p>
 </section>
 <section class="price-plans js-easing" id="plans" aria-labelledby="price-plans-title">
   <div class="price-inner">
-    <h2 class="page-section__title" id="price-plans-title"><span class="orange-keyword">業界最安値</span>の3つの料金プラン</h2>
-    <p class="page-section__lead">スケコンは日程調整に必要な便利な機能を豊富に<br class="price-br-pc" />備え、３つのプランで業界最安値でご用意しております。</p>
-
     <div class="price-plans__grid">
 
       <article class="price-card price-card--free">
@@ -3550,20 +3642,20 @@ img, table, iframe, video { max-width: 100%; }
 
     <ol class="price-flow__grid">
       <li class="price-flow__step">
-        <span class="price-flow__num" aria-hidden="true">1</span>
+        <span class="price-flow__num" aria-hidden="true">1</span><img class="price-flow__pict" src="/schecon-demo/images/illust/merit-remote.png" alt="アカウントでログイン" width="200" height="200" loading="lazy">
         <p class="price-flow__ttl">Googleアカウントまたは<br />Microsoftアカウントでログイン</p>
       </li>
       <li class="price-flow__step">
-        <span class="price-flow__num" aria-hidden="true">2</span>
+        <span class="price-flow__num" aria-hidden="true">2</span><img class="price-flow__pict" src="/schecon-demo/images/illust/merit-tools.png" alt="プランの選択" width="200" height="200" loading="lazy">
         <p class="price-flow__ttl">プランの選択</p>
       </li>
       <li class="price-flow__step">
-        <span class="price-flow__num" aria-hidden="true">3</span>
+        <span class="price-flow__num" aria-hidden="true">3</span><img class="price-flow__pict" src="/schecon-demo/images/illust/merit-sales.png" alt="お支払い情報の入力" width="200" height="200" loading="lazy">
         <p class="price-flow__ttl">クレジットカード情報のご入力</p>
         <p class="price-flow__note">（請求書対応も可能）</p>
       </li>
       <li class="price-flow__step">
-        <span class="price-flow__num" aria-hidden="true">4</span>
+        <span class="price-flow__num" aria-hidden="true">4</span><img class="price-flow__pict" src="/schecon-demo/images/illust/merit-dx.png" alt="導入完了" width="200" height="200" loading="lazy">
         <p class="price-flow__ttl">決済完了・導入完了！</p>
       </li>
     </ol>
