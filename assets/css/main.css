@@ -6352,10 +6352,10 @@ html.notouch .m-btn a:hover:after {
   background-position: center;
   background-size: contain;
 }
-.mod-allinone__grid > .mod-allinone__card:nth-child(1) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-ai.png) !important; }
-.mod-allinone__grid > .mod-allinone__card:nth-child(2) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-calendar.png) !important; }
-.mod-allinone__grid > .mod-allinone__card:nth-child(3) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-mail.png) !important; }
-.mod-allinone__grid > .mod-allinone__card:nth-child(4) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-chat.png) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(1) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-ai.webp) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(2) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-calendar.webp) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(3) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-mail.webp) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(4) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-chat.webp) !important; }
 
 .mod-seo__card-icon {
   font-size: 0 !important;
@@ -6367,12 +6367,12 @@ html.notouch .m-btn a:hover:after {
   background-position: center;
   background-size: contain;
 }
-.mod-seo__grid > .mod-seo__card:nth-child(1) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-tools.png) !important; }
-.mod-seo__grid > .mod-seo__card:nth-child(2) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-dx.png) !important; }
-.mod-seo__grid > .mod-seo__card:nth-child(3) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-remote.png) !important; }
-.mod-seo__grid > .mod-seo__card:nth-child(4) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-sales.png) !important; }
-.mod-seo__grid > .mod-seo__card:nth-child(5) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-recruit.png) !important; }
-.mod-seo__grid > .mod-seo__card:nth-child(6) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-free.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(1) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-tools.webp) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(2) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-dx.webp) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(3) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-remote.webp) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(4) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-sales.webp) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(5) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-recruit.webp) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(6) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-free.webp) !important; }
 
 .mod-integration__card-icon { display: none !important; }
 .mod-integration__card-body::before {
@@ -6386,9 +6386,9 @@ html.notouch .m-btn a:hover:after {
   background-position: center;
   background-size: contain;
 }
-.mod-integration__grid > .mod-integration__card:nth-child(1) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-calendar.png) !important; }
-.mod-integration__grid > .mod-integration__card:nth-child(2) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-mail.png) !important; }
-.mod-integration__grid > .mod-integration__card:nth-child(3) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-integration.png) !important; }
+.mod-integration__grid > .mod-integration__card:nth-child(1) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-calendar.webp) !important; }
+.mod-integration__grid > .mod-integration__card:nth-child(2) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-mail.webp) !important; }
+.mod-integration__grid > .mod-integration__card:nth-child(3) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-integration.webp) !important; }
 
 @media (max-width: 767px) {
   .mod-allinone__icon { width: 7.6rem !important; height: 7.6rem !important; margin-bottom: 1.4rem !important; }
