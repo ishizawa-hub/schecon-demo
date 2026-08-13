@@ -3032,6 +3032,12 @@ img, table, iframe, video { max-width: 100%; }
 .price-table thead th:nth-child(3) { background: #f1ba2b !important; }
 .price-table thead th:nth-child(4) { background: #ed9630 !important; }
 </style>
+<style>
+/* 6枚を3列×2行で揃える（auto-fit だと最終行が1枚だけ残る） */
+.price-diff__grid { grid-template-columns: repeat(3, 1fr) !important; }
+@media (max-width: 1023px) { .price-diff__grid { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 599px)  { .price-diff__grid { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3662,6 +3668,26 @@ img, table, iframe, video { max-width: 100%; }
         <ul class="price-diff__tags">
           <li class="price-diff__tag">Salesforce</li>
           <li class="price-diff__tag">請求書対応</li>
+        </ul>
+      </article>
+      <article class="price-diff__card">
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/feat-ai.png" alt="AI日程調整" width="200" height="200" loading="lazy">
+        <h3 class="price-diff__ttl">AIが最適な日程を自動で提案</h3>
+        <p class="price-diff__desc">参加者全員のカレンダーから空き時間を読み取り、AIが最適な候補日を提案します。1対1から100名規模の調整まで、候補日を人が突き合わせる作業が不要になります。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">AI自動提案</li>
+          <li class="price-diff__tag">最短30秒</li>
+          <li class="price-diff__tag">100名規模まで</li>
+        </ul>
+      </article>
+      <article class="price-diff__card">
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/merit-free.png" alt="無料から始められる" width="200" height="200" loading="lazy">
+        <h3 class="price-diff__ttl">回答する側は登録も費用も不要</h3>
+        <p class="price-diff__desc">日程調整に回答する側の利用は、どのプランでも無制限かつ無料です。相手にアカウント登録を求めないため、社外との調整でも導入のハードルがありません。</p>
+        <ul class="price-diff__tags">
+          <li class="price-diff__tag">回答は無制限</li>
+          <li class="price-diff__tag">相手の登録不要</li>
+          <li class="price-diff__tag">月660円から</li>
         </ul>
       </article>
 
