@@ -2917,6 +2917,47 @@ img, table, iframe, video { max-width: 100%; }
   .price-card__action, .price-plans__download { padding: 0 .4rem; }
 }
 </style>
+<style>
+/* ===== 配色の是正（薄いオレンジベージュを使用しない） ===== */
+/* 下地・交互色はトップページと同じ無彩色に統一する */
+.price-card__limit,
+.price-choose__volume {
+  background: #f8f9fa !important;
+  border: 1px solid rgba(129,118,110,.12) !important;
+}
+.price-table tbody tr:nth-child(even) th,
+.price-table tbody tr:nth-child(even) td {
+  background: #f8f9fa !important;
+}
+.price-table tbody tr:hover th,
+.price-table tbody tr:hover td {
+  background: #f1f3f5 !important;
+}
+.price-card__limit-sub { border-top-color: rgba(129,118,110,.18) !important; }
+.price-table tbody th,
+.price-table tbody td { border-bottom-color: rgba(129,118,110,.14) !important; }
+
+/* タグ・ピルは白地＋オレンジ枠に（トップの見え方に合わせる） */
+.price-diff__tag,
+.about-service__pill,
+.about-services__pill,
+.about-scenes__tag,
+.about-usecase__tag {
+  background: #fff !important;
+  border: 1px solid rgba(237,150,48,.35) !important;
+  color: #ed9630 !important;
+}
+.about-faq__a::before { background: #f8f9fa !important; }
+
+/* ===== ピクトをトップページと統一 ===== */
+.price-diff__icon {
+  display: block !important;
+  width: 8rem !important;
+  height: 8rem !important;
+  margin: 0 auto 1.6rem !important;
+  object-fit: contain;
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3507,7 +3548,7 @@ img, table, iframe, video { max-width: 100%; }
     <div class="price-diff__grid">
 
       <article class="price-diff__card">
-        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">event_available</span>
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/feat-calendar.png" alt="カレンダー連携" width="200" height="200" loading="lazy">
         <h3 class="price-diff__ttl">日程調整とカレンダーが1つの契約に</h3>
         <p class="price-diff__desc">GoogleカレンダーやOutlookカレンダーと連携し、空き時間の確認から確定後の予定登録・招待までを同じ画面で完結できます。カレンダー同期のためのアドオンを別途契約する必要はありません。</p>
         <ul class="price-diff__tags">
@@ -3517,7 +3558,7 @@ img, table, iframe, video { max-width: 100%; }
       </article>
 
       <article class="price-diff__card">
-        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">mail</span>
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/feat-mail.png" alt="メーラー連携" width="200" height="200" loading="lazy">
         <h3 class="price-diff__ttl">メーラー連携で案内メールまで完結</h3>
         <p class="price-diff__desc">GmailやOutlookと連携できるため、候補日の提示から確定連絡までを普段お使いのメール環境の延長で進められます。日程調整ツールとメール配信の仕組みを行き来する手間がなくなります。</p>
         <ul class="price-diff__tags">
@@ -3528,7 +3569,7 @@ img, table, iframe, video { max-width: 100%; }
       </article>
 
       <article class="price-diff__card">
-        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">forum</span>
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/feat-chat.png" alt="チャット・Web会議連携" width="200" height="200" loading="lazy">
         <h3 class="price-diff__ttl">チャット・Web会議もそのまま接続</h3>
         <p class="price-diff__desc">SlackやChatworkから日程調整を開始でき、確定した予定にはZoom・Google Meet・TeamsのURLを紐づけられます。社外とはメール、社内とはチャットという使い分けをしたままでも運用が分断されません。</p>
         <ul class="price-diff__tags">
@@ -3541,7 +3582,7 @@ img, table, iframe, video { max-width: 100%; }
       </article>
 
       <article class="price-diff__card">
-        <span class="price-diff__icon material-symbols-outlined" aria-hidden="true">receipt_long</span>
+        <img class="price-diff__icon" src="/schecon-demo/images/illust/merit-tools.png" alt="契約・請求の一本化" width="200" height="200" loading="lazy">
         <h3 class="price-diff__ttl">契約・請求・管理コストを1本化</h3>
         <p class="price-diff__desc">機能ごとにツールを分けると、契約の管理や請求処理、権限設定の手間もその数だけ増えていきます。スケコンなら1つの月額料金にまとまるため、導入の稟議も日々の管理業務もシンプルになります。</p>
         <ul class="price-diff__tags">

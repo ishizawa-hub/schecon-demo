@@ -2738,6 +2738,78 @@ img, table, iframe, video { max-width: 100%; }
   .price-card__action, .price-plans__download { padding: 0 .4rem; }
 }
 </style>
+<style>
+/* ===== 配色の是正（薄いオレンジベージュを使用しない） ===== */
+/* 下地・交互色はトップページと同じ無彩色に統一する */
+.price-card__limit,
+.price-choose__volume {
+  background: #f8f9fa !important;
+  border: 1px solid rgba(129,118,110,.12) !important;
+}
+.price-table tbody tr:nth-child(even) th,
+.price-table tbody tr:nth-child(even) td {
+  background: #f8f9fa !important;
+}
+.price-table tbody tr:hover th,
+.price-table tbody tr:hover td {
+  background: #f1f3f5 !important;
+}
+.price-card__limit-sub { border-top-color: rgba(129,118,110,.18) !important; }
+.price-table tbody th,
+.price-table tbody td { border-bottom-color: rgba(129,118,110,.14) !important; }
+
+/* タグ・ピルは白地＋オレンジ枠に（トップの見え方に合わせる） */
+.price-diff__tag,
+.about-service__pill,
+.about-services__pill,
+.about-scenes__tag,
+.about-usecase__tag {
+  background: #fff !important;
+  border: 1px solid rgba(237,150,48,.35) !important;
+  color: #ed9630 !important;
+}
+.about-faq__a::before { background: #f8f9fa !important; }
+
+/* ===== ピクトをトップページと統一 ===== */
+.price-diff__icon {
+  display: block !important;
+  width: 8rem !important;
+  height: 8rem !important;
+  margin: 0 auto 1.6rem !important;
+  object-fit: contain;
+}
+</style>
+<style>
+/* ===== 8機能をファーストビューに収めるための圧縮 ===== */
+.page-hero { padding: 2.8rem 2rem 1.8rem !important; }
+.page-hero__title { font-size: 2.7rem !important; margin-bottom: .8rem !important; }
+.page-hero__lead { font-size: 1.45rem !important; line-height: 1.75 !important; }
+.page-breadcrumb { padding: 1.2rem 2rem !important; }
+
+.about-features { padding-top: 2.4rem !important; padding-bottom: 2.8rem !important; }
+.about-features .page-section__title { font-size: 2.4rem !important; margin-bottom: .8rem !important; }
+.about-features .page-section__lead { font-size: 1.35rem !important; margin-bottom: 1.8rem !important; }
+
+/* カードを4列×2行で収める。アイコンと余白を詰めて1枚あたりの高さを下げる */
+.about-features__grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.2rem !important;
+}
+.about-features__card { padding: 1.6rem 1.4rem !important; }
+.about-features__figure { margin-bottom: .8rem !important; }
+.about-features__figure img { width: 6.4rem !important; }
+.about-features__title { font-size: 1.6rem !important; margin-bottom: .6rem !important; }
+.about-features__desc { font-size: 1.25rem !important; line-height: 1.65 !important; }
+.about-features__action { margin-top: 2.4rem !important; }
+
+@media (max-width: 1023px) {
+  .about-features__grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 599px) {
+  .about-features__grid { grid-template-columns: 1fr !important; }
+  .about-features__figure img { width: 6.4rem !important; }
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -2875,13 +2947,13 @@ img, table, iframe, video { max-width: 100%; }
 <div class="page-breadcrumb"><a href="/schecon-demo/top">TOP</a> ／ スケコンの機能</div>
 <section class="page-hero">
   <h1 class="page-hero__title">スケコンの機能</h1>
-  <p class="page-hero__lead">日程調整がスムーズにできる便利なツール「スケコン」。<br>その便利な機能をご紹介いたします。</p>
+  <p class="page-hero__lead">AIによる日程調整、カレンダー連携、メーラー、ビジネスチャットまで。<br class="about-br-pc">スケコンの機能をまとめてご紹介します。</p>
 </section>
 <!-- ===== 1. スケコンの主な機能 ===== -->
 <section class="about-section about-features" id="about-features" aria-labelledby="about-features-title">
   <div class="about-section__inner">
     <h2 class="page-section__title" id="about-features-title">スケコンの<span class="orange-keyword">主な機能</span></h2>
-    <p class="page-section__lead">日程調整がスムーズにできる便利なツール「スケコン」<br class="about-br-pc">その便利な機能をご紹介いたします。</p>
+    <p class="page-section__lead">1対1から100名規模まで、社外・社内を問わず使える8つの機能。<br class="about-br-pc">Googleカレンダー・Outlook・Zoom・Teams との連携にも対応しています。</p>
 
     <div class="about-features__grid">
       <article class="about-features__card">
