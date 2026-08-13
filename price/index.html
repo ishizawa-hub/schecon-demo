@@ -2958,6 +2958,80 @@ img, table, iframe, video { max-width: 100%; }
   object-fit: contain;
 }
 </style>
+<style>
+/* ===== 料金プランのプラン別カラー（元サイト準拠） ===== */
+.price-card {
+  position: relative;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(129,118,110,.14);
+}
+/* プラン名を色帯のヘッダーにする */
+.price-card__head { padding: 0 0 2.4rem !important; }
+.price-card__name {
+  display: block;
+  margin: 0 0 2rem !important;
+  padding: 1.4rem 1.6rem;
+  color: #fff !important;
+  font-size: 1.9rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: .04em;
+}
+.price-card--free    .price-card__name { background: #a1c92f; }
+.price-card--standard .price-card__name { background: #f1ba2b; }
+.price-card--business .price-card__name { background: #ed9630; }
+/* スタンダードはおすすめ扱いだが、帯の色はプラン色（山吹）を優先する */
+.price-card--standard.price-card--recommended .price-card__name { background: #f1ba2b !important; }
+
+/* ビジネスプランはカード全体をオレンジ枠で強調 */
+.price-card--business { border: 2px solid #ed9630 !important; }
+
+/* 帯の下の本文には左右余白を戻す */
+.price-card__head > *:not(.price-card__name),
+.price-card__limit,
+.price-card__features,
+.price-card__action { margin-left: 2rem; margin-right: 2rem; }
+.price-card__action { margin-bottom: 2.4rem; }
+
+/* 金額はプランを問わずブランドオレンジ */
+.price-card__num { color: #ed9630 !important; }
+.price-card__cap { color: #81766e !important; }
+
+/* 機能リストは記号を使わず素の文字で並べる（元サイトと同じ見せ方） */
+.price-mark { display: none !important; }
+.price-card__feature {
+  padding: .35rem 0 !important;
+  border: none !important;
+  font-size: 1.35rem;
+  color: #15303d;
+  list-style: none;
+}
+.price-card__feature--sub { padding-left: 1.4rem !important; color: #81766e; }
+.price-card__feature--off { display: none !important; }
+.price-card__features { padding: 0 !important; }
+
+/* おすすめリボンは元サイトに無いため非表示（強調は枠線で行う） */
+.price-card__ribbon { display: none !important; }
+
+/* 回数制限ブロックはプラン色の淡いラインで区切る */
+.price-card--free    .price-card__limit { border-color: rgba(161,201,47,.35) !important; }
+.price-card--standard .price-card__limit { border-color: rgba(241,186,43,.35) !important; }
+.price-card--business .price-card__limit { border-color: rgba(237,150,48,.35) !important; }
+
+/* 申し込みボタンもプラン色に合わせる */
+.price-card--free    .price-btn { background: #a1c92f !important; }
+.price-card--standard .price-btn { background: #f1ba2b !important; }
+.price-card--business .price-btn { background: #ed9630 !important; }
+.price-card--free    .price-btn:hover { background: #8fb428 !important; }
+.price-card--standard .price-btn:hover { background: #dda722 !important; }
+.price-card--business .price-btn:hover { background: #d07a1a !important; }
+
+/* 比較表のヘッダーもプラン色で区別する */
+.price-table thead th:nth-child(2) { background: #a1c92f !important; }
+.price-table thead th:nth-child(3) { background: #f1ba2b !important; }
+.price-table thead th:nth-child(4) { background: #ed9630 !important; }
+</style>
 </head>
 <body>
 <div id="wrapper">
