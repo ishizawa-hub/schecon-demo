@@ -2055,7 +2055,87 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@sche_con" />
-  </head>
+  <style>
+/* ===== ページ間の導線 ===== */
+.page-crosslink { padding: 4.4rem 2rem; background: #fff; }
+.page-crosslink__inner { max-width: 1120px; margin: 0 auto; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 2rem; }
+.page-crosslink__card {
+  display: block; padding: 2.4rem 2.8rem; background: #f8f9fa;
+  border-radius: 1.2rem; text-decoration: none; border: 1px solid rgba(129,118,110,.14);
+  transition: transform .3s, box-shadow .3s;
+}
+.page-crosslink__card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.page-crosslink__ttl { font-size: 1.8rem; font-weight: 700; color: #ed9630; margin: 0 0 .8rem; }
+.page-crosslink__ttl::after { content: " →"; }
+.page-crosslink__desc { font-size: 1.35rem; color: #81766e; line-height: 1.8; margin: 0; }
+.about-why__grid { display: grid; gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); }
+.about-why__card { background: #fff; border-radius: 1.2rem; padding: 2.8rem 2.4rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
+.about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
+</style>
+<style>
+/* ===== トップページのスマホ表示是正（Android 360px / iPhone 375px 基準） ===== */
+@media (max-width: 767px) {
+  .m-adjustment__lead .orange.opc-4 {
+    font-size: clamp(1.45rem, 4.4vw, 2rem) !important;
+    line-height: 1.5 !important;
+    word-break: auto-phrase;
+  }
+  .m-adjustment__lead .section__lead.opc-5 {
+    font-size: clamp(1.15rem, 3.3vw, 1.35rem) !important;
+    line-height: 1.7 !important;
+  }
+  .m-adjustment__lead .cap {
+    display: block !important;
+    white-space: normal !important;
+    font-size: clamp(1rem, 2.8vw, 1.2rem) !important;
+    line-height: 1.6 !important;
+  }
+  .m-adjustment.top-adjustment .m-adjustment__inner,
+  .m-adjustment.top-adjustment .m-adjustment__wrapper {
+    padding-left: 1.6rem !important;
+    padding-right: 1.6rem !important;
+    box-sizing: border-box !important;
+  }
+  /* 4枚のカードは2列。親幅を超えないよう等分する */
+  .m-adjustment__list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    padding: 0 !important;
+    margin-left: auto !important; margin-right: auto !important;
+    max-width: 100% !important;
+  }
+  .m-adjustment__list .item {
+    width: calc(50% - .5rem) !important;
+    max-width: calc(50% - .5rem) !important;
+    min-width: 0 !important;
+    flex: 0 0 calc(50% - .5rem) !important;
+    box-sizing: border-box !important;
+  }
+  .m-adjustment__list .item .item__img img { width: 100% !important; height: auto !important; }
+  .m-adjustment__list .item .item__btn {
+    width: 100% !important; box-sizing: border-box !important;
+    padding: 1rem .6rem !important; font-size: 1.05rem !important;
+  }
+  .section__ttl, .mod-allinone__title, .mod-integration__title, .mod-seo__title {
+    font-size: clamp(1.8rem, 5.2vw, 2.4rem) !important;
+    line-height: 1.5 !important;
+    word-break: auto-phrase;
+  }
+  .section__lead, .mod-allinone__subtitle,
+  .mod-integration__subtitle, .mod-seo__subtitle {
+    font-size: clamp(1.2rem, 3.4vw, 1.4rem) !important;
+  }
+  /* 画像・表が親幅を超えないようにする */
+  img, table { max-width: 100% !important; }
+}
+</style>
+</head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -2080,17 +2160,17 @@
           <div class="header__nav__wrap">
             <ul class="header__nav__list">
               <li><a href="/schecon-demo/top/">TOP（日程調整&チャットはスケコン）</a></li>
-              <li><a href="/one-on-one-create">1対1予定調整</a></li>
-              <li><a href="/create">複数人予定調整</a></li>
-              <li><a href="/group">社内予定調整</a></li>
-              <li><a href="/chat">チャットで予定調整</a></li>
-              <li><a href="/chat">チャット</a></li>
+              <li><a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener">1対1予定調整</a></li>
+              <li><a href="https://schecon.com/create" target="_blank" rel="noopener">複数人予定調整</a></li>
+              <li><a href="https://schecon.com/group" target="_blank" rel="noopener">社内予定調整</a></li>
+              <li><a href="https://schecon.com/chat" target="_blank" rel="noopener">チャットで予定調整</a></li>
+              <li><a href="https://schecon.com/chat" target="_blank" rel="noopener">チャット</a></li>
               <li><a href="https://schecon.com/article/?cat=114">スケコンの使い方</a></li>
               <li><a href="/schecon-demo/price/">３つの料金プラン</a></li>
               <li><a href="/schecon-demo/about/">スケコンの機能紹介</a></li>
               <li><a href="https://schecon.com/article/">Schecon Magazine</a></li>
-              <li><a href="/faq">よくあるご質問</a></li>
-              <li><a href="/contact/inquiry">お問い合わせ</a></li>
+              <li><a href="https://schecon.com/faq" target="_blank" rel="noopener">よくあるご質問</a></li>
+              <li><a href="https://schecon.com/contact/inquiry" target="_blank" rel="noopener">お問い合わせ</a></li>
               <li class="sns">
                 <a href="https://www.facebook.com/schecon/" target="_blank">
                   <picture>
@@ -2122,77 +2202,77 @@
         </nav>
         <div class="header__globalnav">
           <button>
-            <a href="/address-book">
+            <a href="https://schecon.com/address-book" target="_blank" rel="noopener">
               <span class="icon material-symbols-outlined">import_contacts</span>
               <span class="global-nav-text">参加者連絡先</span></a
             >
           </button>
           <button>
-            <a href="/history">
+            <a href="https://schecon.com/history" target="_blank" rel="noopener">
               <span class="icon material-symbols-outlined">history</span>
               <span class="global-nav-text">予定調整履歴</span>
             </a>
           </button>
         </div>
-        <a href="/select" class="header__login">
+        <a href="https://schecon.com/select" target="_blank" rel="noopener" class="header__login">
           <img class="lazyload" data-src="/schecon-demo/assets/imgs/common/login-icon.png" alt="新規登録・ログイン" />
           <span>新規登録・ログイン</span>
         </a>
         <div class="header__dropdown">
           <ul class="header__dropdown__list">
             <li>
-              <a href="/settings" class="h-mypage">
+              <a href="https://schecon.com/settings" target="_blank" rel="noopener" class="h-mypage">
                 <span class="icon material-symbols-outlined">person</span> マイページ</a
               >
             </li>
             <li>
-              <a href="/settings/service">
+              <a href="https://schecon.com/settings/service" target="_blank" rel="noopener">
                 <span class="icon material-symbols-outlined">share</span> 外部連携サービス
               </a>
             </li>
             <li>
-              <a href="/address-book" class="h-address">
+              <a href="https://schecon.com/address-book" target="_blank" rel="noopener" class="h-address">
                 <span class="icon material-symbols-outlined">import_contacts</span> 参加者連絡先</a
               >
             </li>
             <li>
-              <a href="/history" class="h-history">
+              <a href="https://schecon.com/history" target="_blank" rel="noopener" class="h-history">
                 <span class="icon material-symbols-outlined">history</span> 予定調整履歴</a
               >
             </li>
             <li>
-              <a href="/plan-management" class="h-mypage">
+              <a href="https://schecon.com/plan-management" target="_blank" rel="noopener" class="h-mypage">
                 <span class="icon material-symbols-outlined">manage_accounts</span> アカウント管理</a
               >
             </li>
             <li style="border-top: 1px solid #e2dfdc">
-              <a href="/one-on-one-create" class="h-one">
+              <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="h-one">
                 <span class="icon material-symbols-outlined">person_add</span> 1対1予定調整</a
               >
             </li>
             <li>
-              <a href="/template" class="child-menu">
+              <a href="https://schecon.com/template" target="_blank" rel="noopener" class="child-menu">
                 <span class="icon material-symbols-outlined">subdirectory_arrow_right</span>
                 <span class="icon material-symbols-outlined">star</span> テンプレート</a
               >
             </li>
             <li>
-              <a href="/create" class="h-multi">
+              <a href="https://schecon.com/create" target="_blank" rel="noopener" class="h-multi">
                 <span class="icon material-symbols-outlined">group_add</span> 複数人予定調整</a
               >
             </li>
             <li>
-              <a href="/group" class="h-group">
+              <a href="https://schecon.com/group" target="_blank" rel="noopener" class="h-group">
                 <span class="icon material-symbols-outlined">groups</span> 社内予定調整</a
               >
             </li>
             <li>
-              <a href="/chat" class="h-chat">
+              <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="h-chat">
                 <span class="icon material-symbols-outlined">chat</span> チャットで予定調整</a
               >
             </li>
             <li>
-              <a href="/logout" class="h-logout">
+              <a href="https://schecon.com/logout" target="_blank" rel="noopener" class="h-logout">
                 <span class="icon material-symbols-outlined">logout</span> ログアウト</a
               >
             </li>
@@ -2233,7 +2313,7 @@
                   <ul class="m-adjustment__list ease-3">
                     <!-- チャットで予定調整 -->
                     <li class="item item-chat">
-                      <a href="/chat" class="item__link">
+                      <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="item__link">
                         <picture class="item__img">
                           <source
                             media="(max-width:374px)"
@@ -2250,7 +2330,7 @@
                     </li>
                     <li class="item item-one">
                       <div class="item__container">
-                        <a href="/one-on-one-create" class="item__link">
+                        <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="item__link">
                           <picture class="item__img">
                             <source
                               media="(max-width:374px)"
@@ -2267,13 +2347,13 @@
                         <div class="item__hover">
                           <div class="item__hover__container">
                             <div class="item__hover__container-box">
-                              <a href="/one-on-one/create">
+                              <a href="https://schecon.com/one-on-one/create" target="_blank" rel="noopener">
                                 <span>新規作成</span>
                                 <div class="item__hover__link-overlay"></div>
                               </a>
                             </div>
                             <div class="item__hover__container-box">
-                              <a href="/template">
+                              <a href="https://schecon.com/template" target="_blank" rel="noopener">
                                 <span>テンプレート</span>
                                 <div class="item__hover__link-overlay"></div>
                               </a>
@@ -2286,7 +2366,7 @@
                       >
                     </li>
                     <li class="item item-multi">
-                      <a href="/create" class="item__link">
+                      <a href="https://schecon.com/create" target="_blank" rel="noopener" class="item__link">
                         <picture class="item__img">
                           <source
                             media="(max-width:374px)"
@@ -2305,7 +2385,7 @@
                       >
                     </li>
                     <li class="item item-group">
-                      <a href="/group" class="item__link">
+                      <a href="https://schecon.com/group" target="_blank" rel="noopener" class="item__link">
                         <picture class="item__img">
                           <source
                             media="(max-width:374px)"
@@ -2869,7 +2949,7 @@
                     Google カレンダー連携<br />Outlook カレンダー連携<br />Google Meet 連携<br />Teams 連携<br />Zoom
                     連携<br />Slack 連携<br />Chatwork 連携<br />salesforce 連携<br />blastmail 連携<br />デフォルト設定の変更<br />マイページ<br />アカウント管理<br />
                   </p>
-                  <a href="/select" class="item__btn">無料で登録</a>
+                  <a href="https://schecon.com/select" target="_blank" rel="noopener" class="item__btn">無料で登録</a>
                 </div>
               </li>
               <li class="item standard">
@@ -2895,7 +2975,7 @@
                     Google カレンダー連携<br />Outlook カレンダー連携<br />Google Meet 連携<br />Teams 連携<br />Zoom
                     連携<br />Slack 連携<br />Chatwork 連携<br />salesforce 連携<br />blastmail 連携<br />デフォルト設定の変更<br />マイページ<br />アカウント管理<br />
                   </p>
-                  <a href="/plan-management" class="item__btn">お申し込み</a>
+                  <a href="https://schecon.com/plan-management" target="_blank" rel="noopener" class="item__btn">お申し込み</a>
                 </div>
               </li>
               <li class="item business">
@@ -2922,12 +3002,12 @@
                     Google カレンダー連携<br />Outlook カレンダー連携<br />Google Meet 連携<br />Teams 連携<br />Zoom
                     連携<br />Slack 連携<br />Chatwork 連携<br />salesforce 連携<br />blastmail 連携<br />デフォルト設定の変更<br />マイページ<br />アカウント管理<br />
                   </p>
-                  <a href="/plan-management" class="item__btn">お申し込み</a>
+                  <a href="https://schecon.com/plan-management" target="_blank" rel="noopener" class="item__btn">お申し込み</a>
                 </div>
               </li>
             </ul>
             <div class="download-btn ease-4">
-              <a href="/contact/request"><span>資料をダウンロードする</span></a>
+              <a href="https://schecon.com/contact/request" target="_blank" rel="noopener"><span>資料をダウンロードする</span></a>
             </div>
           </div>
         </section>
@@ -3290,7 +3370,7 @@
               </div>
             </div>
             <div class="m-btn ease-3">
-              <a href="/faq">よくある質問をもっと見る</a>
+              <a href="https://schecon.com/faq" target="_blank" rel="noopener">よくある質問をもっと見る</a>
             </div>
           </div>
         </section>
@@ -3302,7 +3382,7 @@
             <h2 class="m-adjustment__ttl m-adjustment__ttl--bottom opc-2">ビジネスの全てを<span class="orange">スケコンで完結</span></h2>
             <ul class="m-adjustment__list ease-3">
               <li class="item item-chat">
-                <a href="/chat" class="item__link">
+                <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="item__link">
                   <picture class="item__img">
                     <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
                     <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
@@ -3313,7 +3393,7 @@
               </li>
               <li class="item item-one">
                 <div class="item__container">
-                  <a href="/one-on-one-create" class="item__link">
+                  <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="item__link">
                     <picture class="item__img">
                       <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_1.webp" />
                       <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_1.webp" />
@@ -3324,13 +3404,13 @@
                   <div class="item__hover">
                     <div class="item__hover__container">
                       <div class="item__hover__container-box">
-                        <a href="/one-on-one/create">
+                        <a href="https://schecon.com/one-on-one/create" target="_blank" rel="noopener">
                           <span>新規作成</span>
                           <div class="item__hover__link-overlay"></div>
                         </a>
                       </div>
                       <div class="item__hover__container-box">
-                        <a href="/template">
+                        <a href="https://schecon.com/template" target="_blank" rel="noopener">
                           <span>テンプレート</span>
                           <div class="item__hover__link-overlay"></div>
                         </a>
@@ -3340,7 +3420,7 @@
                 </div>
               </li>
               <li class="item item-multi">
-                <a href="/create" class="item__link">
+                <a href="https://schecon.com/create" target="_blank" rel="noopener" class="item__link">
                   <picture class="item__img">
                     <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_2.webp" />
                     <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_2.webp" />
@@ -3350,7 +3430,7 @@
                 </a>
               </li>
               <li class="item item-group">
-                <a href="/group" class="item__link">
+                <a href="https://schecon.com/group" target="_blank" rel="noopener" class="item__link">
                   <picture class="item__img">
                     <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_3.webp" />
                     <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_3.webp" />
@@ -3364,7 +3444,11 @@
         </section>
       </main>
 
-      <footer class="footer">
+      <section class="page-crosslink"><div class="page-crosslink__inner">
+    <a class="page-crosslink__card" href="/schecon-demo/price/"><p class="page-crosslink__ttl">料金プランを見る</p><p class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</p></a>
+    <a class="page-crosslink__card" href="/schecon-demo/about/"><p class="page-crosslink__ttl">機能をくわしく見る</p><p class="page-crosslink__desc">AI日程調整・カレンダー連携・メーラー・チャットの8機能をご紹介します。</p></a>
+</div></section>
+<footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>
         <div class="mod-footer-content">
           <div class="mod-footer-grid">
@@ -3437,16 +3521,16 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
         <div class="schedule-picker__list">
-          <a class="schedule-picker__item schedule-picker__item--one" href="/schecon-demo/one-on-one-create" aria-label="1対1予定調整">
+          <a class="schedule-picker__item schedule-picker__item--one" href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" aria-label="1対1予定調整">
             <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_1.webp" alt="1対1予定調整" />
           </a>
-          <a class="schedule-picker__item schedule-picker__item--multi" href="/schecon-demo/multiple/create" aria-label="複数人予定調整">
+          <a class="schedule-picker__item schedule-picker__item--multi" href="https://schecon.com/multiple/create" target="_blank" rel="noopener" aria-label="複数人予定調整">
             <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_2.webp" alt="複数人予定調整" />
           </a>
-          <a class="schedule-picker__item schedule-picker__item--group" href="/schecon-demo/group/create" aria-label="社内予定調整">
+          <a class="schedule-picker__item schedule-picker__item--group" href="https://schecon.com/group/create" target="_blank" rel="noopener" aria-label="社内予定調整">
             <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_3.webp" alt="社内予定調整" />
           </a>
-          <a class="schedule-picker__item schedule-picker__item--free" href="/schecon-demo/confirm" aria-label="空き時間確認">
+          <a class="schedule-picker__item schedule-picker__item--free" href="https://schecon.com/confirm" target="_blank" rel="noopener" aria-label="空き時間確認">
             <img class="schedule-picker__item-img" src="/schecon-demo/images/static/content-link/adjustment_sp_small_4.webp" alt="空き時間確認" />
           </a>
         </div>
@@ -3572,10 +3656,10 @@
         //   - 巻末 4 枚カード (main > .m-adjustment:last-of-type .m-adjustment__list .item .item__link)
         //   - テキスト「予定調整をする」のボタン (footer CTA 含む)
         var pickerTargets = [
-          'a[href="/one-on-one-create"]',
-          'a[href="/create"]',
-          'a[href="/group"]',
-          'a[href="/chat"]',
+          'a[href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener"]',
+          'a[href="https://schecon.com/create" target="_blank" rel="noopener"]',
+          'a[href="https://schecon.com/group" target="_blank" rel="noopener"]',
+          'a[href="https://schecon.com/chat" target="_blank" rel="noopener"]',
           '.m-adjustment__list .item .item__link',
           '.m-adjustment__list .item .item__container .item__link',
           '.h-one', '.h-multi', '.h-group', '.h-chat'
@@ -3598,10 +3682,17 @@
    描画完了後にもう一度、実在するページへのリンクを張り直す */
 (function () {
   var MAP = { '/price': '/schecon-demo/price/', '/about': '/schecon-demo/about/', '/': '/schecon-demo/top/' };
+  /* REL_FIX: デモに実体の無いアプリ機能は本番サイトへ逃がす */
+  var APP = ['confirm','group/create','multiple/create','one-on-one-create','one-on-one/create','create','group','chat','select','template','history','address-book','plan-management','settings','faq'];
   function fix() {
     document.querySelectorAll('a[href]').forEach(function (a) {
       var h = a.getAttribute('href');
-      if (MAP[h]) a.setAttribute('href', MAP[h]);
+      if (MAP[h]) { a.setAttribute('href', MAP[h]); return; }
+      var m = h && h.replace(/^\/schecon-demo\//, '').replace(/^\//, '');
+      if (APP.indexOf(m) !== -1) {
+        a.setAttribute('href', 'https://schecon.com/' + m);
+        a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
+      }
     });
   }
   document.addEventListener('DOMContentLoaded', fix);

@@ -6454,3 +6454,60 @@ html.notouch .m-btn a:hover:after {
     padding-bottom: 3.6rem !important;
   }
 }
+
+/* ===== トップページのスマホ表示是正 ===== */
+@media (max-width: 767px) {
+  /* 見出しは画面幅に追従させ、行が切れないようにする */
+  .m-adjustment__lead .orange.opc-4 {
+    font-size: clamp(1.5rem, 4.5vw, 2rem) !important;
+    line-height: 1.5 !important;
+    word-break: auto-phrase;
+  }
+  .m-adjustment__lead .section__lead.opc-5 {
+    font-size: clamp(1.2rem, 3.4vw, 1.35rem) !important;
+    line-height: 1.7 !important;
+  }
+  /* 認証表記の行は折り返しを許可（1行だと必ずはみ出す） */
+  .m-adjustment__lead .cap {
+    display: block;
+    white-space: normal !important;
+    font-size: clamp(1rem, 2.9vw, 1.2rem) !important;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+  /* ヒーローの左右余白を確保して、文字が端に触れないようにする */
+  .m-adjustment.top-adjustment .m-adjustment__inner,
+  .m-adjustment.top-adjustment .m-adjustment__wrapper {
+    padding-left: 1.6rem !important;
+    padding-right: 1.6rem !important;
+  }
+  /* 4枚のカードは2列。はみ出さないよう幅を等分する */
+  .m-adjustment__list {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+  }
+  .m-adjustment__list .item {
+    width: calc(50% - .5rem) !important;
+    max-width: calc(50% - .5rem) !important;
+    flex: 0 0 auto !important;
+  }
+  .m-adjustment__list .item .item__btn {
+    width: 100%; box-sizing: border-box;
+    padding-left: .8rem !important; padding-right: .8rem !important;
+    font-size: 1.1rem !important;
+  }
+  /* セクション見出しも画面幅に追従させる */
+  .section__ttl, .mod-allinone__title, .mod-integration__title, .mod-seo__title {
+    font-size: clamp(1.8rem, 5.2vw, 2.4rem) !important;
+    line-height: 1.5 !important;
+    word-break: auto-phrase;
+  }
+  .section__lead, .mod-allinone__subtitle,
+  .mod-integration__subtitle, .mod-seo__subtitle {
+    font-size: clamp(1.2rem, 3.4vw, 1.4rem) !important;
+  }
+}
+@media (max-width: 360px) {
+  .m-adjustment__list .item .item__btn { font-size: 1rem !important; }
+}

@@ -2810,6 +2810,27 @@ img, table, iframe, video { max-width: 100%; }
   .about-features__figure img { width: 6.4rem !important; }
 }
 </style>
+<style>
+/* ===== ページ間の導線 ===== */
+.page-crosslink { padding: 4.4rem 2rem; background: #fff; }
+.page-crosslink__inner { max-width: 1120px; margin: 0 auto; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 2rem; }
+.page-crosslink__card {
+  display: block; padding: 2.4rem 2.8rem; background: #f8f9fa;
+  border-radius: 1.2rem; text-decoration: none; border: 1px solid rgba(129,118,110,.14);
+  transition: transform .3s, box-shadow .3s;
+}
+.page-crosslink__card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.page-crosslink__ttl { font-size: 1.8rem; font-weight: 700; color: #ed9630; margin: 0 0 .8rem; }
+.page-crosslink__ttl::after { content: " →"; }
+.page-crosslink__desc { font-size: 1.35rem; color: #81766e; line-height: 1.8; margin: 0; }
+.about-why__grid { display: grid; gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); }
+.about-why__card { background: #fff; border-radius: 1.2rem; padding: 2.8rem 2.4rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
+.about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -2824,17 +2845,17 @@ img, table, iframe, video { max-width: 100%; }
           <div class="header__nav__wrap">
             <ul class="header__nav__list">
               <li><a href="/schecon-demo/top/">TOP（日程調整&チャットはスケコン）</a></li>
-              <li><a href="/one-on-one-create">1対1予定調整</a></li>
-              <li><a href="/create">複数人予定調整</a></li>
-              <li><a href="/group">社内予定調整</a></li>
-              <li><a href="/chat">チャットで予定調整</a></li>
-              <li><a href="/chat">チャット</a></li>
+              <li><a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener">1対1予定調整</a></li>
+              <li><a href="https://schecon.com/create" target="_blank" rel="noopener">複数人予定調整</a></li>
+              <li><a href="https://schecon.com/group" target="_blank" rel="noopener">社内予定調整</a></li>
+              <li><a href="https://schecon.com/chat" target="_blank" rel="noopener">チャットで予定調整</a></li>
+              <li><a href="https://schecon.com/chat" target="_blank" rel="noopener">チャット</a></li>
               <li><a href="https://schecon.com/article/?cat=114">スケコンの使い方</a></li>
               <li><a href="/schecon-demo/price/">３つの料金プラン</a></li>
               <li><a href="/schecon-demo/about/">スケコンの機能紹介</a></li>
               <li><a href="https://schecon.com/article/">Schecon Magazine</a></li>
-              <li><a href="/faq">よくあるご質問</a></li>
-              <li><a href="/contact/inquiry">お問い合わせ</a></li>
+              <li><a href="https://schecon.com/faq" target="_blank" rel="noopener">よくあるご質問</a></li>
+              <li><a href="https://schecon.com/contact/inquiry" target="_blank" rel="noopener">お問い合わせ</a></li>
               <li class="sns">
                 <a href="https://www.facebook.com/schecon/" target="_blank">
                   <picture>
@@ -2866,77 +2887,77 @@ img, table, iframe, video { max-width: 100%; }
         </nav>
         <div class="header__globalnav">
           <button>
-            <a href="/address-book">
+            <a href="https://schecon.com/address-book" target="_blank" rel="noopener">
               <span class="icon material-symbols-outlined">import_contacts</span>
               <span class="global-nav-text">参加者連絡先</span></a
             >
           </button>
           <button>
-            <a href="/history">
+            <a href="https://schecon.com/history" target="_blank" rel="noopener">
               <span class="icon material-symbols-outlined">history</span>
               <span class="global-nav-text">予定調整履歴</span>
             </a>
           </button>
         </div>
-        <a href="/select" class="header__login">
+        <a href="https://schecon.com/select" target="_blank" rel="noopener" class="header__login">
           <img class="lazyload" data-src="/schecon-demo/assets/imgs/common/login-icon.png" alt="新規登録・ログイン" />
           <span>新規登録・ログイン</span>
         </a>
         <div class="header__dropdown">
           <ul class="header__dropdown__list">
             <li>
-              <a href="/settings" class="h-mypage">
+              <a href="https://schecon.com/settings" target="_blank" rel="noopener" class="h-mypage">
                 <span class="icon material-symbols-outlined">person</span> マイページ</a
               >
             </li>
             <li>
-              <a href="/settings/service">
+              <a href="https://schecon.com/settings/service" target="_blank" rel="noopener">
                 <span class="icon material-symbols-outlined">share</span> 外部連携サービス
               </a>
             </li>
             <li>
-              <a href="/address-book" class="h-address">
+              <a href="https://schecon.com/address-book" target="_blank" rel="noopener" class="h-address">
                 <span class="icon material-symbols-outlined">import_contacts</span> 参加者連絡先</a
               >
             </li>
             <li>
-              <a href="/history" class="h-history">
+              <a href="https://schecon.com/history" target="_blank" rel="noopener" class="h-history">
                 <span class="icon material-symbols-outlined">history</span> 予定調整履歴</a
               >
             </li>
             <li>
-              <a href="/plan-management" class="h-mypage">
+              <a href="https://schecon.com/plan-management" target="_blank" rel="noopener" class="h-mypage">
                 <span class="icon material-symbols-outlined">manage_accounts</span> アカウント管理</a
               >
             </li>
             <li style="border-top: 1px solid #e2dfdc">
-              <a href="/one-on-one-create" class="h-one">
+              <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="h-one">
                 <span class="icon material-symbols-outlined">person_add</span> 1対1予定調整</a
               >
             </li>
             <li>
-              <a href="/template" class="child-menu">
+              <a href="https://schecon.com/template" target="_blank" rel="noopener" class="child-menu">
                 <span class="icon material-symbols-outlined">subdirectory_arrow_right</span>
                 <span class="icon material-symbols-outlined">star</span> テンプレート</a
               >
             </li>
             <li>
-              <a href="/create" class="h-multi">
+              <a href="https://schecon.com/create" target="_blank" rel="noopener" class="h-multi">
                 <span class="icon material-symbols-outlined">group_add</span> 複数人予定調整</a
               >
             </li>
             <li>
-              <a href="/group" class="h-group">
+              <a href="https://schecon.com/group" target="_blank" rel="noopener" class="h-group">
                 <span class="icon material-symbols-outlined">groups</span> 社内予定調整</a
               >
             </li>
             <li>
-              <a href="/chat" class="h-chat">
+              <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="h-chat">
                 <span class="icon material-symbols-outlined">chat</span> チャットで予定調整</a
               >
             </li>
             <li>
-              <a href="/logout" class="h-logout">
+              <a href="https://schecon.com/logout" target="_blank" rel="noopener" class="h-logout">
                 <span class="icon material-symbols-outlined">logout</span> ログアウト</a
               >
             </li>
@@ -3282,6 +3303,10 @@ img, table, iframe, video { max-width: 100%; }
   </div>
 </section>
 </main>
+<section class="page-crosslink"><div class="page-crosslink__inner">
+    <a class="page-crosslink__card" href="/schecon-demo/price/"><p class="page-crosslink__ttl">料金プランを見る</p><p class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</p></a>
+    <a class="page-crosslink__card" href="/schecon-demo/top/"><p class="page-crosslink__ttl">スケコンのトップへ</p><p class="page-crosslink__desc">サービス全体の概要と導入メリットはこちらから。</p></a>
+</div></section>
 <footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>
         <div class="mod-footer-content">
