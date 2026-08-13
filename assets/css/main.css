@@ -6339,3 +6339,58 @@ html.notouch .m-btn a:hover:after {
     display: inline-block;
   }
 }
+
+/* ===== 生成イラスト適用: アイコンフォント → イラスト ===== */
+
+.mod-allinone__icon {
+  font-size: 0 !important;
+  display: block !important;
+  width: 9.6rem !important;
+  height: 9.6rem !important;
+  margin: 0 auto 2rem !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.mod-allinone__grid > .mod-allinone__card:nth-child(1) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-ai.png) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(2) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-calendar.png) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(3) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-mail.png) !important; }
+.mod-allinone__grid > .mod-allinone__card:nth-child(4) .mod-allinone__icon { background-image: url(/schecon-demo/images/illust/feat-chat.png) !important; }
+
+.mod-seo__card-icon {
+  font-size: 0 !important;
+  display: block !important;
+  width: 8rem !important;
+  height: 8rem !important;
+  margin: 0 auto 1.5rem !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.mod-seo__grid > .mod-seo__card:nth-child(1) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-tools.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(2) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-dx.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(3) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-remote.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(4) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-sales.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(5) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-recruit.png) !important; }
+.mod-seo__grid > .mod-seo__card:nth-child(6) .mod-seo__card-icon { background-image: url(/schecon-demo/images/illust/merit-free.png) !important; }
+
+.mod-integration__card-icon { display: none !important; }
+.mod-integration__card-body::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 67.1%;            /* 537 / 800 の比率で高さを確保 */
+  margin: 0 0 1.6rem !important;
+  border-radius: 0.8rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.mod-integration__grid > .mod-integration__card:nth-child(1) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-calendar.png) !important; }
+.mod-integration__grid > .mod-integration__card:nth-child(2) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-mail.png) !important; }
+.mod-integration__grid > .mod-integration__card:nth-child(3) .mod-integration__card-body::before { background-image: url(/schecon-demo/images/illust/scene-integration.png) !important; }
+
+@media (max-width: 767px) {
+  .mod-allinone__icon { width: 7.6rem !important; height: 7.6rem !important; margin-bottom: 1.4rem !important; }
+  .mod-seo__card-icon { width: 6.4rem !important; height: 6.4rem !important; margin-bottom: 1rem !important; }
+}
