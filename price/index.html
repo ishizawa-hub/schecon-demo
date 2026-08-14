@@ -3515,6 +3515,22 @@ img, table, iframe, video { max-width: 100%; }
 .page-crosslink__ttl,
 .page-crosslink__desc { display: block; }
 .page-crosslink__ttl { margin-bottom: .6rem; }
+
+/* ===== 固定ヘッダー分の余白を確保 ===== */
+/* ヘッダーは position:fixed で高さ70px。これを避けないと
+   パンくずと見出しの上部がヘッダーに隠れる（実測で確認） */
+main { padding-top: 7rem; }
+@media (max-width: 767px) { main { padding-top: 6rem; } }
+
+/* ロゴを使う導線カードは、正方形ではなく横長のロゴに合わせる */
+.page-crosslink__pict--logo {
+  width: 11rem !important;
+  height: auto !important;
+  flex: 0 0 11rem !important;
+}
+@media (max-width: 767px) {
+  .page-crosslink__pict--logo { width: 9rem !important; flex-basis: 9rem !important; }
+}
 </style>
 </head>
 <body>
@@ -4281,7 +4297,7 @@ img, table, iframe, video { max-width: 100%; }
 </main>
 <section class="page-crosslink"><div class="page-crosslink__inner">
     <a class="page-crosslink__card" href="/schecon-demo/about/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/merit-tools.webp" alt="スケコンの機能" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">機能をくわしく見る</span><span class="page-crosslink__desc">各プランに含まれる機能の内容を、図解とあわせてご紹介します。</span></span></a>
-    <a class="page-crosslink__card" href="/schecon-demo/top/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/feat-ai.webp" alt="スケコンのトップ" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">スケコンのトップへ</span><span class="page-crosslink__desc">サービス全体の概要と導入メリットはこちらから。</span></span></a>
+    <a class="page-crosslink__card page-crosslink__card--try" href="/schecon-demo/top/"><img class="page-crosslink__pict page-crosslink__pict--logo" src="/schecon-demo/images/logo.svg" alt="スケコン" width="208" height="48"><span class="page-crosslink__body"><span class="page-crosslink__ttl">スケコンを試してみる</span><span class="page-crosslink__desc">1対1・複数人・社内・チャットの4つの調整方法から選べます。</span></span></a>
 </div></section>
 <footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>

@@ -2794,36 +2794,6 @@ img, table, iframe, video { max-width: 100%; }
   object-fit: contain;
 }
 
-/* ===== 8機能をファーストビューに収めるための圧縮 ===== */
-.page-hero { padding: 2.8rem 2rem 1.8rem !important; }
-.page-hero__title { font-size: 2.7rem !important; margin-bottom: .8rem !important; }
-.page-hero__lead { font-size: 1.45rem !important; line-height: 1.75 !important; }
-.page-breadcrumb { padding: 1.2rem 2rem !important; }
-
-.about-features { padding-top: 2.4rem !important; padding-bottom: 2.8rem !important; }
-.about-features .page-section__title { font-size: 2.4rem !important; margin-bottom: .8rem !important; }
-.about-features .page-section__lead { font-size: 1.35rem !important; margin-bottom: 1.8rem !important; }
-
-/* カードを4列×2行で収める。アイコンと余白を詰めて1枚あたりの高さを下げる */
-.about-features__grid {
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1.2rem !important;
-}
-.about-features__card { padding: 1.6rem 1.4rem !important; }
-.about-features__figure { margin-bottom: .8rem !important; }
-.about-features__figure img { width: 6.4rem !important; }
-.about-features__title { font-size: 1.6rem !important; margin-bottom: .6rem !important; }
-.about-features__desc { font-size: 1.25rem !important; line-height: 1.65 !important; }
-.about-features__action { margin-top: 2.4rem !important; }
-
-@media (max-width: 1023px) {
-  .about-features__grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (max-width: 599px) {
-  .about-features__grid { grid-template-columns: 1fr !important; }
-  .about-features__figure img { width: 6.4rem !important; }
-}
-
 /* ===== 締めCTA: トップと同じカードデザイン・白基調 ===== */
 .page-cta-cards { background: #fff !important; padding: 4.8rem 2rem 5.6rem; }
 .page-cta-cards__inner { max-width: 1120px; margin: 0 auto; text-align: center; }
@@ -2975,35 +2945,6 @@ img, table, iframe, video { max-width: 100%; }
 .about-flow__step { padding: 3rem 2.4rem !important; }
 .about-scenes__body { padding: 2.8rem 2.4rem !important; }
 
-/* ===== HDノート（768px高）でも8機能が収まるよう微調整 ===== */
-/* 文字サイズは可読性のため据え置き、縦の余白のみ詰める */
-.page-hero { padding-top: 2.2rem !important; padding-bottom: 1.4rem !important; }
-.page-hero__title { margin-bottom: .6rem !important; }
-.page-breadcrumb { padding-top: .8rem !important; padding-bottom: .8rem !important; }
-.about-features { padding-top: 1.8rem !important; }
-.about-features .page-section__title { margin-bottom: .6rem !important; }
-.about-features .page-section__lead { margin-bottom: 1.4rem !important; }
-.about-features__card { padding: 1.4rem 1.4rem !important; }
-.about-features__figure { margin-bottom: .6rem !important; }
-.about-features__title { margin-bottom: .5rem !important; }
-
-/* ===== 画面高が低い環境（HDノート等）でのみ詰める ===== */
-/* 本文サイズは通常画面では 15px を維持し、縦が狭いときだけ 14px に落とす */
-@media (max-height: 800px) and (min-width: 1024px) {
-  .page-hero { padding-top: 1.8rem !important; padding-bottom: 1.2rem !important; }
-  .page-hero__title { font-size: 2.4rem !important; margin-bottom: .5rem !important; }
-  .page-hero__lead { font-size: 1.35rem !important; }
-  .page-breadcrumb { padding-top: .6rem !important; padding-bottom: .6rem !important; }
-  .about-features { padding-top: 1.4rem !important; }
-  .about-features .page-section__title { font-size: 2.1rem !important; margin-bottom: .5rem !important; }
-  .about-features .page-section__lead { font-size: 1.3rem !important; margin-bottom: 1.1rem !important; }
-  .about-features__card { padding: 1.2rem 1.3rem !important; }
-  .about-features__figure { margin-bottom: .5rem !important; }
-  .about-features__figure img { width: 5.6rem !important; }
-  .about-features__title { font-size: 1.5rem !important; margin-bottom: .4rem !important; }
-  .about-features__desc { font-size: 1.35rem !important; line-height: 1.6 !important; }
-}
-
 /* ===== ページ間の導線カード（イラスト入り） ===== */
 .page-crosslink { padding: 4.8rem 2rem 5.6rem; background: #fff; }
 .page-crosslink__inner {
@@ -3100,38 +3041,75 @@ img, table, iframe, video { max-width: 100%; }
   }
 }
 
-/* ===== ファーストビューの整理（見出し1つ＋説明1つ） ===== */
-/* 見出しが2つ重複していたのでヒーローに一本化し、切れていた上端も直す */
+
+/* ===== ファーストビュー設計（ヘッダー直下の余白＋ボタンまで収める） ===== */
+/* 実測: ヘッダーの下端は y=70。見出しとの間隔が16pxしかなく窮屈だったため、
+   ヘッダー直下に余白を確保したうえで、8枚のカードと資料DLボタンまでを
+   初期表示に収める。画面の高さで3段階に切り替える。 */
+.page-breadcrumb { padding-top: 1.4rem !important; padding-bottom: 1.4rem !important; }
 .page-hero {
-  padding-top: 3.2rem !important;
-  padding-bottom: 2rem !important;
+  padding-top: 2.4rem !important;
+  padding-bottom: 2.4rem !important;
   overflow: visible !important;
 }
 .page-hero__title {
   font-size: 3rem !important;
-  line-height: 1.5 !important;
-  margin: 0 0 1rem !important;
-  padding-top: .4rem;
+  line-height: 1.6 !important;
+  margin: 0 0 1.2rem !important;
 }
 .page-hero__lead { font-size: 1.5rem !important; line-height: 1.85 !important; }
-.about-features { padding-top: 1.2rem !important; }
 
-@media (max-height: 820px) and (min-width: 1024px) {
-  .page-hero { padding-top: 2.2rem !important; padding-bottom: 1.4rem !important; }
-  .page-hero__title { font-size: 2.5rem !important; margin-bottom: .7rem !important; }
-  .page-hero__lead { font-size: 1.32rem !important; line-height: 1.7 !important; }
-  .about-features { padding-top: .8rem !important; }
-  .about-features__card { padding: 1.2rem 1.3rem !important; }
-  .about-features__figure { margin-bottom: .5rem !important; }
+.about-features { padding-top: 2rem !important; padding-bottom: 3.2rem !important; }
+.about-features__grid { grid-template-columns: repeat(4, 1fr) !important; gap: 1.4rem !important; }
+.about-features__card { padding: 1.6rem 1.5rem !important; }
+.about-features__figure { margin-bottom: .8rem !important; }
+.about-features__figure img { width: 6.4rem !important; }
+.about-features__title { font-size: 1.6rem !important; margin-bottom: .6rem !important; }
+.about-features__desc { font-size: 1.4rem !important; line-height: 1.75 !important; }
+.about-features__action { margin-top: 2rem !important; }
+
+/* 画面高 900px 未満: 1段階詰める */
+@media (max-height: 899px) and (min-width: 1024px) {
+  .page-breadcrumb { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+  .page-hero { padding-top: 2rem !important; padding-bottom: 1.6rem !important; }
+  .page-hero__title { font-size: 2.6rem !important; margin-bottom: .8rem !important; }
+  .page-hero__lead { font-size: 1.35rem !important; line-height: 1.7 !important; }
+  .about-features { padding-top: 1.4rem !important; }
+  .about-features__card { padding: 1.3rem 1.3rem !important; }
   .about-features__figure img { width: 5.6rem !important; }
-  .about-features__title { font-size: 1.5rem !important; margin-bottom: .4rem !important; }
-  .about-features__desc { font-size: 1.32rem !important; line-height: 1.6 !important; }
+  .about-features__title { font-size: 1.5rem !important; }
+  .about-features__desc { font-size: 1.3rem !important; line-height: 1.6 !important; }
+  .about-features__action { margin-top: 1.4rem !important; }
+}
+/* 画面高 800px 未満（HDノート）: もう1段階詰める */
+@media (max-height: 799px) and (min-width: 1024px) {
+  .page-hero { padding-top: 1.8rem !important; padding-bottom: 1.2rem !important; }
+  .page-hero__title { font-size: 2.3rem !important; margin-bottom: .6rem !important; }
+  .page-hero__lead { font-size: 1.25rem !important; }
+  .about-features { padding-top: 1rem !important; padding-bottom: 2.4rem !important; }
+  .about-features__card { padding: 1.1rem 1.2rem !important; }
+  .about-features__figure { margin-bottom: .5rem !important; }
+  .about-features__figure img { width: 5rem !important; }
+  .about-features__title { font-size: 1.4rem !important; margin-bottom: .4rem !important; }
+  .about-features__desc { font-size: 1.22rem !important; line-height: 1.55 !important; }
+  .about-features__action { margin-top: 1.2rem !important; }
 }
 
-/* 導線カードの見出しと説明を別行にする（span は inline のため） */
-.page-crosslink__ttl,
-.page-crosslink__desc { display: block; }
-.page-crosslink__ttl { margin-bottom: .6rem; }
+/* ===== 固定ヘッダー分の余白を確保 ===== */
+/* ヘッダーは position:fixed で高さ70px。これを避けないと
+   パンくずと見出しの上部がヘッダーに隠れる（実測で確認） */
+main { padding-top: 7rem; }
+@media (max-width: 767px) { main { padding-top: 6rem; } }
+
+/* ロゴを使う導線カードは、正方形ではなく横長のロゴに合わせる */
+.page-crosslink__pict--logo {
+  width: 11rem !important;
+  height: auto !important;
+  flex: 0 0 11rem !important;
+}
+@media (max-width: 767px) {
+  .page-crosslink__pict--logo { width: 9rem !important; flex-basis: 9rem !important; }
+}
 </style>
 </head>
 <body>
@@ -3635,7 +3613,7 @@ img, table, iframe, video { max-width: 100%; }
 </main>
 <section class="page-crosslink"><div class="page-crosslink__inner">
     <a class="page-crosslink__card" href="/schecon-demo/price/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/step-plan.webp" alt="料金プラン" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">料金プランを見る</span><span class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</span></span></a>
-    <a class="page-crosslink__card" href="/schecon-demo/top/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/feat-ai.webp" alt="スケコンのトップ" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">スケコンのトップへ</span><span class="page-crosslink__desc">サービス全体の概要と導入メリットはこちらから。</span></span></a>
+    <a class="page-crosslink__card page-crosslink__card--try" href="/schecon-demo/top/"><img class="page-crosslink__pict page-crosslink__pict--logo" src="/schecon-demo/images/logo.svg" alt="スケコン" width="208" height="48"><span class="page-crosslink__body"><span class="page-crosslink__ttl">スケコンを試してみる</span><span class="page-crosslink__desc">1対1・複数人・社内・チャットの4つの調整方法から選べます。</span></span></a>
 </div></section>
 <footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>
