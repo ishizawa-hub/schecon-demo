@@ -3154,6 +3154,114 @@ img, table, iframe, video { max-width: 100%; }
 .about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
 .about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
 </style>
+<style>
+/* ===== 比較表の再設計（オレンジ基調＋白＋グレー） ===== */
+.price-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ded8d2 !important;
+  border-radius: .8rem;
+  overflow: hidden;
+}
+
+/* --- 見出し行: 全列オレンジで統一。機能列だけ一段濃くして役割を分ける --- */
+.price-table thead th {
+  background: #ed9630 !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 1.6rem 1.2rem !important;
+  border-right: 1px solid rgba(255,255,255,.35) !important;
+  border-bottom: none !important;
+  text-align: center;
+  vertical-align: middle;
+}
+.price-table thead th:first-child {
+  background: #d07a1a !important;
+  text-align: left;
+}
+.price-table thead th:last-child { border-right: none !important; }
+.price-table thead th:nth-child(2),
+.price-table thead th:nth-child(3),
+.price-table thead th:nth-child(4) { background: #ed9630 !important; }
+.price-table__plan { display: block; font-size: 1.55rem; line-height: 1.4; }
+.price-table__price { display: block; font-size: 1.15rem; opacity: .95; margin-top: .3rem; }
+
+/* --- 罫線をはっきり引く --- */
+.price-table tbody th,
+.price-table tbody td {
+  border-bottom: 1px solid #ded8d2 !important;
+  border-right: 1px solid #ded8d2 !important;
+  padding: 1.15rem 1.2rem !important;
+  vertical-align: middle;
+}
+.price-table tbody td:last-child { border-right: none !important; }
+.price-table tbody tr:last-child th,
+.price-table tbody tr:last-child td { border-bottom: none !important; }
+
+/* --- 行の色は白とグレーのみ --- */
+.price-table tbody tr:nth-child(even) th,
+.price-table tbody tr:nth-child(even) td { background: #f7f7f6 !important; }
+.price-table tbody tr:nth-child(odd) th,
+.price-table tbody tr:nth-child(odd) td { background: #fff !important; }
+.price-table tbody tr:hover th,
+.price-table tbody tr:hover td { background: #fdf3e8 !important; }
+
+/* --- 機能名の列 --- */
+.price-table tbody th {
+  text-align: left !important;
+  color: #15303d !important;
+  font-weight: 500 !important;
+  font-size: 1.4rem;
+  width: 34%;
+}
+.price-table__sub { color: #81766e !important; font-size: 1.32rem !important; padding-left: 2.4rem !important; }
+
+/* --- ○ を大きく強調する。× は控えめなグレー --- */
+.price-table td { text-align: center !important; }
+.price-mark { display: inline-block !important; line-height: 1 !important; }
+.price-table .price-mark--yes {
+  color: #ed9630 !important;
+  font-size: 2.4rem !important;
+  font-weight: 400 !important;
+}
+.price-table .price-mark--no {
+  color: #c4bdb6 !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+}
+/* 数値が入る行は太字で読ませる */
+.price-table__row--highlight th,
+.price-table__row--highlight td {
+  font-weight: 700 !important;
+  color: #15303d !important;
+  font-size: 1.4rem;
+}
+
+/* --- キャプション --- */
+.price-table__caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1.2rem 0 !important;
+  font-size: 1.3rem;
+  color: #81766e;
+}
+
+/* --- スマホ: 機能名の列を固定して、横スクロールでも迷わないようにする --- */
+@media (max-width: 767px) {
+  .price-table tbody th,
+  .price-table thead th:first-child {
+    position: sticky; left: 0; z-index: 2;
+    box-shadow: 1px 0 0 #ded8d2;
+  }
+  .price-table thead th:first-child { background: #d07a1a !important; }
+  .price-table tbody tr:nth-child(even) th { background: #f7f7f6 !important; }
+  .price-table tbody tr:nth-child(odd) th { background: #fff !important; }
+  .price-table .price-mark--yes { font-size: 2.1rem !important; }
+  .price-table tbody th, .price-table tbody td { padding: 1rem .8rem !important; }
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3437,8 +3545,8 @@ img, table, iframe, video { max-width: 100%; }
           </tr>
           <tr>
             <th scope="row" class="price-table__sub">OR設定（AさんまたはBさん）</th>
-            <td><span class="price-mark price-mark--no">—</span></td>
-            <td><span class="price-mark price-mark--no">—</span></td>
+            <td><span class="price-mark price-mark--no">×</span></td>
+            <td><span class="price-mark price-mark--no">×</span></td>
             <td><span class="price-mark price-mark--yes">○</span></td>
           </tr>
           <tr>
