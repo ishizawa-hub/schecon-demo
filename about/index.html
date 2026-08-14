@@ -2701,7 +2701,24 @@ a[href^="http"], .price-faq__a a { overflow-wrap: anywhere; }
   ]
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
 <style>
+/* =========================================================
+ * 下層ページ用スタイル（統合版）
+ * もとは複数の <style> に分かれていたものを、順序を保ったまま
+ * 1ブロックにまとめている。順序を変えるとカスケードが変わるため、
+ * 追記するときは必ず末尾に足すこと。
+ * ========================================================= */
 /* ===== 横はみ出しの防止（Android 360px / iPhone 375px 基準） ===== */
 html, body { max-width: 100%; overflow-x: hidden; }
 .price-table-scroll {
@@ -2717,8 +2734,7 @@ img, table, iframe, video { max-width: 100%; }
 /* おすすめリボンがカード外へ出ないようにする */
 .price-card { position: relative; overflow: hidden; }
 .price-card__ribbon { right: 0 !important; }
-</style>
-<style>
+
 /* ===== ボタン・表の幅調整（360px 基準で親幅を超えないようにする） ===== */
 .price-btn, .about-btn, .page-cta__btn, .price-card__action a {
   box-sizing: border-box;
@@ -2737,8 +2753,7 @@ img, table, iframe, video { max-width: 100%; }
   }
   .price-card__action, .price-plans__download { padding: 0 .4rem; }
 }
-</style>
-<style>
+
 /* ===== 配色の是正（薄いオレンジベージュを使用しない） ===== */
 /* 下地・交互色はトップページと同じ無彩色に統一する */
 .price-card__limit,
@@ -2778,8 +2793,7 @@ img, table, iframe, video { max-width: 100%; }
   margin: 0 auto 1.6rem !important;
   object-fit: contain;
 }
-</style>
-<style>
+
 /* ===== 8機能をファーストビューに収めるための圧縮 ===== */
 .page-hero { padding: 2.8rem 2rem 1.8rem !important; }
 .page-hero__title { font-size: 2.7rem !important; margin-bottom: .8rem !important; }
@@ -2809,8 +2823,7 @@ img, table, iframe, video { max-width: 100%; }
   .about-features__grid { grid-template-columns: 1fr !important; }
   .about-features__figure img { width: 6.4rem !important; }
 }
-</style>
-<style>
+
 /* ===== ページ間の導線 ===== */
 .page-crosslink { padding: 4.4rem 2rem; background: #fff; }
 .page-crosslink__inner { max-width: 1120px; margin: 0 auto; display: grid;
@@ -2830,8 +2843,7 @@ img, table, iframe, video { max-width: 100%; }
   box-shadow: 0 2px 12px rgba(0,0,0,.06); }
 .about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
 .about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
-</style>
-<style>
+
 /* ===== 締めCTA: トップと同じカードデザイン・白基調 ===== */
 .page-cta-cards { background: #fff !important; padding: 4.8rem 2rem 5.6rem; }
 .page-cta-cards__inner { max-width: 1120px; margin: 0 auto; text-align: center; }
@@ -2859,8 +2871,7 @@ img, table, iframe, video { max-width: 100%; }
   .page-cta-cards { padding: 3.6rem 1.6rem 4rem; }
   .page-cta-cards__title { font-size: 2.2rem; }
 }
-</style>
-<style>
+
 /* ===== 連携サービス: 公式アイコン＋サービス名のタイル ===== */
 .svc-grid {
   display: flex; flex-wrap: wrap; justify-content: center;
@@ -2886,8 +2897,7 @@ img, table, iframe, video { max-width: 100%; }
   .svc-tile__logo { width: 2rem; height: 2rem; }
   .svc-tile__name { font-size: 1.2rem; }
 }
-</style>
-<style>
+
 /* ===== テキストの色・サイズ・余白をトップページに揃える ===== */
 /* 見出し系: 濃い紺黒 #15303D をやめ、サイト標準のくすんだ色へ */
 .price-card__name--text,
@@ -2968,8 +2978,7 @@ img, table, iframe, video { max-width: 100%; }
   }
   .price-table tbody th, .price-table tbody td { padding: 1.1rem 1rem !important; }
 }
-</style>
-<style>
+
 /* 残っていた濃い紺黒とタグの小さい文字を、トップ基準へ寄せる */
 .page-section__title,
 .about-flow__title,
@@ -2985,6 +2994,35 @@ img, table, iframe, video { max-width: 100%; }
 /* 下敷きと本文の間の余白を確保 */
 .about-flow__step { padding: 3rem 2.4rem !important; }
 .about-scenes__body { padding: 2.8rem 2.4rem !important; }
+
+/* ===== HDノート（768px高）でも8機能が収まるよう微調整 ===== */
+/* 文字サイズは可読性のため据え置き、縦の余白のみ詰める */
+.page-hero { padding-top: 2.2rem !important; padding-bottom: 1.4rem !important; }
+.page-hero__title { margin-bottom: .6rem !important; }
+.page-breadcrumb { padding-top: .8rem !important; padding-bottom: .8rem !important; }
+.about-features { padding-top: 1.8rem !important; }
+.about-features .page-section__title { margin-bottom: .6rem !important; }
+.about-features .page-section__lead { margin-bottom: 1.4rem !important; }
+.about-features__card { padding: 1.4rem 1.4rem !important; }
+.about-features__figure { margin-bottom: .6rem !important; }
+.about-features__title { margin-bottom: .5rem !important; }
+
+/* ===== 画面高が低い環境（HDノート等）でのみ詰める ===== */
+/* 本文サイズは通常画面では 15px を維持し、縦が狭いときだけ 14px に落とす */
+@media (max-height: 800px) and (min-width: 1024px) {
+  .page-hero { padding-top: 1.8rem !important; padding-bottom: 1.2rem !important; }
+  .page-hero__title { font-size: 2.4rem !important; margin-bottom: .5rem !important; }
+  .page-hero__lead { font-size: 1.35rem !important; }
+  .page-breadcrumb { padding-top: .6rem !important; padding-bottom: .6rem !important; }
+  .about-features { padding-top: 1.4rem !important; }
+  .about-features .page-section__title { font-size: 2.1rem !important; margin-bottom: .5rem !important; }
+  .about-features .page-section__lead { font-size: 1.3rem !important; margin-bottom: 1.1rem !important; }
+  .about-features__card { padding: 1.2rem 1.3rem !important; }
+  .about-features__figure { margin-bottom: .5rem !important; }
+  .about-features__figure img { width: 5.6rem !important; }
+  .about-features__title { font-size: 1.5rem !important; margin-bottom: .4rem !important; }
+  .about-features__desc { font-size: 1.35rem !important; line-height: 1.6 !important; }
+}
 </style>
 </head>
 <body>
