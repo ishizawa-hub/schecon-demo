@@ -3148,26 +3148,6 @@ img, table, iframe, video { max-width: 100%; }
 .price-card__action { margin-top: 1.6rem !important; margin-bottom: 2rem !important; }
 .price-btn { padding: 1.2rem 2.4rem !important; font-size: 1.45rem !important; }
 
-/* ===== ページ間の導線 ===== */
-.page-crosslink { padding: 4.4rem 2rem; background: #fff; }
-.page-crosslink__inner { max-width: 1120px; margin: 0 auto; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 2rem; }
-.page-crosslink__card {
-  display: block; padding: 2.4rem 2.8rem; background: #f8f9fa;
-  border-radius: 1.2rem; text-decoration: none; border: 1px solid rgba(129,118,110,.14);
-  transition: transform .3s, box-shadow .3s;
-}
-.page-crosslink__card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-.page-crosslink__ttl { font-size: 1.8rem; font-weight: 700; color: #ed9630; margin: 0 0 .8rem; }
-.page-crosslink__ttl::after { content: " →"; }
-.page-crosslink__desc { font-size: 1.35rem; color: #81766e; line-height: 1.8; margin: 0; }
-.about-why__grid { display: grid; gap: 2.4rem;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); }
-.about-why__card { background: #fff; border-radius: 1.2rem; padding: 2.8rem 2.4rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06); }
-.about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
-.about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
-
 /* ===== 比較表の再設計（オレンジ基調＋白＋グレー） ===== */
 .price-table {
   border-collapse: separate !important;
@@ -3358,7 +3338,7 @@ img, table, iframe, video { max-width: 100%; }
 .about-scenes__desc { font-size: 1.5rem !important; line-height: 1.9 !important; }
 .price-choose__points li { font-size: 1.4rem !important; line-height: 1.85 !important; }
 /* カード下のラベルはトップと同じ大きさに */
-.page-cta-cards .item__text { font-size: 1.5rem !important; }
+
 
 /* 余白: 下敷きとコンテンツ、テキストの間にゆとりを持たせる */
 .price-card { padding-bottom: .8rem !important; }
@@ -3420,6 +3400,116 @@ img, table, iframe, video { max-width: 100%; }
 .price-card__limit-note { font-size: 1.3rem !important; }
 .price-card__limit-sub { font-size: 1.35rem !important; padding-top: 1rem !important; }
 .price-table__caption { font-size: 1.4rem !important; padding-bottom: 1.6rem !important; }
+
+/* ===== ページ間の導線カード（イラスト入り） ===== */
+.page-crosslink { padding: 4.8rem 2rem 5.6rem; background: #fff; }
+.page-crosslink__inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+}
+.page-crosslink__card {
+  position: relative;
+  display: flex; align-items: center; gap: 1.8rem;
+  padding: 2.4rem 5.2rem 2.4rem 2.4rem;
+  background: #fff;
+  border: 2px solid #f0e6da;
+  border-radius: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s, border-color .3s, background .3s;
+}
+.page-crosslink__card:hover {
+  transform: translateY(-4px);
+  border-color: #ed9630;
+  background: #fffdfa;
+  box-shadow: 0 10px 26px rgba(237,150,48,.18);
+}
+.page-crosslink__pict {
+  flex: 0 0 auto; width: 7.2rem; height: 7.2rem;
+  object-fit: contain;
+}
+.page-crosslink__body { flex: 1 1 auto; min-width: 0; }
+.page-crosslink__ttl {
+  font-size: 1.8rem; font-weight: 700; color: #ed9630;
+  margin: 0 0 .6rem; line-height: 1.5;
+}
+.page-crosslink__ttl::after { content: none; }
+.page-crosslink__desc {
+  font-size: 1.4rem; color: #666666; line-height: 1.8; margin: 0;
+}
+/* 右端の矢印。ホバーで少し右へ動かして押せることを示す */
+.page-crosslink__card::after {
+  content: "";
+  position: absolute; top: 50%; right: 2rem;
+  width: 3.2rem; height: 3.2rem; margin-top: -1.6rem;
+  border-radius: 50%; background: #ed9630;
+  transition: transform .3s, background .3s;
+}
+.page-crosslink__card::before {
+  content: "";
+  position: absolute; top: 50%; right: 3.05rem;
+  width: .9rem; height: .9rem; margin-top: -.45rem;
+  border-top: 2px solid #fff; border-right: 2px solid #fff;
+  transform: rotate(45deg);
+  z-index: 1;
+  transition: transform .3s, right .3s;
+}
+.page-crosslink__card:hover::after { transform: translateX(.4rem); background: #d07a1a; }
+.page-crosslink__card:hover::before { right: 2.65rem; }
+
+@media (max-width: 767px) {
+  .page-crosslink { padding: 3.6rem 1.6rem 4rem; }
+  .page-crosslink__card { padding: 2rem 4.4rem 2rem 1.8rem; gap: 1.4rem; }
+  .page-crosslink__pict { width: 6rem; height: 6rem; }
+  .page-crosslink__ttl { font-size: 1.6rem; }
+  .page-crosslink__desc { font-size: 1.3rem; }
+}
+
+/* ===== 比較表のキャプションは視覚的に隠す ===== */
+/* 直前の見出しと内容が重複し、帯の分だけ高さを取っていたため。
+   読み上げには残す必要があるので display:none ではなく視覚的非表示にする */
+.price-table__caption {
+  position: absolute !important;
+  width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important;
+  overflow: hidden !important; white-space: nowrap !important;
+  clip-path: inset(50%) !important; border: 0 !important;
+}
+/* 帯が無くなった分、表の上端を見出しへ寄せる */
+.price-table-scroll { margin-top: 0 !important; }
+.price-compare .page-section__lead { margin-bottom: 2.8rem !important; }
+
+/* ===== CTAカードの体裁をトップのファーストビューに合わせる ===== */
+/* トップ実測値: 250px幅 / 20px / 700 / 行間24px / 字間1.12px / padding 27px 45px 29px 8px */
+.page-cta-cards .m-adjustment__list .item__text {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  line-height: 2.4rem !important;
+  letter-spacing: .112rem !important;
+  padding: 2.7rem 4.5rem 2.9rem .8rem !important;
+  color: #fff !important;
+}
+.page-cta-cards .m-adjustment__list .item { width: 250px !important; }
+@media (min-width: 768px) {
+  .page-cta-cards .m-adjustment__list .item {
+    max-width: 250px !important;
+    flex: 0 0 250px !important;
+  }
+}
+@media (max-width: 767px) {
+  /* スマホは2列。トップと同じ縮小率で文字も落とす */
+  .page-cta-cards .m-adjustment__list .item {
+    width: calc(50% - .8rem) !important;
+    max-width: calc(50% - .8rem) !important;
+    flex: 0 0 calc(50% - .8rem) !important;
+  }
+  .page-cta-cards .m-adjustment__list .item__text {
+    font-size: 1.4rem !important;
+    line-height: 1.8rem !important;
+    padding: 1.6rem 3rem 1.8rem .8rem !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -4185,8 +4275,8 @@ img, table, iframe, video { max-width: 100%; }
 
 </main>
 <section class="page-crosslink"><div class="page-crosslink__inner">
-    <a class="page-crosslink__card" href="/schecon-demo/about/"><p class="page-crosslink__ttl">機能をくわしく見る</p><p class="page-crosslink__desc">各プランに含まれる機能の内容を、図解とあわせてご紹介します。</p></a>
-    <a class="page-crosslink__card" href="/schecon-demo/top/"><p class="page-crosslink__ttl">スケコンのトップへ</p><p class="page-crosslink__desc">サービス全体の概要と導入メリットはこちらから。</p></a>
+    <a class="page-crosslink__card" href="/schecon-demo/about/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/merit-tools.webp" alt="スケコンの機能" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">機能をくわしく見る</span><span class="page-crosslink__desc">各プランに含まれる機能の内容を、図解とあわせてご紹介します。</span></span></a>
+    <a class="page-crosslink__card" href="/schecon-demo/top/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/feat-ai.webp" alt="スケコンのトップ" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">スケコンのトップへ</span><span class="page-crosslink__desc">サービス全体の概要と導入メリットはこちらから。</span></span></a>
 </div></section>
 <footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>

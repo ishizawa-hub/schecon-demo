@@ -2056,25 +2056,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@sche_con" />
   <style>
-/* ===== ページ間の導線 ===== */
-.page-crosslink { padding: 4.4rem 2rem; background: #fff; }
-.page-crosslink__inner { max-width: 1120px; margin: 0 auto; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 2rem; }
-.page-crosslink__card {
-  display: block; padding: 2.4rem 2.8rem; background: #f8f9fa;
-  border-radius: 1.2rem; text-decoration: none; border: 1px solid rgba(129,118,110,.14);
-  transition: transform .3s, box-shadow .3s;
-}
-.page-crosslink__card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-.page-crosslink__ttl { font-size: 1.8rem; font-weight: 700; color: #ed9630; margin: 0 0 .8rem; }
-.page-crosslink__ttl::after { content: " →"; }
-.page-crosslink__desc { font-size: 1.35rem; color: #81766e; line-height: 1.8; margin: 0; }
-.about-why__grid { display: grid; gap: 2.4rem;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); }
-.about-why__card { background: #fff; border-radius: 1.2rem; padding: 2.8rem 2.4rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06); }
-.about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
-.about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
 </style>
 <style>
 /* ===== トップページのスマホ表示是正（Android 360px / iPhone 375px 基準） ===== */
@@ -3445,8 +3426,8 @@
       </main>
 
       <section class="page-crosslink"><div class="page-crosslink__inner">
-    <a class="page-crosslink__card" href="/schecon-demo/price/"><p class="page-crosslink__ttl">料金プランを見る</p><p class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</p></a>
-    <a class="page-crosslink__card" href="/schecon-demo/about/"><p class="page-crosslink__ttl">機能をくわしく見る</p><p class="page-crosslink__desc">AI日程調整・カレンダー連携・メーラー・チャットの8機能をご紹介します。</p></a>
+    <a class="page-crosslink__card" href="/schecon-demo/price/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/step-plan.webp" alt="料金プラン" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">料金プランを見る</span><span class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</span></span></a>
+    <a class="page-crosslink__card" href="/schecon-demo/about/"><img class="page-crosslink__pict" src="/schecon-demo/images/illust/merit-tools.webp" alt="スケコンの機能" width="200" height="200" loading="lazy"><span class="page-crosslink__body"><span class="page-crosslink__ttl">機能をくわしく見る</span><span class="page-crosslink__desc">AI日程調整・カレンダー連携・メーラー・チャットの8機能をご紹介します。</span></span></a>
 </div></section>
 <footer class="footer">
         <a href="#wrapper" class="footer__pagetop ss"></a>
@@ -3602,7 +3583,72 @@
         .schedule-picker__close { top: 4px; right: 4px; width: 28px; height: 28px; }
       }
       body.schedule-picker-open { overflow: hidden; }
-    </style>
+    
+/* ===== ページ間の導線カード（イラスト入り） ===== */
+.page-crosslink { padding: 4.8rem 2rem 5.6rem; background: #fff; }
+.page-crosslink__inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+}
+.page-crosslink__card {
+  position: relative;
+  display: flex; align-items: center; gap: 1.8rem;
+  padding: 2.4rem 5.2rem 2.4rem 2.4rem;
+  background: #fff;
+  border: 2px solid #f0e6da;
+  border-radius: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s, border-color .3s, background .3s;
+}
+.page-crosslink__card:hover {
+  transform: translateY(-4px);
+  border-color: #ed9630;
+  background: #fffdfa;
+  box-shadow: 0 10px 26px rgba(237,150,48,.18);
+}
+.page-crosslink__pict {
+  flex: 0 0 auto; width: 7.2rem; height: 7.2rem;
+  object-fit: contain;
+}
+.page-crosslink__body { flex: 1 1 auto; min-width: 0; }
+.page-crosslink__ttl {
+  font-size: 1.8rem; font-weight: 700; color: #ed9630;
+  margin: 0 0 .6rem; line-height: 1.5;
+}
+.page-crosslink__ttl::after { content: none; }
+.page-crosslink__desc {
+  font-size: 1.4rem; color: #666666; line-height: 1.8; margin: 0;
+}
+/* 右端の矢印。ホバーで少し右へ動かして押せることを示す */
+.page-crosslink__card::after {
+  content: "";
+  position: absolute; top: 50%; right: 2rem;
+  width: 3.2rem; height: 3.2rem; margin-top: -1.6rem;
+  border-radius: 50%; background: #ed9630;
+  transition: transform .3s, background .3s;
+}
+.page-crosslink__card::before {
+  content: "";
+  position: absolute; top: 50%; right: 3.05rem;
+  width: .9rem; height: .9rem; margin-top: -.45rem;
+  border-top: 2px solid #fff; border-right: 2px solid #fff;
+  transform: rotate(45deg);
+  z-index: 1;
+  transition: transform .3s, right .3s;
+}
+.page-crosslink__card:hover::after { transform: translateX(.4rem); background: #d07a1a; }
+.page-crosslink__card:hover::before { right: 2.65rem; }
+
+@media (max-width: 767px) {
+  .page-crosslink { padding: 3.6rem 1.6rem 4rem; }
+  .page-crosslink__card { padding: 2rem 4.4rem 2rem 1.8rem; gap: 1.4rem; }
+  .page-crosslink__pict { width: 6rem; height: 6rem; }
+  .page-crosslink__ttl { font-size: 1.6rem; }
+  .page-crosslink__desc { font-size: 1.3rem; }
+}
+</style>
 
     <!-- js -->
     <script src="/schecon-demo/assets/js/top-main.js"></script>
