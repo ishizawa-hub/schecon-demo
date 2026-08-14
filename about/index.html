@@ -2831,6 +2831,62 @@ img, table, iframe, video { max-width: 100%; }
 .about-why__ttl { font-size: 1.7rem; font-weight: 700; color: #15303d; margin: 0 0 1.2rem; }
 .about-why__desc { font-size: 1.4rem; color: #81766e; line-height: 1.9; margin: 0; }
 </style>
+<style>
+/* ===== 締めCTA: トップと同じカードデザイン・白基調 ===== */
+.page-cta-cards { background: #fff !important; padding: 4.8rem 2rem 5.6rem; }
+.page-cta-cards__inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+.page-cta-cards__catch { font-size: 1.4rem; font-weight: 700; color: #81766e; margin: 0 0 .8rem; }
+.page-cta-cards__title {
+  font-size: 2.8rem; font-weight: 900; color: #15303d;
+  line-height: 1.4; margin: 0 0 1.2rem;
+}
+.page-cta-cards__title span { color: #ed9630; }
+.page-cta-cards__lead { font-size: 1.45rem; color: #81766e; line-height: 1.8; margin: 0 0 3.2rem; }
+.page-cta-cards .m-adjustment__list {
+  display: flex !important; flex-wrap: wrap; justify-content: center;
+  gap: 1.6rem; list-style: none; margin: 0 0 3.2rem; padding: 0;
+}
+.page-cta-cards .m-adjustment__list .item {
+  width: 250px; max-width: calc(50% - .8rem);
+  border-radius: 1.2rem; overflow: hidden;
+}
+.page-cta-cards .m-adjustment__list .item__img img { width: 100%; height: auto; display: block; }
+.page-cta-cards__action { margin: 0; }
+@media (min-width: 768px) {
+  .page-cta-cards .m-adjustment__list .item { max-width: calc(25% - 1.2rem); }
+}
+@media (max-width: 767px) {
+  .page-cta-cards { padding: 3.6rem 1.6rem 4rem; }
+  .page-cta-cards__title { font-size: 2.2rem; }
+}
+</style>
+<style>
+/* ===== 連携サービス: 公式アイコン＋サービス名のタイル ===== */
+.svc-grid {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 1rem; list-style: none; margin: 0; padding: 0;
+}
+.svc-tile {
+  display: flex; align-items: center; gap: .8rem;
+  background: #fff; border: 1px solid #e4dfda; border-radius: .8rem;
+  padding: .9rem 1.4rem; min-height: 4.6rem; box-sizing: border-box;
+}
+/* ロゴは変形・再着色せず、同じ高さで揃える（各社ガイドライン準拠） */
+.svc-tile__logo {
+  width: 2.4rem; height: 2.4rem; object-fit: contain; flex: 0 0 auto;
+}
+.svc-tile__name { font-size: 1.35rem; font-weight: 700; color: #15303d; white-space: nowrap; }
+/* 公式アイコンが無いものは文字のみ。高さを揃えて列の体裁を保つ */
+.svc-tile--text { padding-left: 1.8rem; padding-right: 1.8rem; }
+/* 見出しと重複していたカードヘッダーは使わない */
+.about-services__card-header, .svc-legacy-header { display: none !important; }
+@media (max-width: 767px) {
+  .svc-grid { gap: .8rem; }
+  .svc-tile { padding: .7rem 1rem; min-height: 4rem; }
+  .svc-tile__logo { width: 2rem; height: 2rem; }
+  .svc-tile__name { font-size: 1.2rem; }
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3092,13 +3148,7 @@ img, table, iframe, video { max-width: 100%; }
         <div class="about-scenes__body">
           <h3 class="about-scenes__title">外部サービス連携</h3>
           <p class="about-scenes__desc">Zoom・Google Meet・Microsoft Teamsと連携し、日程確定と同時にWeb会議URLを自動発行。Slack・Chatworkへの通知連携、Salesforce・Blastmailとの連携にも対応しています。</p>
-          <ul class="about-scenes__tags">
-            <li class="about-scenes__tag">Zoom</li>
-            <li class="about-scenes__tag">Google Meet</li>
-            <li class="about-scenes__tag">Teams</li>
-            <li class="about-scenes__tag">Slack</li>
-            <li class="about-scenes__tag">Chatwork</li>
-          </ul>
+          <ul class="about-scenes__tags"><li class="about-scenes__tag">Zoom</li><li class="about-scenes__tag">Google Meet</li><li class="about-scenes__tag">Teams</li><li class="about-scenes__tag">Slack</li><li class="about-scenes__tag">Chatwork</li></ul>
         </div>
       </article>
     </div>
@@ -3113,51 +3163,28 @@ img, table, iframe, video { max-width: 100%; }
 
     <div class="about-services__card">
       <div class="about-services__card-header">
-        <p class="about-services__card-title">連携可能な外部サービス</p>
+        
       </div>
       <div class="about-services__card-body">
-        <ul class="about-services__pills">
-          <li class="about-services__pill">Zoom</li>
-          <li class="about-services__pill">Google Meet</li>
-          <li class="about-services__pill">Teams</li>
-          <li class="about-services__pill">Slack</li>
-          <li class="about-services__pill">Chatwork</li>
-          <li class="about-services__pill">Salesforce</li>
-          <li class="about-services__pill">blastmail</li>
-          <li class="about-services__pill">Googleカレンダー</li>
-          <li class="about-services__pill">Outlook</li>
-        </ul>
+        <ul class="svc-grid">
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/zoom.svg" alt="Zoom" width="28" height="28" loading="lazy"><span class="svc-tile__name">Zoom</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/google-meet.svg" alt="Google Meet" width="28" height="28" loading="lazy"><span class="svc-tile__name">Google Meet</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/teams.svg" alt="Microsoft Teams" width="28" height="28" loading="lazy"><span class="svc-tile__name">Microsoft Teams</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/slack.svg" alt="Slack" width="28" height="28" loading="lazy"><span class="svc-tile__name">Slack</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/chatwork.svg" alt="Chatwork" width="28" height="28" loading="lazy"><span class="svc-tile__name">Chatwork</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/google-calendar.svg" alt="Google カレンダー" width="28" height="28" loading="lazy"><span class="svc-tile__name">Google カレンダー</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/outlook.svg" alt="Outlook" width="28" height="28" loading="lazy"><span class="svc-tile__name">Outlook</span></li>
+      <li class="svc-tile"><img class="svc-tile__logo" src="/schecon-demo/images/icons/gmail.svg" alt="Gmail" width="28" height="28" loading="lazy"><span class="svc-tile__name">Gmail</span></li>
+      <li class="svc-tile svc-tile--text"><span class="svc-tile__name">Salesforce</span></li>
+      <li class="svc-tile svc-tile--text"><span class="svc-tile__name">blastmail</span></li>
+    </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== 4. 多くの方に利用していただいています（実績バンド） ===== -->
-<section class="about-section about-section--bg about-stats" id="about-stats" aria-labelledby="about-stats-title">
-  <div class="about-section__inner">
-    <h2 class="page-section__title" id="about-stats-title">多くの方に<br class="about-br-sp"><span class="orange-keyword">利用していただいています</span></h2>
 
-    <!--
-      TODO: 数値は未確定のためプレースホルダー（—）を表示しています。
-      公開前に「毎月のユーザー数」「毎月の予定調整件数」「今日の予定調整件数」の
-      実数値（および単位）を差し込んでください。
-    -->
-    <dl class="about-stats__grid">
-      <div class="about-stats__item">
-        <dt class="about-stats__label">毎月のユーザー数</dt>
-        <dd class="about-stats__value" aria-label="数値は準備中">—</dd>
-      </div>
-      <div class="about-stats__item">
-        <dt class="about-stats__label">毎月の予定調整件数</dt>
-        <dd class="about-stats__value" aria-label="数値は準備中">—</dd>
-      </div>
-      <div class="about-stats__item">
-        <dt class="about-stats__label">今日の予定調整件数</dt>
-        <dd class="about-stats__value" aria-label="数値は準備中">—</dd>
-      </div>
-    </dl>
-  </div>
-</section>
 
 <!-- ===== 5. クロージングCTA ===== -->
 
@@ -3294,14 +3321,75 @@ img, table, iframe, video { max-width: 100%; }
     </dl>
   </div>
 </section>
-<section class="about-section about-cta" id="about-cta" aria-labelledby="about-cta-title">
-  <div class="about-section__inner about-cta__inner">
-    <p class="about-cta__eyebrow">＼どんなに忙しい人でも日程調整が簡単に‼／</p>
-    <h2 class="about-cta__title" id="about-cta-title">面倒な日程調整は<br class="about-br-sp">スケコンで</h2>
-    <!-- TODO: 会員登録ページの実URLに差し替える -->
-    <a class="about-btn about-btn--invert" href="#">無料で始める</a>
+<section class="page-cta-cards">
+  <div class="page-cta-cards__inner">
+    <p class="page-cta-cards__catch">＼どんなに忙しい人でも日程調整が簡単に／</p>
+    <h2 class="page-cta-cards__title">面倒な日程調整は<span>スケコン</span>で</h2>
+    <p class="page-cta-cards__lead">用途に合わせて選べる4つの調整方法。すべて無料プランからお試しいただけます。</p>
+<ul class="m-adjustment__list ease-3">
+              <li class="item item-chat">
+                <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
+                    <img src="/schecon-demo/images/static/content-link/chat_schedule.jpg" alt="チャットで予定調整" />
+                  </picture>
+                  <p class="item__text">チャットで予定調整</p>
+                </a>
+              </li>
+              <li class="item item-one">
+                <div class="item__container">
+                  <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="item__link">
+                    <picture class="item__img">
+                      <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_1.webp" />
+                      <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_1.webp" />
+                      <img src="/schecon-demo/images/static/content-link/adjustment_1.webp" alt="1対1予定調整" />
+                    </picture>
+                    <p class="item__text">1対1予定調整</p>
+                  </a>
+                  <div class="item__hover">
+                    <div class="item__hover__container">
+                      <div class="item__hover__container-box">
+                        <a href="https://schecon.com/one-on-one/create" target="_blank" rel="noopener">
+                          <span>新規作成</span>
+                          <div class="item__hover__link-overlay"></div>
+                        </a>
+                      </div>
+                      <div class="item__hover__container-box">
+                        <a href="https://schecon.com/template" target="_blank" rel="noopener">
+                          <span>テンプレート</span>
+                          <div class="item__hover__link-overlay"></div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="item item-multi">
+                <a href="https://schecon.com/create" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_2.webp" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_2.webp" />
+                    <img src="/schecon-demo/images/static/content-link/adjustment_2.webp" alt="複数人予定調整" />
+                  </picture>
+                  <p class="item__text">複数人予定調整</p>
+                </a>
+              </li>
+              <li class="item item-group">
+                <a href="https://schecon.com/group" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_3.webp" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_3.webp" />
+                    <img src="/schecon-demo/images/static/content-link/adjustment_3.webp" alt="社内予定調整" />
+                  </picture>
+                  <p class="item__text">社内予定調整</p>
+                </a>
+              </li>
+            </ul>
+    <p class="page-cta-cards__action"><a class="price-btn" href="https://schecon.com/select" target="_blank" rel="noopener">無料で始める</a></p>
   </div>
 </section>
+
 </main>
 <section class="page-crosslink"><div class="page-crosslink__inner">
     <a class="page-crosslink__card" href="/schecon-demo/price/"><p class="page-crosslink__ttl">料金プランを見る</p><p class="page-crosslink__desc">フリープラン0円から。3プランの機能と価格を比較できます。</p></a>

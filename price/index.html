@@ -3262,6 +3262,35 @@ img, table, iframe, video { max-width: 100%; }
   .price-table tbody th, .price-table tbody td { padding: 1rem .8rem !important; }
 }
 </style>
+<style>
+/* ===== 締めCTA: トップと同じカードデザイン・白基調 ===== */
+.page-cta-cards { background: #fff !important; padding: 4.8rem 2rem 5.6rem; }
+.page-cta-cards__inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+.page-cta-cards__catch { font-size: 1.4rem; font-weight: 700; color: #81766e; margin: 0 0 .8rem; }
+.page-cta-cards__title {
+  font-size: 2.8rem; font-weight: 900; color: #15303d;
+  line-height: 1.4; margin: 0 0 1.2rem;
+}
+.page-cta-cards__title span { color: #ed9630; }
+.page-cta-cards__lead { font-size: 1.45rem; color: #81766e; line-height: 1.8; margin: 0 0 3.2rem; }
+.page-cta-cards .m-adjustment__list {
+  display: flex !important; flex-wrap: wrap; justify-content: center;
+  gap: 1.6rem; list-style: none; margin: 0 0 3.2rem; padding: 0;
+}
+.page-cta-cards .m-adjustment__list .item {
+  width: 250px; max-width: calc(50% - .8rem);
+  border-radius: 1.2rem; overflow: hidden;
+}
+.page-cta-cards .m-adjustment__list .item__img img { width: 100%; height: auto; display: block; }
+.page-cta-cards__action { margin: 0; }
+@media (min-width: 768px) {
+  .page-cta-cards .m-adjustment__list .item { max-width: calc(25% - 1.2rem); }
+}
+@media (max-width: 767px) {
+  .page-cta-cards { padding: 3.6rem 1.6rem 4rem; }
+  .page-cta-cards__title { font-size: 2.2rem; }
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3956,14 +3985,75 @@ img, table, iframe, video { max-width: 100%; }
     </div>
   </div>
 </section>
-<section class="price-cta js-easing" aria-labelledby="price-cta-title">
-  <div class="price-inner price-cta__inner">
-    <p class="price-cta__catch">＼どんなに忙しい人でも日程調整が簡単に‼／</p>
-    <h2 class="price-cta__ttl" id="price-cta-title">面倒な日程調整は<br class="price-br-sp" />スケコンで</h2>
-    <p class="price-cta__cap">クレジットカードは必要ありません。</p>
-    <p class="price-cta__action"><a class="price-btn price-btn--white" href="https://schecon.com/select" target="_blank" rel="noopener">無料で登録</a></p>
+<section class="page-cta-cards">
+  <div class="page-cta-cards__inner">
+    <p class="page-cta-cards__catch">＼どんなに忙しい人でも日程調整が簡単に／</p>
+    <h2 class="page-cta-cards__title">面倒な日程調整は<span>スケコン</span>で</h2>
+    <p class="page-cta-cards__lead">用途に合わせて選べる4つの調整方法。すべて無料プランからお試しいただけます。</p>
+<ul class="m-adjustment__list ease-3">
+              <li class="item item-chat">
+                <a href="https://schecon.com/chat" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/chat_schedule.jpg" />
+                    <img src="/schecon-demo/images/static/content-link/chat_schedule.jpg" alt="チャットで予定調整" />
+                  </picture>
+                  <p class="item__text">チャットで予定調整</p>
+                </a>
+              </li>
+              <li class="item item-one">
+                <div class="item__container">
+                  <a href="https://schecon.com/one-on-one-create" target="_blank" rel="noopener" class="item__link">
+                    <picture class="item__img">
+                      <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_1.webp" />
+                      <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_1.webp" />
+                      <img src="/schecon-demo/images/static/content-link/adjustment_1.webp" alt="1対1予定調整" />
+                    </picture>
+                    <p class="item__text">1対1予定調整</p>
+                  </a>
+                  <div class="item__hover">
+                    <div class="item__hover__container">
+                      <div class="item__hover__container-box">
+                        <a href="https://schecon.com/one-on-one/create" target="_blank" rel="noopener">
+                          <span>新規作成</span>
+                          <div class="item__hover__link-overlay"></div>
+                        </a>
+                      </div>
+                      <div class="item__hover__container-box">
+                        <a href="https://schecon.com/template" target="_blank" rel="noopener">
+                          <span>テンプレート</span>
+                          <div class="item__hover__link-overlay"></div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="item item-multi">
+                <a href="https://schecon.com/create" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_2.webp" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_2.webp" />
+                    <img src="/schecon-demo/images/static/content-link/adjustment_2.webp" alt="複数人予定調整" />
+                  </picture>
+                  <p class="item__text">複数人予定調整</p>
+                </a>
+              </li>
+              <li class="item item-group">
+                <a href="https://schecon.com/group" target="_blank" rel="noopener" class="item__link">
+                  <picture class="item__img">
+                    <source media="(max-width:374px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_small_3.webp" />
+                    <source media="(max-width:1023px)" srcset="/schecon-demo/images/static/content-link/adjustment_sp_3.webp" />
+                    <img src="/schecon-demo/images/static/content-link/adjustment_3.webp" alt="社内予定調整" />
+                  </picture>
+                  <p class="item__text">社内予定調整</p>
+                </a>
+              </li>
+            </ul>
+    <p class="page-cta-cards__action"><a class="price-btn" href="https://schecon.com/select" target="_blank" rel="noopener">無料で始める</a></p>
   </div>
 </section>
+
 </main>
 <section class="page-crosslink"><div class="page-crosslink__inner">
     <a class="page-crosslink__card" href="/schecon-demo/about/"><p class="page-crosslink__ttl">機能をくわしく見る</p><p class="page-crosslink__desc">各プランに含まれる機能の内容を、図解とあわせてご紹介します。</p></a>
