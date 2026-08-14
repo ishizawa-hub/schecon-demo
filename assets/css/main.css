@@ -6511,3 +6511,22 @@ html.notouch .m-btn a:hover:after {
 @media (max-width: 360px) {
   .m-adjustment__list .item .item__btn { font-size: 1rem !important; }
 }
+
+/* ===== スマホのタップ領域確保（Apple 44pt / Google 48dp 基準） ===== */
+@media (max-width: 767px) {
+  .header__nav a,
+  .header__nav button,
+  .footer a {
+    display: block;
+    min-height: 4.4rem;
+    line-height: 2.2 !important;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+  }
+  /* アイコン付きのメニュー項目は中央揃えを保つ */
+  .header__nav a { display: flex; align-items: center; }
+  /* パンくずも押しやすくする */
+  .page-breadcrumb a { display: inline-block; padding: .6rem .2rem; }
+  /* フッターの見出しは対象外（リンクではない） */
+  .footer__ttl a { min-height: 0; }
+}
