@@ -2887,6 +2887,105 @@ img, table, iframe, video { max-width: 100%; }
   .svc-tile__name { font-size: 1.2rem; }
 }
 </style>
+<style>
+/* ===== テキストの色・サイズ・余白をトップページに揃える ===== */
+/* 見出し系: 濃い紺黒 #15303D をやめ、サイト標準のくすんだ色へ */
+.price-card__name--text,
+.price-choose__plan,
+.price-diff__ttl,
+.price-faq__q,
+.price-flow__ttl,
+.about-features__title,
+.about-usecase__title,
+.about-usecase__ttl,
+.about-why__ttl,
+.about-faq__q,
+.svc-tile__name,
+.page-cta-cards__title,
+.price-table__row--highlight th,
+.price-table__row--highlight td {
+  color: #81766e !important;
+}
+/* 本文系: トップの説明文と同じ濃度に */
+.price-card__feature,
+.price-choose__desc,
+.price-choose__points li,
+.price-diff__desc,
+.price-faq__a,
+.price-flow__note,
+.price-table tbody th,
+.price-table tbody td,
+.about-features__desc,
+.about-usecase__desc,
+.about-usecase__problem,
+.about-why__desc,
+.about-faq__a,
+.about-scenes__desc,
+.page-cta-cards__lead {
+  color: #666666 !important;
+}
+
+/* 文字サイズ: 下層だけ小さかったため、トップの水準まで引き上げる */
+.price-card__feature { font-size: 1.4rem !important; line-height: 1.85 !important; }
+.price-choose__desc,
+.price-diff__desc,
+.price-faq__a,
+.about-features__desc,
+.about-usecase__desc,
+.about-why__desc,
+.about-faq__a { font-size: 1.5rem !important; line-height: 1.9 !important; }
+.price-table tbody th,
+.price-table tbody td { font-size: 1.45rem !important; }
+.price-flow__ttl { font-size: 1.6rem !important; }
+.price-flow__note { font-size: 1.35rem !important; }
+.svc-tile__name { font-size: 1.4rem !important; }
+.page-section__lead { font-size: 1.55rem !important; }
+.about-scenes__desc { font-size: 1.5rem !important; line-height: 1.9 !important; }
+.price-choose__points li { font-size: 1.4rem !important; line-height: 1.85 !important; }
+/* カード下のラベルはトップと同じ大きさに */
+.page-cta-cards .item__text { font-size: 1.5rem !important; }
+
+/* 余白: 下敷きとコンテンツ、テキストの間にゆとりを持たせる */
+.price-card { padding-bottom: .8rem !important; }
+.price-choose__card,
+.price-diff__card,
+.price-faq__item,
+.about-features__card,
+.about-usecase__card,
+.about-why__card { padding: 3rem 2.6rem !important; }
+.price-flow__step { padding: 3.4rem 2.2rem 2.8rem !important; }
+.price-table tbody th,
+.price-table tbody td { padding: 1.4rem 1.6rem !important; }
+.price-table thead th { padding: 1.8rem 1.4rem !important; }
+.page-section__inner { padding-left: 1.2rem; padding-right: 1.2rem; }
+.price-card__features { padding: .4rem 0 1rem !important; }
+.price-card__limit { padding: 1.6rem 1.4rem !important; }
+.svc-tile { padding: 1.1rem 1.6rem !important; }
+@media (max-width: 767px) {
+  .price-choose__card, .price-diff__card, .price-faq__item,
+  .about-features__card, .about-usecase__card, .about-why__card {
+    padding: 2.4rem 1.8rem !important;
+  }
+  .price-table tbody th, .price-table tbody td { padding: 1.1rem 1rem !important; }
+}
+</style>
+<style>
+/* 残っていた濃い紺黒とタグの小さい文字を、トップ基準へ寄せる */
+.page-section__title,
+.about-flow__title,
+.about-scenes__title,
+.about-services__card-title { color: #81766e !important; }
+.page-section__title .orange-keyword { color: #ed9630 !important; }
+.about-flow__desc, .about-scenes__desc { color: #666666 !important; }
+/* タグ・パンくずが 12〜13px と小さかったため引き上げる */
+.about-scenes__tag, .about-usecase__tag { font-size: 1.3rem !important; padding: .7rem 1.5rem !important; }
+.page-breadcrumb, .page-breadcrumb a { font-size: 1.4rem !important; }
+.about-flow__title { font-size: 1.7rem !important; }
+.about-flow__desc { font-size: 1.5rem !important; line-height: 1.9 !important; }
+/* 下敷きと本文の間の余白を確保 */
+.about-flow__step { padding: 3rem 2.4rem !important; }
+.about-scenes__body { padding: 2.8rem 2.4rem !important; }
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -3386,8 +3485,7 @@ img, table, iframe, video { max-width: 100%; }
                 </a>
               </li>
             </ul>
-    <p class="page-cta-cards__action"><a class="price-btn" href="https://schecon.com/select" target="_blank" rel="noopener">無料で始める</a></p>
-  </div>
+    </div>
 </section>
 
 </main>
