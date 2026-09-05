@@ -1,0 +1,67 @@
+# スケコンの死活監視
+#
+# 2026-09-05、マガジンが9時間半停止したが誰も気づかなかった。
+# その反省で作った。GitHub Actions 上で動くので、こちらのPCにも
+# AWSにも依存しない。落ちれば GitHub から「Run failed」メールが届く。
+#
+# ## なぜ CloudWatch のステータスチェックでは足りないのか
+#
+# 9/5 の障害では、15:19 にインスタンスを再起動してステータスチェックは
+# 3/3 合格に戻ったが、**中の Docker コンテナが復帰せず 18:32 まで 502 が
+# 続いた**。ステータスチェックの監視ではこの3時間を検知できない。
+# 見るべきなのは「HTTPで正しく返ってくるか」であって、OSが生きているかではない。
+#
+# ## 誤報を出さないための作り
+#
+# 一度の失敗では落ちたと判断しない。30秒あけて3回試し、
+# 3回とも駄目だったときだけジョブを失敗させる。
+#
+# ## 注意
+#
+# GitHub は「60日間リポジトリに更新が無い」とスケジュール実行を自動停止する。
+# 停止前に GitHub からメールが届くので、その時は Actions 画面から再開する。
+
+name: スケコン死活監視
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # 10分ごと（UTC基準だが間隔なので時差は無関係）
+  workflow_dispatch:          # 手動でも回せるようにしておく
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: HTTP応答の確認
+    runs-on: ubuntu-latest
+    steps:
+      - name: schecon.com の応答を確認する
+        run: |
+          fail=0
+          for url in "https://schecon.com/article/" "https://schecon.com/"; do
+            code=000
+            for i in 1 2 3; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "$url" || echo 000)
+              case "$code" in
+                2*|3*) break ;;
+              esac
+              if [ "$i" -lt 3 ]; then
+                echo "  $url が $code を返した（${i}回目）。30秒待って再試行する"
+                sleep 30
+              fi
+            done
+            case "$code" in
+              2*|3*) echo "OK    $code  $url" ;;
+              *)     echo "DOWN  $code  $url" ; fail=1 ;;
+            esac
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo ""
+            echo "::error::スケコンが応答していない。3回試して駄目だったので一時的な瞬断ではない。"
+            echo "確認する順番:"
+            echo "  1. AWSコンソール → EC2 i-07fe1707013714479 のステータスチェック"
+            echo "  2. SSMセッションマネージャーで接続 → sudo docker ps -a"
+            echo "  3. コンテナが落ちていれば sudo docker start scheconcom_wordpress_1"
+          fi
+          exit $fail
